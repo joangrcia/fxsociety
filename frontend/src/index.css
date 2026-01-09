@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+/* ============================================
+   fxsociety Design System
+   Dark theme with emerald accent
+   ============================================ */
+
+/* CSS Variables for Design System */
+@theme {
+  /* Background layers (dark, no pure black) */
+  --color-bg-base: #0a0a0f;
+  --color-bg-surface-1: #14141a;
+  --color-bg-surface-2: #1e1e26;
+  --color-bg-surface-3: #28283a;
+
+  /* Text colors */
+  --color-text-primary: #f5f5f7;
+  --color-text-secondary: #a1a1aa;
+  --color-text-muted: #71717a;
+
+  /* Border colors */
+  --color-border-subtle: rgba(255, 255, 255, 0.05);
+  --color-border-default: rgba(255, 255, 255, 0.1);
+  --color-border-accent: rgba(16, 185, 129, 0.3);
+
+  /* Shadows */
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
+  --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.4);
+
+  /* Spacing */
+  --spacing-section: 5rem;
+
+  /* Border radius */
+  --radius-card: 1rem;
+  --radius-button: 0.5rem;
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-bg-base text-text-primary antialiased;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+
+/* Focus visible for accessibility */
+*:focus-visible {
+  @apply outline-none ring-2 ring-emerald-500 ring-offset-2 ring-offset-bg-base;
+}
+
+/* Smooth transitions for interactive elements */
+a, button {
+  @apply transition-all duration-200;
+}

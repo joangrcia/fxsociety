@@ -1,173 +1,218 @@
-# AGENTS.md
+# AGENTS.md — fxsociety
 
-## FXSOCIETY – GLOBAL AI AGENT CONTEXT & RULES
+## Project Overview
 
-This document defines the **permanent global context** for all AI agents working on the **fxsociety** project.
-All agents **MUST read and follow** these rules before executing any task.
+Project Name: fxsociety  
+Project Type: Trading-related product marketplace website
 
----
+Primary Goal: Sell beginner-friendly trading-related products
 
-## 1. Brand & Product Overview
+Product Scope:
 
-**Brand Name:** fxsociety  
-**Product Type:** Digital product – trading indicators  
-**Core Business:** Selling trading indicators via a website (shop + member area)
+- Trading indicators
+- Trading robots (EA)
+- Digital products (ebooks, guides, PDFs)
+- Physical merchandise (apparel, accessories)
 
-fxsociety focuses on **helping beginner traders** trade more simply using easy-to-use indicators.
+Target Audience: Beginner traders (non-technical)  
+Primary Language (UI & content): Indonesian (Bahasa Indonesia)
 
----
-
-## 2. Target Users
-
-**Primary Target:** Beginner traders
-
-User characteristics:
-
-- New to trading
-- Not familiar with complex trading terminology
-- Needs clear buy / sell guidance
-- Prefers simplicity over advanced analysis
-
-### Language & Tone
-
-- English
-- Simple, beginner-friendly
-- Non-technical
-- Educational and trustworthy
+Backend: FastAPI  
+Database: SQLite  
+Frontend: Any framework  
+CSS Framework: Tailwind CSS  
+Payment: No payment gateway (manual approval / admin confirmation)
 
 ---
 
-## 3. Tech Stack (FIXED – DO NOT CHANGE)
+## Core Principles (MANDATORY)
 
-- **Backend:** FastAPI (Python)
-- **Database:** SQLite
-- **Authentication:** JWT
-- **Payment:** Manual payment only (bank transfer + payment proof upload)
-- **Product Delivery:** Digital file download (trading indicators)
-- **Storage:** Private server-side storage (NOT public)
+1. Beginner-First Mindset
 
-🚫 **STRICTLY FORBIDDEN:**
+- Always assume the user is a beginner
+- Use simple, non-technical language
+- Avoid advanced trading jargon
+- Focus on clarity and ease of use
 
-- Using payment gateways (Stripe, Midtrans, Xendit, etc.)
-- Switching database to PostgreSQL/MySQL
-- Changing the tech stack without explicit user instruction
+2. No Profit Guarantee
 
----
+- NEVER promise guaranteed profits
+- NEVER claim certainty or fixed win rates
+- Always include a trading disclaimer when relevant
+- Avoid misleading financial language
 
-## 4. Business Flow (MANDATORY)
+3. Clarity Over Complexity
 
-1. User registers or logs in
-2. User selects a trading indicator product
-3. User creates an order
-4. Order status = `pending_payment`
-5. System shows manual payment instructions
-6. User uploads payment proof
-7. Admin reviews the payment
-8. If approved:
-   - Order status becomes `paid`
-   - A license is issued
-   - User gains download access
-9. User downloads the indicator from the member area
+- UI must be understandable within 5 seconds
+- Do not add features, pages, or menus unless explicitly requested
+- Simplicity with intention, not minimalism for its own sake
 
-⚠️ Indicator files **MUST NOT** be accessible before the order is marked as `paid`.
+4. Simple but Not Boring
+
+- Clean layout with visual depth
+- Use cards, spacing, and hierarchy to create interest
+- Design should feel modern, intentional, and premium
 
 ---
 
-## 5. License & Download Rules
+## Public Navigation (FIXED — DO NOT CHANGE)
 
-- Each purchase generates a **license**
-- Licenses are bound to a user account
-- Downloads are allowed only if:
-  - User is authenticated
-  - License is active
-  - Related order status is `paid`
-- Indicator files must be stored in **private storage**
-- File access must go through secured FastAPI endpoints (no direct public links)
+The "Shop" menu represents a multi-product store.  
+Agents MUST NOT assume the shop contains only indicators.
 
----
+- Home
+- Shop
+- How It Works
+- About Us
+- Support
+- Login
 
-## 6. Legal & Compliance Rules (CRITICAL)
-
-AI agents **MUST NOT**:
-
-- Claim guaranteed profits
-- Claim fixed win rates
-- Present indicators as profit guarantees
-- Provide personalized investment advice
-
-AI agents **MUST**:
-
-- Use safe and ethical wording
-- Include trading risk disclaimers when relevant
-
-Example disclaimer:
-
-> “Trading involves risk. There is no guarantee of profit. This indicator is a tool, not financial advice.”
+Member-only and admin routes are allowed internally but must not appear in public navigation.
 
 ---
 
-## 7. Scope Control
+## Shop & Product Rules
 
-Agents **MUST NOT**:
+The Shop is a multi-product marketplace.
 
-- Add features outside the defined scope
-- Implement automated subscription systems
-- Automate payments
-- Add advanced features (AI signals, machine learning, etc.) unless explicitly requested
+Possible product types include:
 
-If assumptions are required:
-➡️ Clearly state them and request user confirmation.
+- Trading indicators
+- Trading robots (EA)
+- Digital downloads (ebooks, PDFs)
+- Physical merchandise (e.g. apparel)
 
----
+Rules:
 
-## 8. Output & Working Style Rules
-
-All agents must:
-
-- Work step by step
-- Provide:
-  - A clear plan
-  - A TODO list
-  - Concrete deliverables
-- Produce outputs that are **directly usable**
-- Maintain clean, modular, and readable code
-
-API-specific rules:
-
-- Separate routers by module
-- Use Pydantic schemas
-- User-facing responses must be clear and simple
+- Do NOT hardcode the shop UI for indicators only
+- Product cards must be generic and reusable
+- Product-specific details must live on the product detail page
+- Shop layout must support future product categories without redesign
 
 ---
 
-## 9. Admin Concept
+## Visual & UI Design Rules
 
-Admins are users with the `admin` role who can:
+### Theme
 
-- View `pending_payment` orders
-- Approve or reject payments
-- Upload new indicator file versions
-- Revoke licenses if necessary
+- Dark-based UI
+- Do NOT use pure black everywhere
+- Use layered dark backgrounds to create depth:
+  - Page background
+  - Section surface
+  - Card surface
 
-No complex admin UI is required (API-first approach is sufficient).
+### Accent Color
+
+- Use ONLY ONE primary accent color (e.g. emerald or cyan)
+- Accent color usage is LIMITED to:
+  - Primary CTA buttons
+  - Highlighted keywords
+  - Badges or indicators
+- Do NOT introduce multiple accent colors
 
 ---
 
-## 10. Project Priorities
+## Card-Based Design System
 
-1. Correct manual payment & order flow
-2. Secure indicator downloads
-3. Beginner-friendly user experience
-4. Clean architecture for future expansion
+Cards are the primary UI building blocks.
+
+Card requirements:
+
+- Large rounded corners (rounded-xl or rounded-2xl)
+- Subtle, low-contrast borders
+- Soft shadows for depth
+- Hover interactions:
+  - Slight upward movement
+  - Border highlight or subtle glow
+
+Common card types:
+
+- Product cards
+- Feature cards
+- Step cards
+- Testimonial cards
+
+Product cards MUST be adaptable to different product types.
 
 ---
 
-## 11. Final Authority Rule
+## Interaction & Animation Guidelines
 
-If there is any conflict between:
+- Subtle micro-interactions only
+- Allowed:
+  - Hover effects
+  - Focus states
+  - Scroll reveal animations
+- Not allowed:
+  - Flashy or aggressive animations
+  - Distracting transitions
+  - Excessive motion
 
-- Task prompts
-- Agent assumptions
-- Other documentation
+Interactions should feel responsive, premium, and intentional.
 
-➡️ **AGENTS.md is the single source of truth.**
+---
+
+## Typography Rules
+
+- Headings: modern, clean, high contrast
+- Body text: slightly larger than default for readability
+- Maintain clear hierarchy (H1 → H2 → body)
+- Highlight at most ONE key word per section using accent color
+
+---
+
+## Content & Copywriting Rules
+
+- Language: Indonesian (Bahasa Indonesia)
+- Tone:
+  - Friendly
+  - Clear
+  - Trustworthy
+  - Calm and professional
+
+Avoid:
+
+- Overpromising results
+- Fear-based marketing
+- Complex or technical explanations
+
+Focus on:
+
+- Simplicity
+- Practical usage
+- Building beginner confidence
+
+---
+
+## Technical Constraints
+
+- Tailwind CSS is mandatory
+- Prefer utility classes over custom CSS
+- Components must be reusable and consistent
+- Frontend code should be clean, readable, and structured
+
+---
+
+## Agent Behavior Rules
+
+- Do not assume requirements that are not explicitly stated
+- Ask for clarification when unsure
+- Treat this document as the single source of truth
+- When conflicts arise, prioritize:
+  1. Beginner-first principle
+  2. Clarity
+  3. Design consistency
+  4. Business goal (selling products)
+
+---
+
+## Definition of Success
+
+A successful output:
+
+- Feels premium but approachable
+- Is easy to understand for beginners
+- Looks modern, dark, and interactive
+- Uses card-based layouts and subtle interactions effectively
+- Does NOT feel overcrowded or overly minimal

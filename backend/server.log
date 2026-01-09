@@ -1,0 +1,46 @@
+warning: The `tool.uv.dev-dependencies` field (used in `pyproject.toml`) is deprecated and will be removed in a future release; use `dependency-groups.dev` instead
+INFO:     Will watch for changes in these directories: ['C:\\Users\\ThinkPad T495\\Desktop\\Work (juan)\\sandbox\\repo3\\fxsociety\\backend']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [1744] using WatchFiles
+C:\Users\ThinkPad T495\Desktop\Work (juan)\sandbox\repo3\fxsociety\backend\app\config.py:44: UserWarning: 
+
+!!! CRITICAL SECURITY WARNING !!!
+You are using the default insecure SECRET_KEY.
+Set 'SECRET_KEY' in your environment variables for production.
+
+  warnings.warn(
+C:\Users\ThinkPad T495\Desktop\Work (juan)\sandbox\repo3\fxsociety\backend\app\config.py:51: UserWarning: 
+
+!!! SECURITY WARNING !!!
+You are using the default ADMIN_PASSWORD ('admin123').
+Set 'ADMIN_PASSWORD' in your environment variables.
+
+  warnings.warn(
+INFO:     Started server process [33568]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:64228 - "POST /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57303 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56675 - "OPTIONS /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56675 - "POST /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50920 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:52606 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52606 - "GET /api/products?sort=newest&page_size=4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62486 - "GET /api/products?sort=newest&page_size=4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55809 - "GET /api/products?sort=newest&page_size=4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55809 - "GET /api/products?sort=newest&page_size=4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56767 - "GET /api/products?sort=newest&page_size=4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64423 - "GET /api/products?sort=newest&page_size=4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50373 - "GET /api/products?sort=newest&page_size=4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50373 - "GET /api/products?sort=newest&page_size=4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54995 - "GET /api/products?sort=newest&page_size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50513 - "GET /api/products?sort=newest&page_size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58131 - "GET /api/products?sort=newest&page_size=4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58131 - "GET /api/products?sort=newest&page_size=4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53491 - "GET /api/products?sort=newest&page_size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59169 - "GET /api/products?sort=newest&page_size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59169 - "GET /api/products?search=smart&sort=newest&page_size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59169 - "GET /api/products?search=smar&sort=newest&page_size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59169 - "GET /api/products?sort=newest&page_size=100 HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'app\models\order.py'. Reloading...
+ 
