@@ -1,18 +1,29 @@
-from sqlalchemy import create_engine, text, inspect
-from sqlalchemy.orm import sessionmaker, declarative_base
+import os
 from pathlib import Path
 
-# Database file location
+from sqlalchemy import create_engine, text, inspect
+from sqlalchemy.orm import sessionmaker, declarative_base
+
+# Database URL selection (local/Vercel)
 DATABASE_DIR = Path(__file__).parent.parent
-DATABASE_PATH = DATABASE_DIR / "fxsociety.db"
-DATABASE_URL = f"sqlite:///{DATABASE_PATH}"
+DEFAULT_SQLITE_PATH = DATABASE_DIR / "fxsociety.db"
+
+_env_database_url = os.getenv("DATABASE_URL")
+if _env_database_url:
+    DATABASE_URL = _env_database_url
+elif os.getenv("VERCEL"):
+    DATABASE_URL = "sqlite:////tmp/fxsociety.db"
+else:
+    DATABASE_URL = f"sqlite:///{DEFAULT_SQLITE_PATH}"
 
 # SQLAlchemy engine
-engine = create_engine(
-    DATABASE_URL,
-    connect_args={"check_same_thread": False},  # Required for SQLite
-    echo=False,  # Set to True for SQL debugging
-)
+_engine_kwargs = {
+    "echo": False,  # Set to True for SQL debugging
+}
+if DATABASE_URL.startswith("sqlite"):
+    _engine_kwargs["connect_args"] = {"check_same_thread": False}  # Required for SQLite
+
+engine = create_engine(DATABASE_URL, **_engine_kwargs)
 
 # Session factory
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
