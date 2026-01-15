@@ -92,7 +92,7 @@ frontend/
 ### Colors
 
 - **Background Layers:** `#0a0a0f` → `#14141a` → `#1e1e26` → `#28283a`
-- **Primary Accent:** Emerald (`#10b981`)
+- **Primary Accent:** Orange (`#f97316`)
 - **Text:** Primary `#f5f5f7`, Secondary `#a1a1aa`, Muted `#71717a`
 
 ### Components

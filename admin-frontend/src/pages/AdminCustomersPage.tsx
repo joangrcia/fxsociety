@@ -32,7 +32,7 @@ export function AdminCustomersPage() {
       console.error('Failed to load customers:', err);
       if (err instanceof ApiError && err.status === 401) {
         localStorage.removeItem('admin_token');
-        navigate('/admin/login');
+        navigate('/login');
       }
     } finally {
       setIsLoading(false);
@@ -92,7 +92,7 @@ export function AdminCustomersPage() {
                   </td>
                   <td className="px-6 py-4">
                     <Link 
-                      to={`/admin/customers/${customer.id}`}
+                      to={`/customers/${customer.id}`}
                       className="text-emerald-400 hover:text-emerald-300 font-medium"
                     >
                       View Profile

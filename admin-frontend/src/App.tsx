@@ -11,7 +11,7 @@ import {
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/admin">
       <Routes>
         <Route path="/login" element={<AdminLoginPage />} />
         <Route path="/dashboard" element={<AdminDashboardPage />} />

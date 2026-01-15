@@ -16,17 +16,17 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary: `
-    bg-emerald-600 text-white 
-    hover:bg-emerald-500 
-    active:bg-emerald-700
-    disabled:bg-emerald-600/50
+    bg-orange-500 text-white
+    hover:bg-orange-400
+    active:bg-orange-600
+    disabled:bg-orange-500/50
   `,
   secondary: `
-    bg-transparent text-emerald-400 
-    border border-emerald-500/50
-    hover:bg-emerald-500/10 hover:border-emerald-400
-    active:bg-emerald-500/20
-    disabled:border-emerald-500/30 disabled:text-emerald-400/50
+    bg-transparent text-orange-300
+    border border-orange-500/40
+    hover:bg-orange-500/10 hover:border-orange-400
+    active:bg-orange-500/20
+    disabled:border-orange-500/20 disabled:text-orange-300/50
   `,
   ghost: `
     bg-transparent text-zinc-300

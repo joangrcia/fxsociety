@@ -42,34 +42,53 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#0a0a0f] border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
+    <footer className="bg-[#020202] border-t border-white/5 relative overflow-hidden">
+      {/* Subtle top glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-orange-500/20 to-transparent" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
           {/* Brand */}
-          <div className="md:col-span-2">
+          <div className="md:col-span-5 space-y-6">
             <Link 
               to="/" 
-              className="text-2xl font-bold text-white hover:text-emerald-400 transition-colors"
+              className="text-2xl font-bold text-white hover:opacity-80 transition-opacity tracking-tight"
             >
-              fx<span className="text-emerald-500">society</span>
+              fx<span className="text-orange-500">society</span>
             </Link>
-            <p className="mt-4 text-zinc-400 text-sm leading-relaxed max-w-md">
-              Tools dan panduan trading yang dirancang khusus untuk pemula. 
-              Tanpa jargon rumit, tanpa janji profit pasti.
+            <p className="text-zinc-500 text-sm leading-relaxed max-w-sm font-light">
+              Ecosystem trading modern untuk pemula. 
+              Tanpa jargon rumit, fokus pada edukasi dan tools berkualitas.
             </p>
+            
+            {/* Social Links - Moved here for cleaner layout */}
+            <div className="flex gap-5 pt-2">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-zinc-600 hover:text-white transition-colors duration-300"
+                  aria-label={social.label}
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Navigation */}
-          <div>
-            <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
-              Navigasi
+          <div className="md:col-span-3">
+            <h4 className="text-xs font-bold text-white uppercase tracking-[0.2em] mb-6 opacity-80">
+              Explore
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {navigationLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-zinc-400 hover:text-emerald-400 transition-colors text-sm"
+                    className="text-zinc-500 hover:text-white transition-colors text-sm font-light tracking-wide"
                   >
                     {link.label}
                   </Link>
@@ -79,58 +98,51 @@ export function Footer() {
           </div>
 
           {/* Contact */}
-          <div>
-            <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
-              Hubungi Kami
+          <div className="md:col-span-4">
+            <h4 className="text-xs font-bold text-white uppercase tracking-[0.2em] mb-6 opacity-80">
+              Support
             </h4>
-            <ul className="space-y-3 text-sm text-zinc-400">
-              <li>
+            <ul className="space-y-4 text-sm text-zinc-500 font-light">
+              <li className="flex items-start gap-3 group cursor-pointer">
+                 <span className="text-zinc-700 group-hover:text-orange-500 transition-colors mt-0.5">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                 </span>
                 <a 
                   href="mailto:support@fxsociety.id" 
-                  className="hover:text-emerald-400 transition-colors"
+                  className="hover:text-white transition-colors"
                 >
                   support@fxsociety.id
                 </a>
               </li>
-              <li>
+              <li className="flex items-start gap-3 group cursor-pointer">
+                 <span className="text-zinc-700 group-hover:text-orange-500 transition-colors mt-0.5">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  </svg>
+                 </span>
                 <a 
                   href="https://wa.me/6281234567890" 
-                  className="hover:text-emerald-400 transition-colors"
+                  className="hover:text-white transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  +62 812-3456-7890
+                  WhatsApp Support
                 </a>
               </li>
             </ul>
-
-            {/* Social Links */}
-            <div className="flex gap-4 mt-6">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-zinc-500 hover:text-emerald-400 transition-colors"
-                  aria-label={social.label}
-                >
-                  {social.icon}
-                </a>
-              ))}
-            </div>
           </div>
         </div>
 
         {/* Disclaimer & Copyright */}
-        <div className="mt-12 pt-8 border-t border-white/5">
-          <p className="text-xs text-zinc-500 leading-relaxed mb-4">
-            <strong className="text-zinc-400">Disclaimer:</strong> Trading mengandung risiko tinggi dan tidak cocok untuk semua investor. 
-            Anda dapat mengalami kerugian sebagian atau seluruh modal Anda. Tidak ada jaminan profit dari penggunaan produk kami. 
-            Pastikan Anda memahami risiko sebelum melakukan trading.
+        <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+          <p className="text-[10px] text-zinc-600 leading-relaxed max-w-2xl font-light">
+            <strong className="text-zinc-500 font-medium">Risk Warning:</strong> Trading derivatives carries a high level of risk to your capital 
+            and should only be traded with money you can afford to lose. Ensure you understand the risks involved.
           </p>
-          <p className="text-xs text-zinc-500">
-            © {currentYear} fxsociety. All rights reserved.
+          <p className="text-[10px] text-zinc-600 font-mono whitespace-nowrap">
+            © {currentYear} fxsociety inc.
           </p>
         </div>
       </div>

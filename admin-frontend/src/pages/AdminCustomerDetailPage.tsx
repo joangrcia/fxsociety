@@ -49,7 +49,7 @@ export function AdminCustomerDetailPage() {
     setIsLoading(true);
     const token = localStorage.getItem('admin_token');
     if (!token) {
-      navigate('/admin/login');
+      navigate('/login');
       return;
     }
 
@@ -73,7 +73,7 @@ export function AdminCustomerDetailPage() {
       console.error('Failed to load customer data:', err);
       if (err instanceof ApiError && err.status === 401) {
         localStorage.removeItem('admin_token');
-        navigate('/admin/login');
+        navigate('/login');
       }
     } finally {
       setIsLoading(false);

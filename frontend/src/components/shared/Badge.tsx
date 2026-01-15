@@ -31,9 +31,9 @@ const categoryStyles: Record<ProductCategory, string> = {
 };
 
 const statusStyles: Record<BadgeStatus, string> = {
-  new: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
-  popular: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
-  bestseller: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
+  new: 'bg-orange-500/20 text-orange-300 border-orange-500/30',
+  popular: 'bg-orange-500/20 text-orange-300 border-orange-500/30',
+  bestseller: 'bg-orange-500/20 text-orange-300 border-orange-500/30',
   soldout: 'bg-zinc-500/20 text-zinc-400 border-zinc-500/30',
 };
 

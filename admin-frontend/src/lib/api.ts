@@ -510,6 +510,7 @@ export async function fetchCustomerActivity(token: string, customerId: number): 
 // ============================================================================
 
 import type { Product } from '../types/product';
+export type { Order } from '../types/order';
 import type { Order } from '../types/order';
 
 export function apiProductToProduct(p: ApiProduct): Product {

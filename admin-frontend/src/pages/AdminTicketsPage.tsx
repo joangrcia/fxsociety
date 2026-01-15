@@ -26,7 +26,7 @@ export function AdminTicketsPage() {
       console.error('Failed to load tickets:', err);
       if (err instanceof ApiError && err.status === 401) {
         localStorage.removeItem('admin_token');
-        navigate('/admin/login');
+        navigate('/login');
       }
     } finally {
       setIsLoading(false);

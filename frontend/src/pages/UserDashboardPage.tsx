@@ -6,8 +6,7 @@ import {
   createTicket, 
   ApiError, 
   apiOrderToOrder,
-  type ApiTicket,
-  type ApiTicketCreate 
+  type ApiTicket
 } from '../lib/api';
 import { formatPrice, formatDate, getStatusLabel, getStatusColor } from '../utils/orders';
 import type { Order } from '../types/order';
@@ -136,9 +135,9 @@ export function UserDashboardPage() {
 // --- Sub-components ---
 
 function OverviewTab({ orders, tickets, userEmail }: { orders: Order[], tickets: ApiTicket[], userEmail: string | null }) {
-  const pendingOrders = orders.filter(o => o.status === 'pending').length;
   const activeProducts = orders.filter(o => o.status === 'confirmed' || o.status === 'completed').length;
   const openTickets = tickets.filter(t => t.status === 'open').length;
+
 
   return (
     <div className="space-y-8">

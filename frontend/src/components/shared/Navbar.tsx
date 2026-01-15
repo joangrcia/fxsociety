@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from './Button';
+import { useAuth } from '../../context/AuthContext';
 
 const navItems = [
   { label: 'Home', href: '/' },
@@ -13,10 +14,11 @@ const navItems = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { isAuthenticated } = useAuth();
   const location = useLocation();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
+  // Handle navbar scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -26,18 +28,16 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Check login state on route change
+  // Close mobile menu on route change
   useEffect(() => {
-    setIsLoggedIn(!!localStorage.getItem('auth_token'));
     setIsMobileMenuOpen(false);
   }, [location]);
 
-  const handleLogout = () => {
-    localStorage.removeItem('auth_token');
-    localStorage.removeItem('user_email');
-    setIsLoggedIn(false);
-    navigate('/');
-  };
+  // const handleLogout = () => {
+  //   logout();
+  //   navigate('/');
+  // };
+
 
   const navbarStyles = `
     fixed top-0 left-0 right-0 z-50
@@ -55,9 +55,9 @@ export function Navbar() {
           {/* Logo */}
           <Link 
             to="/" 
-            className="text-xl md:text-2xl font-bold text-white hover:text-emerald-400 transition-colors"
+            className="text-xl md:text-2xl font-bold text-white hover:text-orange-300 transition-colors"
           >
-            fx<span className="text-emerald-500">society</span>
+            fx<span className="text-orange-500">society</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -71,8 +71,8 @@ export function Navbar() {
                   className={`
                     px-4 py-2 rounded-lg text-sm font-medium
                     transition-all duration-200
-                    ${isActive 
-                      ? 'text-emerald-400 bg-emerald-500/10' 
+                    ${isActive
+                      ? 'text-orange-300 bg-orange-500/10'
                       : 'text-zinc-400 hover:text-white hover:bg-white/5'
                     }
                   `}
@@ -82,31 +82,20 @@ export function Navbar() {
               );
             })}
             
-            {/* Dashboard Link (Visible if logged in) */}
-            {isLoggedIn && (
+            {/* Member Area Link (Visible if logged in) */}
+            {isAuthenticated && (
               <Link
-                to="/dashboard"
-                className={`
-                  px-4 py-2 rounded-lg text-sm font-medium
-                  transition-all duration-200
-                  ${location.pathname === '/dashboard'
-                    ? 'text-emerald-400 bg-emerald-500/10' 
-                    : 'text-zinc-400 hover:text-white hover:bg-white/5'
-                  }
-                `}
+                to="/member"
+                className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-orange-600 hover:bg-orange-500 transition-all shadow-lg shadow-orange-500/20 ml-2"
               >
-                Dashboard
+                Member Area
               </Link>
             )}
           </div>
 
-          {/* Desktop Login/Logout Button */}
+          {/* Desktop Login Button (Hidden if logged in) */}
           <div className="hidden md:block">
-            {isLoggedIn ? (
-              <Button variant="secondary" size="sm" onClick={handleLogout}>
-                Logout
-              </Button>
-            ) : (
+            {!isAuthenticated && (
               <Button variant="secondary" size="sm" href="/login">
                 Login
               </Button>
@@ -145,7 +134,7 @@ export function Navbar() {
                       px-4 py-3 rounded-lg text-base font-medium
                       transition-all duration-200
                       ${isActive 
-                        ? 'text-emerald-400 bg-emerald-500/10' 
+                        ? 'text-orange-300 bg-orange-500/10' 
                         : 'text-zinc-400 hover:text-white hover:bg-white/5'
                       }
                     `}
@@ -155,28 +144,17 @@ export function Navbar() {
                 );
               })}
               
-              {isLoggedIn && (
+              {isAuthenticated && (
                 <Link
-                  to="/dashboard"
-                  className={`
-                    px-4 py-3 rounded-lg text-base font-medium
-                    transition-all duration-200
-                    ${location.pathname === '/dashboard'
-                      ? 'text-emerald-400 bg-emerald-500/10' 
-                      : 'text-zinc-400 hover:text-white hover:bg-white/5'
-                    }
-                  `}
+                  to="/member"
+                  className="px-4 py-3 rounded-lg text-base font-bold text-orange-400 bg-orange-500/10 transition-all duration-200"
                 >
-                  Dashboard
+                  Member Area
                 </Link>
               )}
 
               <div className="mt-4 px-4">
-                {isLoggedIn ? (
-                  <Button variant="secondary" size="md" onClick={handleLogout} className="w-full">
-                    Logout
-                  </Button>
-                ) : (
+                {!isAuthenticated && (
                   <Button variant="secondary" size="md" href="/login" className="w-full">
                     Login
                   </Button>

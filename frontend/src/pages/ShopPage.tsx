@@ -62,161 +62,156 @@ export function ShopPage() {
   }, [activeCategory, sortBy, debouncedSearch]);
 
   return (
-    <main className="pt-24 pb-16 px-4">
+    <main className="min-h-screen pt-24 pb-20 px-4 md:px-6 bg-[#0a0a0f]">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">Toko</h1>
-          <p className="text-zinc-400 max-w-xl mx-auto">
-            Temukan tools dan panduan yang tepat untuk perjalanan trading Anda.
-          </p>
-        </div>
-
-        {/* Filter Bar */}
-        <div className="bg-[#14141a] rounded-2xl p-4 md:p-6 border border-white/5 mb-8">
-          {/* Category Tabs */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            {categoryFilters.map((filter) => (
-              <button
-                key={filter.key}
-                onClick={() => setActiveCategory(filter.key)}
-                className={`
-                  px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200
-                  ${activeCategory === filter.key
-                    ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
-                    : 'bg-white/5 text-zinc-400 border border-transparent hover:bg-white/10 hover:text-white'
-                  }
-                `}
-              >
-                {filter.label}
-              </button>
-            ))}
+        {/* Cinematic Header */}
+        <section className="relative mb-12 overflow-hidden rounded-[2rem] border border-white/5 bg-[#0f0f16] px-6 py-16 md:px-12 md:py-20 shadow-2xl">
+          {/* Background Effects */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-4xl bg-orange-500/5 blur-[120px] rounded-full" />
+            <div className="absolute top-0 right-0 w-96 h-96 bg-orange-500/10 blur-[100px] rounded-full mix-blend-screen" />
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-500/5 blur-[100px] rounded-full mix-blend-screen" />
+            <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10 bg-center" />
           </div>
 
-          {/* Sort & Search */}
-          <div className="flex flex-col sm:flex-row gap-4">
-            {/* Sort Dropdown */}
-            <div className="flex items-center gap-2">
-              <label htmlFor="sort" className="text-sm text-zinc-500">
-                Urutkan:
-              </label>
-              <select
-                id="sort"
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as SortOption)}
-                className="bg-[#1e1e26] text-zinc-300 text-sm rounded-lg border border-white/10 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-              >
-                {sortOptions.map((option) => (
-                  <option key={option.key} value={option.key}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
+          <div className="relative z-10 text-center max-w-3xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-orange-500/20 bg-orange-500/5 text-orange-400 text-xs tracking-widest uppercase font-medium mb-6 animate-fade-in">
+              <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
+              Official Store
             </div>
 
-            {/* Search Input */}
-            <div className="flex-1 relative">
-              <input
-                type="text"
-                placeholder="Cari produk..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-[#1e1e26] text-zinc-300 text-sm rounded-lg border border-white/10 pl-10 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder:text-zinc-600"
-              />
-              <svg
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-zinc-300"
-                >
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              )}
-            </div>
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-6 animate-slide-up">
+              Marketplace <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">FXSociety</span>
+            </h1>
+
+            <p className="text-lg md:text-xl text-zinc-400 leading-relaxed animate-slide-up" style={{ animationDelay: '100ms' }}>
+              Koleksi alat trading premium, robot EA, dan materi edukasi pilihan.
+              <br className="hidden md:block" />
+              Dikurasi khusus untuk membantu perjalanan trading Anda.
+            </p>
           </div>
-        </div>
+        </section>
 
-        {/* Loading State */}
-        {loadingState === 'loading' && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {[...Array(8)].map((_, i) => (
-              <div key={i} className="bg-[#1e1e26] rounded-2xl overflow-hidden animate-pulse">
-                <div className="aspect-[4/3] bg-zinc-800" />
-                <div className="p-5 space-y-3">
-                  <div className="h-5 w-3/4 bg-zinc-800 rounded" />
-                  <div className="h-4 w-full bg-zinc-800 rounded" />
-                  <div className="h-4 w-1/2 bg-zinc-800 rounded" />
-                  <div className="h-6 w-24 bg-zinc-800 rounded" />
+        {/* Floating Filter Bar */}
+        <div className="sticky top-24 z-30 mb-10 transition-all duration-300">
+          <div className="rounded-2xl border border-white/10 bg-[#14141a]/80 backdrop-blur-xl shadow-2xl p-4 md:p-5">
+            <div className="flex flex-col md:flex-row gap-6 justify-between items-center">
+              
+              {/* Category Pills */}
+              <div className="w-full md:w-auto overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
+                <div className="flex gap-2">
+                  {categoryFilters.map((filter) => (
+                    <button
+                      key={filter.key}
+                      onClick={() => setActiveCategory(filter.key)}
+                      className={`
+                        shrink-0 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300
+                        ${activeCategory === filter.key
+                          ? 'bg-orange-500 text-white shadow-[0_0_20px_rgba(249,115,22,0.4)] scale-105'
+                          : 'bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-white border border-white/5'
+                        }
+                      `}
+                    >
+                      {filter.label}
+                    </button>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
-        )}
 
-        {/* Error State */}
-        {loadingState === 'error' && (
-          <div className="text-center py-16">
-            <div className="text-zinc-500 mb-4">
-              <svg className="w-16 h-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
-              </svg>
-            </div>
-            <h3 className="text-xl font-semibold text-white mb-2">Gagal Memuat Produk</h3>
-            <p className="text-zinc-400 mb-4">{error}</p>
-            <button
-              onClick={() => window.location.reload()}
-              className="text-emerald-400 hover:text-emerald-300 text-sm"
-            >
-              Coba lagi
-            </button>
-          </div>
-        )}
+              {/* Tools */}
+              <div className="flex w-full md:w-auto gap-3">
+                 {/* Sort */}
+                 <div className="relative group shrink-0">
+                    <select
+                      value={sortBy}
+                      onChange={(e) => setSortBy(e.target.value as SortOption)}
+                      className="appearance-none bg-[#1e1e26] text-zinc-300 text-sm rounded-xl border border-white/10 pl-4 pr-10 py-2.5 focus:outline-none focus:ring-2 focus:ring-orange-500/50 cursor-pointer hover:border-white/20 transition-colors"
+                    >
+                      {sortOptions.map((option) => (
+                        <option key={option.key} value={option.key}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-500">
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 4.5L6 8L9.5 4.5"/></svg>
+                    </div>
+                 </div>
 
-        {/* Success State */}
-        {loadingState === 'success' && (
-          <>
-            {/* Results Count */}
-            <div className="mb-6">
-              <p className="text-sm text-zinc-500">
-                Menampilkan <span className="text-zinc-300">{products.length}</span> produk
-              </p>
-            </div>
-
-            {/* Product Grid */}
-            {products.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {products.map((product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
+                 {/* Search */}
+                 <div className="relative flex-1 md:w-64">
+                    <input
+                      type="text"
+                      placeholder="Cari..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="w-full bg-[#1e1e26] text-white text-sm rounded-xl border border-white/10 pl-10 pr-10 py-2.5 focus:outline-none focus:ring-2 focus:ring-orange-500/50 placeholder:text-zinc-600 hover:border-white/20 transition-colors"
+                    />
+                    <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </div>
+                    {searchQuery && (
+                      <button
+                        onClick={() => setSearchQuery('')}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-white"
+                      >
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                      </button>
+                    )}
+                 </div>
               </div>
-            ) : (
-              <div className="text-center py-16">
-                <div className="text-zinc-500 mb-4">
-                  <svg className="w-16 h-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-white mb-2">Tidak Ada Produk</h3>
-                <p className="text-zinc-400">
-                  Coba ubah filter atau kata kunci pencarian Anda.
-                </p>
-              </div>
-            )}
-          </>
+            </div>
+          </div>
+        </div>
+
+        {/* Products Grid */}
+        {loadingState === 'loading' ? (
+           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+             {[...Array(8)].map((_, i) => (
+               <div key={i} className="rounded-2xl bg-[#14141a] border border-white/5 overflow-hidden animate-pulse">
+                 <div className="aspect-[4/3] bg-white/5" />
+                 <div className="p-5 space-y-3">
+                   <div className="h-5 w-3/4 bg-white/5 rounded" />
+                   <div className="h-4 w-1/2 bg-white/5 rounded" />
+                   <div className="h-8 w-1/3 bg-white/5 rounded mt-4" />
+                 </div>
+               </div>
+             ))}
+           </div>
+        ) : loadingState === 'error' ? (
+           <div className="text-center py-20">
+             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-500/10 text-red-400 mb-4">
+               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+             </div>
+             <h3 className="text-xl font-bold text-white mb-2">Terjadi Kesalahan</h3>
+             <p className="text-zinc-400 mb-6">{error}</p>
+             <button onClick={() => window.location.reload()} className="px-6 py-2 rounded-xl bg-white text-black font-medium hover:bg-zinc-200 transition-colors">
+               Coba Lagi
+             </button>
+           </div>
+        ) : (
+           <>
+             {products.length > 0 ? (
+               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 animate-slide-up">
+                 {products.map((product) => (
+                   <ProductCard key={product.id} product={product} />
+                 ))}
+               </div>
+             ) : (
+               <div className="text-center py-32 border border-dashed border-white/10 rounded-3xl">
+                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800/50 text-zinc-500 mb-4">
+                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                 </div>
+                 <h3 className="text-xl font-medium text-white mb-2">Tidak ada produk ditemukan</h3>
+                 <p className="text-zinc-500 max-w-sm mx-auto">
+                   Coba ubah kata kunci pencarian atau kategori filter Anda.
+                 </p>
+                 <button onClick={() => { setActiveCategory('all'); setSearchQuery(''); }} className="mt-6 text-orange-400 hover:text-orange-300 font-medium text-sm">
+                   Reset Filter
+                 </button>
+               </div>
+             )}
+           </>
         )}
       </div>
     </main>

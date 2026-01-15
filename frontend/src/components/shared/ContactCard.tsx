@@ -16,7 +16,6 @@ export function ContactCard({
   value,
   responseTime,
   href,
-  ctaLabel,
   external = false,
 }: ContactCardProps) {
   const linkProps = external
@@ -24,27 +23,45 @@ export function ContactCard({
     : {};
 
   return (
-    <div className="group bg-[#1e1e26] rounded-2xl p-6 border border-white/5 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/20">
-      <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-4 group-hover:bg-emerald-500/20 transition-colors">
-        {icon}
+    <a
+      href={href}
+      {...linkProps}
+      className="group relative flex items-center justify-between p-6 rounded-2xl bg-[#14141a] border border-white/5 hover:border-orange-500/30 transition-all duration-500 overflow-hidden hover:shadow-[0_0_40px_rgba(249,115,22,0.1)]"
+    >
+      {/* Background Gradient Effect */}
+      <div className="absolute inset-0 bg-gradient-to-r from-orange-500/0 via-orange-500/0 to-orange-500/0 opacity-0 group-hover:opacity-5 group-hover:via-orange-500/10 transition-all duration-500" />
+      
+      <div className="flex items-center gap-6 relative z-10">
+        {/* Icon Box */}
+        <div className="w-14 h-14 rounded-2xl bg-[#0a0a0f] border border-white/10 flex items-center justify-center text-zinc-400 group-hover:text-orange-400 group-hover:border-orange-500/30 group-hover:scale-110 transition-all duration-500 shadow-xl">
+          <div className="w-6 h-6">
+            {icon}
+          </div>
+        </div>
+        
+        {/* Text Content */}
+        <div>
+          <h3 className="text-lg font-medium text-white mb-1 group-hover:text-orange-100 transition-colors">
+            {title}
+          </h3>
+          <p className="text-sm text-zinc-500 font-mono mb-2 group-hover:text-zinc-400 transition-colors">
+            {value}
+          </p>
+          <div className="flex items-center gap-2">
+             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+             <p className="text-xs text-emerald-400/80 font-medium">
+               Respon: {responseTime}
+             </p>
+          </div>
+        </div>
       </div>
-      
-      <h3 className="text-lg font-semibold text-white mb-1">{title}</h3>
-      <p className="text-emerald-400 font-medium mb-2">{value}</p>
-      <p className="text-sm text-zinc-500 mb-4">Respon: {responseTime}</p>
-      
-      <a
-        href={href}
-        className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white text-sm font-medium rounded-lg hover:bg-emerald-500 transition-colors"
-        {...linkProps}
-      >
-        {ctaLabel}
-        {external && (
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-          </svg>
-        )}
-      </a>
-    </div>
+
+      {/* Action Arrow */}
+      <div className="relative z-10 w-10 h-10 rounded-full border border-white/5 flex items-center justify-center text-zinc-500 group-hover:text-orange-400 group-hover:border-orange-500/30 transition-all duration-300 group-hover:translate-x-1">
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </div>
+    </a>
   );
 }

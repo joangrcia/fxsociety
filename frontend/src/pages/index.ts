@@ -8,3 +8,6 @@ export { RegisterPage } from './RegisterPage';
 export { ProductDetailPage } from './ProductDetailPage';
 export { OrdersPage } from './OrdersPage';
 export { UserDashboardPage } from './UserDashboardPage';
+
+// Member Area
+export * from './member';

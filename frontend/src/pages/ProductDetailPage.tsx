@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation, useNavigate } from 'react-router-dom';
 import { Badge, Button, OrderRequestForm, OrderSuccessView } from '../components/shared';
 import { 
   fetchProduct, 
@@ -18,6 +18,8 @@ type LoadingState = 'loading' | 'success' | 'error';
 
 export function ProductDetailPage() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [viewState, setViewState] = useState<ViewState>('detail');
   const [loadingState, setLoadingState] = useState<LoadingState>('loading');
   const [product, setProduct] = useState<Product | null>(null);
@@ -39,6 +41,16 @@ export function ProductDetailPage() {
   }, []);
 
   useEffect(() => {
+    const token = localStorage.getItem('auth_token');
+    const routeState = location.state as { openOrder?: boolean } | null;
+
+    if (routeState?.openOrder === true && token) {
+      setViewState('order');
+      navigate(location.pathname + location.search, { replace: true, state: null });
+    }
+  }, [location.pathname, location.search, location.state, navigate]);
+
+  useEffect(() => {
     if (!id) return;
 
     setLoadingState('loading');
@@ -56,6 +68,21 @@ export function ProductDetailPage() {
         setLoadingState('error');
       });
   }, [id]);
+
+  const handleOrderClick = () => {
+    const token = localStorage.getItem('auth_token');
+    if (!token) {
+      navigate('/login', {
+        state: {
+          from: location.pathname + location.search,
+          openOrder: true,
+        },
+      });
+      return;
+    }
+
+    setViewState('order');
+  };
 
   const handleOrderSubmit = async (formData: OrderFormData) => {
     if (!apiProduct) return;
@@ -274,7 +301,7 @@ export function ProductDetailPage() {
                 <Button
                   size="lg"
                   className="w-full"
-                  onClick={() => setViewState('order')}
+                  onClick={handleOrderClick}
                 >
                   Pesan Sekarang
                 </Button>

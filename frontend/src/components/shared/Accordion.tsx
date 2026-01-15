@@ -16,7 +16,7 @@ export function AccordionItem({ question, answer, defaultOpen = false }: Accordi
         className="w-full flex items-center justify-between py-5 text-left group"
         aria-expanded={isOpen}
       >
-        <span className="text-white font-medium pr-4 group-hover:text-emerald-400 transition-colors">
+        <span className="text-white font-medium pr-4 group-hover:text-orange-300 transition-colors">
           {question}
         </span>
         <span className={`text-zinc-500 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}>

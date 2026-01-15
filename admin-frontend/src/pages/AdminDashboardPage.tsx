@@ -27,7 +27,7 @@ export function AdminDashboardPage() {
     setIsLoading(true);
     const token = localStorage.getItem('admin_token');
     if (!token) {
-      navigate('/admin/login');
+      navigate('/login');
       return;
     }
 
@@ -104,7 +104,7 @@ export function AdminDashboardPage() {
             <div className="bg-[#1e1e26] rounded-xl border border-white/5 overflow-hidden">
               <div className="p-4 border-b border-white/5 flex justify-between items-center">
                 <h3 className="font-bold text-white">Pesanan Pending Terbaru</h3>
-                <Link to="/admin/orders" className="text-sm text-emerald-400 hover:text-emerald-300">Lihat Semua</Link>
+                <Link to="/orders" className="text-sm text-emerald-400 hover:text-emerald-300">Lihat Semua</Link>
               </div>
               <div className="divide-y divide-white/5">
                 {pendingOrders.length > 0 ? (
@@ -130,7 +130,7 @@ export function AdminDashboardPage() {
             <div className="bg-[#1e1e26] rounded-xl border border-white/5 overflow-hidden">
               <div className="p-4 border-b border-white/5 flex justify-between items-center">
                 <h3 className="font-bold text-white">Customer Terbaru</h3>
-                <Link to="/admin/customers" className="text-sm text-emerald-400 hover:text-emerald-300">Lihat Semua</Link>
+                <Link to="/customers" className="text-sm text-emerald-400 hover:text-emerald-300">Lihat Semua</Link>
               </div>
               <div className="divide-y divide-white/5">
                 {newCustomers.length > 0 ? (
