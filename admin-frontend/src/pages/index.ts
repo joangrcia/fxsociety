@@ -5,3 +5,4 @@ export { AdminTicketsPage } from './AdminTicketsPage';
 export { AdminCustomersPage } from './AdminCustomersPage';
 export { AdminCustomerDetailPage } from './AdminCustomerDetailPage';
 export { AdminProductsPage } from './AdminProductsPage';
+export { AdminNotFoundPage } from './AdminNotFoundPage';

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Navbar, Footer } from './components/shared';
 import { MemberLayout } from './components/member';
@@ -18,10 +19,16 @@ import {
   MemberSupportPage,
   MemberProfilePage,
   MemberProductDetailPage,
+  NotFoundPage,
 } from './pages';
 
 function AppLayout() {
   const location = useLocation();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   const isMemberArea = location.pathname.startsWith('/member');
   const isAuthPage = location.pathname === '/login' || location.pathname === '/register';
   const showNavAndFooter = !isMemberArea && !isAuthPage;
@@ -50,7 +57,11 @@ function AppLayout() {
             <Route path="merchandise" element={<MemberMerchandisePage />} />
             <Route path="support" element={<MemberSupportPage />} />
             <Route path="profile" element={<MemberProfilePage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
+
+          {/* 404 Catch All */}
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
       {showNavAndFooter && <Footer />}

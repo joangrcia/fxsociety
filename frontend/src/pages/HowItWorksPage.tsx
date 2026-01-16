@@ -1,3 +1,4 @@
+import { type ReactNode } from 'react';
 import { Accordion, Button } from '../components/shared';
 
 interface FlowStep {
@@ -56,159 +57,186 @@ const faqItems = [
   },
 ];
 
+// --- Local Components ---
+
+function SectionLabel({ children }: { children: ReactNode }) {
+  return (
+    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6 shadow-[0_0_15px_rgba(249,115,22,0.1)]">
+      <span className="relative flex h-2 w-2">
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+        <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+      </span>
+      <span className="text-xs font-medium text-orange-200 tracking-wide uppercase">{children}</span>
+    </div>
+  );
+}
+
 function StepCard({ step, index }: { step: FlowStep; index: number }) {
-  const isLeft = index % 2 === 0;
+  const isEven = index % 2 === 0;
   const stepNumber = index + 1;
 
   return (
-    <div className="relative md:grid md:grid-cols-2 md:gap-12">
-      <div
-        className={
-          isLeft
-            ? 'md:col-start-1 md:pr-10'
-            : 'md:col-start-2 md:pl-10'
-        }
-      >
-        <div className="group relative rounded-2xl border border-white/10 bg-white/5 p-6 md:p-7 shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-orange-500/40">
-          <div className="flex items-start gap-4">
-            <div className="md:hidden flex h-10 w-10 items-center justify-center rounded-xl border border-orange-500/30 bg-orange-500/10 text-orange-300 font-semibold">
-              {stepNumber}
-            </div>
-            <div className="min-w-0">
-              <h3 className="text-xl md:text-2xl font-semibold text-white">
-                {step.title}
-              </h3>
-              <p className="mt-3 text-zinc-400 leading-relaxed">
-                {step.description}
-              </p>
+    <div className="relative md:grid md:grid-cols-2 md:gap-20 items-center">
+      
+      {/* Mobile Step Number (Hidden on desktop) */}
+      <div className="md:hidden flex items-center gap-4 mb-4 pl-2">
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-orange-500/30 bg-orange-500/10 text-orange-300 font-bold shadow-[0_0_10px_rgba(249,115,22,0.2)]">
+          {stepNumber}
+        </div>
+        <div className="h-px flex-1 bg-gradient-to-r from-orange-500/30 to-transparent"></div>
+      </div>
 
-              {step.points && step.points.length > 0 && (
-                <ul className="mt-5 space-y-2">
-                  {step.points.map((point) => (
-                    <li key={point} className="flex items-start gap-3 text-sm text-zinc-400">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-orange-400/80" />
-                      <span className="leading-relaxed">{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          </div>
+      {/* Content Side */}
+      <div className={`${isEven ? 'md:text-right' : 'md:col-start-2 md:text-left'} relative z-10`}>
+        <div 
+          className="group relative rounded-2xl border border-white/10 bg-[#14141a]/60 p-6 md:p-8 shadow-2xl backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-orange-500/30 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+        >
+          {/* Subtle gradient overlay on hover */}
+          <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+          
+          <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-orange-50 transition-colors">
+            {step.title}
+          </h3>
+          <p className="mt-3 text-zinc-400 leading-relaxed text-base">
+            {step.description}
+          </p>
+
+          {step.points && step.points.length > 0 && (
+            <ul className={`mt-6 space-y-3 ${isEven ? 'md:items-end' : 'md:items-start'} flex flex-col`}>
+              {step.points.map((point) => (
+                <li key={point} className={`flex items-start gap-3 text-sm text-zinc-500 group-hover:text-zinc-400 transition-colors ${isEven ? 'md:flex-row-reverse md:text-right' : ''}`}>
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-orange-500/80 shadow-[0_0_8px_rgba(249,115,22,0.6)]" />
+                  <span className="leading-relaxed">{point}</span>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
 
-      <div className="hidden md:flex absolute left-1/2 top-8 -translate-x-1/2 items-center justify-center">
-        <div className="relative">
-          <div className="absolute inset-0 rounded-full bg-orange-500/25 blur-lg" />
-          <div className="relative h-12 w-12 rounded-full border border-orange-500/40 bg-[#14141a]/70 text-orange-200 flex items-center justify-center font-semibold shadow-[0_0_0_1px_rgba(255,255,255,0.06)]">
+      {/* Desktop Center Marker */}
+      <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 items-center justify-center z-20">
+        <div className="relative group/marker">
+          {/* Pulse effect */}
+          <div className="absolute inset-0 rounded-full bg-orange-500/20 blur-xl group-hover/marker:bg-orange-500/40 transition-all duration-500" />
+          
+          <div className="relative h-14 w-14 rounded-full border border-orange-500/30 bg-[#0a0a0f] text-orange-200 flex items-center justify-center font-bold text-lg shadow-[0_0_0_4px_rgba(20,20,26,1)] group-hover/marker:scale-110 group-hover/marker:border-orange-500/60 transition-all duration-300">
             {stepNumber}
           </div>
         </div>
       </div>
+
     </div>
   );
 }
 
 export function HowItWorksPage() {
   return (
-    <main className="relative pt-24 pb-20 px-4 overflow-hidden">
-      {/* Soft orbs background */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-24 left-1/2 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-orange-500/10 blur-3xl" />
-        <div className="absolute top-24 -left-24 h-[360px] w-[360px] rounded-full bg-orange-400/5 blur-3xl" />
-        <div className="absolute -bottom-32 right-0 h-[520px] w-[520px] rounded-full bg-white/5 blur-3xl" />
+    <main className="bg-[#0a0a0f] min-h-screen relative overflow-x-hidden selection:bg-orange-500/30 selection:text-orange-200">
+      
+      {/* --- Background Ambience (Consistent with AboutPage) --- */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute top-0 right-1/4 w-[800px] h-[600px] bg-orange-500/5 rounded-full blur-[120px] mix-blend-screen opacity-30" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] mix-blend-screen opacity-20" />
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] brightness-100 contrast-150" />
       </div>
 
-      <div className="relative mx-auto max-w-6xl">
-        {/* Hero */}
-        <section className="text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-orange-500/25 bg-orange-500/10 px-4 py-2 text-sm text-orange-200">
-            <span className="h-1.5 w-1.5 rounded-full bg-orange-400" />
-            Alur pembelian yang rapi dan jelas
+      <div className="relative z-10">
+        
+        {/* --- Hero Section --- */}
+        <section className="pt-32 pb-20 md:pt-48 md:pb-24 px-4 text-center max-w-4xl mx-auto">
+          <div className="flex justify-center">
+            <SectionLabel>Panduan Pemesanan</SectionLabel>
           </div>
-
-          <h1 className="mt-6 text-4xl md:text-5xl font-bold tracking-tight text-white">
-            Cara kerja yang terasa{' '}
-            <span className="text-orange-300">ringan</span>
+          
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-8 leading-[1.1]">
+            Cara kerja yang terasa <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
+              Ringan & Simpel
+            </span>
           </h1>
 
-          <p className="mt-4 mx-auto max-w-2xl text-lg text-zinc-400 leading-relaxed">
+          <p className="mt-6 mx-auto max-w-2xl text-lg md:text-xl text-zinc-400 leading-relaxed">
             Dari pilih produk sampai produk diterima, semuanya berjalan dalam 4 langkah.
             Tanpa tampilan rumit—cocok untuk pemula.
           </p>
 
-          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button href="/shop">Lihat Produk</Button>
-            <Button variant="secondary" href="/support">
+          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+            <Button href="/shop" size="lg" className="px-8 h-12 text-base">Lihat Produk</Button>
+            <Button variant="secondary" href="/support" size="lg" className="px-8 h-12 text-base bg-white/5 border-white/10 hover:bg-white/10">
               Tanya Support
             </Button>
           </div>
         </section>
 
-        {/* Process */}
-        <section className="mt-16 md:mt-20">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-white">
-              Effortless Flow, langkah demi langkah
-            </h2>
-            <p className="mt-3 text-zinc-400">
-              Setiap langkah dibuat singkat, jelas, dan mudah diikuti.
-            </p>
-          </div>
+        {/* --- Process Section --- */}
+        <section className="relative px-4 pb-32">
+          <div className="max-w-6xl mx-auto">
+            
+            {/* Timeline Container */}
+            <div className="relative">
+              
+              {/* Central Line (Desktop) */}
+              <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-orange-500/20 to-transparent" />
+              <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] -translate-x-1/2 bg-gradient-to-b from-transparent via-orange-500/40 to-transparent blur-[2px]" />
 
-          <div className="relative mt-10 md:mt-14">
-            {/* Glowing vertical path (desktop) */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-orange-500/35 to-transparent" />
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2 bg-orange-500/10 blur-sm" />
+              {/* Mobile Line (Left side) */}
+              <div className="md:hidden absolute left-7 top-6 bottom-6 w-px bg-zinc-800" />
 
-            <div className="space-y-8 md:space-y-12">
-              {steps.map((step, index) => (
-                <StepCard key={step.title} step={step} index={index} />
-              ))}
+              <div className="space-y-12 md:space-y-24">
+                {steps.map((step, index) => (
+                  <StepCard key={step.title} step={step} index={index} />
+                ))}
+              </div>
+
             </div>
           </div>
         </section>
 
-        {/* FAQ */}
-        <section className="mt-16 md:mt-20">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-white">
-              Pertanyaan yang sering muncul
-            </h2>
-            <p className="mt-3 text-zinc-400">
-              Jawaban singkat untuk membantu Anda cepat mulai.
-            </p>
-          </div>
+        {/* --- FAQ Section --- */}
+        <section className="relative px-4 pb-32">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Pertanyaan Populer</h2>
+              <p className="text-zinc-400">Jawaban singkat untuk membantu Anda cepat mulai.</p>
+            </div>
 
-          <div className="mt-8 mx-auto max-w-3xl">
-            <Accordion items={faqItems} defaultOpenIndex={0} />
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="mt-16 md:mt-20">
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 md:p-12 shadow-[0_30px_80px_rgba(0,0,0,0.45)] backdrop-blur-xl">
-            <div className="pointer-events-none absolute -top-24 right-6 h-72 w-72 rounded-full bg-orange-500/10 blur-3xl" />
-
-            <div className="relative flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
-              <div className="max-w-xl">
-                <h2 className="text-2xl md:text-3xl font-bold text-white">
-                  Siap mulai? Pilih produk, kami bantu prosesnya.
-                </h2>
-                <p className="mt-3 text-zinc-400 leading-relaxed">
-                  Lihat produk di Shop, atau hubungi Support jika Anda ingin arahan yang lebih personal.
-                </p>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button href="/shop">Ke Shop</Button>
-                <Button variant="secondary" href="/support">
-                  Ke Support
-                </Button>
-              </div>
+            <div className="bg-zinc-900/30 rounded-3xl border border-white/5 p-6 md:p-8 backdrop-blur-sm">
+              <Accordion items={faqItems} defaultOpenIndex={0} />
             </div>
           </div>
         </section>
+
+        {/* --- CTA Section --- */}
+        <section className="relative px-4 pb-24">
+          <div className="max-w-5xl mx-auto">
+            <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-zinc-900 to-[#14141a] border border-white/10 p-10 md:p-16 text-center shadow-2xl">
+               
+               {/* Decorative glows */}
+               <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-500/10 rounded-full blur-[80px] pointer-events-none" />
+               <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[80px] pointer-events-none" />
+               
+               <div className="relative z-10">
+                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                   Siap mulai perjalanan trading Anda?
+                 </h2>
+                 <p className="text-zinc-400 max-w-xl mx-auto mb-10 text-lg leading-relaxed">
+                   Lihat produk di Shop, atau hubungi Support jika Anda ingin arahan yang lebih personal sebelum membeli.
+                 </p>
+                 
+                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                   <Button href="/shop" size="lg" className="h-12 px-8 text-base shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:shadow-[0_0_30px_rgba(249,115,22,0.5)] transition-shadow">
+                     Ke Shop
+                   </Button>
+                   <Button variant="secondary" href="/support" size="lg" className="h-12 px-8 text-base bg-white/5 border-white/10 hover:bg-white/10">
+                     Ke Support
+                   </Button>
+                 </div>
+               </div>
+            </div>
+          </div>
+        </section>
+
       </div>
     </main>
   );

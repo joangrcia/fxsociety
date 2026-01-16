@@ -1,0 +1,135 @@
+import React, { useEffect, useState } from 'react';
+import { ArrowLeft, AlertTriangle } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+export const AdminNotFoundPage: React.FC = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  // Parallax effect for the background
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({
+        x: (e.clientX / window.innerWidth - 0.5) * 20,
+        y: (e.clientY / window.innerHeight - 0.5) * 20,
+      });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-200 font-sans overflow-hidden relative flex items-center justify-center selection:bg-orange-500/30 selection:text-orange-200">
+      
+      {/* Background Ambience */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Dark Gradients */}
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(15,23,42,0),rgba(2,6,23,1))]" />
+        
+        {/* Orange Glow */}
+        <div 
+          className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-orange-600/5 rounded-full blur-[120px] mix-blend-screen transition-transform duration-100 ease-out"
+          style={{ transform: `translate(-50%, -50%) translate(${mousePosition.x * -1}px, ${mousePosition.y * -1}px)` }}
+        />
+        
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)]" />
+      </div>
+
+      <div className="relative z-10 flex flex-col items-center max-w-2xl px-6 text-center">
+        
+        {/* 3D Glitch Cube Container */}
+        <div className="mb-12 relative w-32 h-32 perspective-1000">
+          <div className="cube-spinner w-full h-full relative preserve-3d animate-spin-slow">
+            {/* Front */}
+            <div className="absolute inset-0 bg-slate-900/80 border border-orange-500/30 backdrop-blur-md flex items-center justify-center transform translate-z-16 shadow-[0_0_30px_rgba(249,115,22,0.2)]">
+              <span className="text-4xl font-bold text-orange-500 font-mono">404</span>
+            </div>
+            {/* Back */}
+            <div className="absolute inset-0 bg-slate-900/80 border border-slate-700/50 backdrop-blur-md transform -translate-z-16 rotate-y-180 flex items-center justify-center">
+              <AlertTriangle className="w-12 h-12 text-slate-600" />
+            </div>
+            {/* Right */}
+            <div className="absolute inset-0 bg-slate-900/80 border border-orange-500/20 backdrop-blur-md transform rotate-y-90 translate-z-16 flex items-center justify-center">
+               <div className="w-16 h-1 bg-orange-500/20" />
+            </div>
+            {/* Left */}
+            <div className="absolute inset-0 bg-slate-900/80 border border-slate-700/50 backdrop-blur-md transform -rotate-y-90 translate-z-16 flex items-center justify-center">
+               <div className="w-1 h-16 bg-slate-700/50" />
+            </div>
+            {/* Top */}
+            <div className="absolute inset-0 bg-slate-800/80 border border-orange-500/20 backdrop-blur-md transform rotate-x-90 translate-z-16" />
+            {/* Bottom */}
+            <div className="absolute inset-0 bg-slate-800/80 border border-orange-500/20 backdrop-blur-md transform -rotate-x-90 translate-z-16 shadow-[0_0_50px_rgba(249,115,22,0.1)]" />
+          </div>
+          
+          {/* Shadow underneath */}
+          <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-32 h-32 bg-orange-500/10 blur-[40px] rounded-full scale-y-50 animate-pulse" />
+        </div>
+
+        {/* Content */}
+        <div className="space-y-6 backdrop-blur-sm bg-slate-900/40 p-8 rounded-2xl border border-slate-800/50 shadow-2xl relative overflow-hidden group">
+          {/* Hover highlight effect */}
+          <div className="absolute -inset-px bg-gradient-to-r from-orange-500/0 via-orange-500/10 to-orange-500/0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+          
+          <div className="relative">
+            <div className="flex items-center justify-center gap-2 mb-2 text-orange-500 font-mono text-sm tracking-widest uppercase">
+              <span className="w-2 h-2 bg-orange-500 rounded-full animate-pulse" />
+              System Error
+            </div>
+            
+            <h1 className="text-3xl md:text-4xl font-bold text-white mb-3 tracking-tight">
+              Halaman Admin Tidak Ditemukan
+            </h1>
+            
+            <p className="text-slate-400 text-lg max-w-md mx-auto leading-relaxed">
+              Route ini tidak terdaftar di sistem CRM atau Anda tidak memiliki izin untuk mengaksesnya.
+            </p>
+          </div>
+
+          <div className="pt-4 flex justify-center">
+            <Link 
+              to="/admin/dashboard" 
+              className="group relative inline-flex items-center gap-2 px-6 py-3 bg-orange-600 hover:bg-orange-500 text-white font-medium rounded-lg transition-all duration-300 shadow-[0_0_20px_rgba(234,88,12,0.3)] hover:shadow-[0_0_30px_rgba(234,88,12,0.5)] overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+              <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+              <span>Kembali ke Dashboard</span>
+            </Link>
+          </div>
+        </div>
+
+        {/* Footer Technical ID */}
+        <div className="mt-12 text-xs font-mono text-slate-700 flex flex-col items-center gap-1">
+          <p>ERROR_CODE: 0x404_ROUTE_MISSING</p>
+          <p className="opacity-50">FXS_ADMIN_SYS_V2.0</p>
+        </div>
+      </div>
+
+      {/* CSS for 3D Cube */}
+      <style>{`
+        .perspective-1000 {
+          perspective: 1000px;
+        }
+        .preserve-3d {
+          transform-style: preserve-3d;
+        }
+        .translate-z-16 {
+          transform: translateZ(64px); /* 32px width / 2 = 16, but Tailwind size 32 is 8rem=128px. Wait. w-32 is 8rem = 128px. Half is 64px. */
+        }
+        .-translate-z-16 {
+          transform: translateZ(-64px);
+        }
+        @keyframes spin-slow {
+          0% { transform: rotateX(-15deg) rotateY(0deg); }
+          100% { transform: rotateX(-15deg) rotateY(360deg); }
+        }
+        .animate-spin-slow {
+          animation: spin-slow 12s linear infinite;
+        }
+      `}</style>
+    </div>
+  );
+};
+
+

@@ -7,6 +7,7 @@ import {
   AdminCustomersPage,
   AdminCustomerDetailPage,
   AdminProductsPage,
+  AdminNotFoundPage,
 } from './pages';
 
 function App() {
@@ -21,8 +22,8 @@ function App() {
         <Route path="/orders" element={<AdminOrdersPage />} />
         <Route path="/tickets" element={<AdminTicketsPage />} />
         <Route path="/products" element={<AdminProductsPage />} />
-        {/* Catch all - redirect to login or customers */}
-        <Route path="*" element={<Navigate to="/login" replace />} />
+        {/* Catch all - 404 */}
+        <Route path="*" element={<AdminNotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );
