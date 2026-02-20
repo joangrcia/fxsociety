@@ -1,17 +1,17 @@
-from pydantic import BaseModel
-from typing import Optional
 from datetime import datetime
+
+from pydantic import BaseModel
 
 
 class ProductBase(BaseModel):
     title: str
     slug: str
     description_short: str
-    description_full: Optional[str] = None
+    description_full: str | None = None
     price_idr: int
     category: str
-    badges: Optional[list[str]] = None
-    images: Optional[list[str]] = None
+    badges: list[str] | None = None
+    images: list[str] | None = None
     is_active: bool = True
 
 
@@ -20,15 +20,15 @@ class ProductCreate(ProductBase):
 
 
 class ProductUpdate(BaseModel):
-    title: Optional[str] = None
-    slug: Optional[str] = None
-    description_short: Optional[str] = None
-    description_full: Optional[str] = None
-    price_idr: Optional[int] = None
-    category: Optional[str] = None
-    badges: Optional[list[str]] = None
-    images: Optional[list[str]] = None
-    is_active: Optional[bool] = None
+    title: str | None = None
+    slug: str | None = None
+    description_short: str | None = None
+    description_full: str | None = None
+    price_idr: int | None = None
+    category: str | None = None
+    badges: list[str] | None = None
+    images: list[str] | None = None
+    is_active: bool | None = None
 
 
 class ProductResponse(ProductBase):

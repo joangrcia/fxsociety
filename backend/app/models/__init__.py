@@ -1,8 +1,8 @@
-from app.models.product import Product
+from app.models.crm import ActivityLog, CustomerNote, CustomerTag
 from app.models.order import Order
-from app.models.user import User
+from app.models.product import Product
 from app.models.ticket import Ticket, TicketStatus
-from app.models.crm import CustomerTag, CustomerNote, ActivityLog
+from app.models.user import User
 
 __all__ = [
     "Product",

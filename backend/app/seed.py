@@ -6,7 +6,6 @@ Run with: python -m app.seed
 from app.database import SessionLocal, init_db
 from app.models import Product
 
-
 SEED_PRODUCTS = [
     {
         "slug": "smart-trend-indicator",

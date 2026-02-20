@@ -1,10 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
-from typing import Optional
+
+from app.auth import get_current_admin, get_current_user
 from app.database import get_db
 from app.models import Ticket, TicketStatus, User
-from app.schemas.ticket import TicketCreate, TicketResponse, TicketListResponse
-from app.auth import get_current_user, get_current_admin
+from app.schemas.ticket import TicketCreate, TicketListResponse, TicketResponse
 
 router = APIRouter(prefix="/api/tickets", tags=["tickets"])
 
@@ -57,7 +57,7 @@ def create_ticket(
 
 @router.get("/admin/all", response_model=TicketListResponse)
 def list_all_tickets_admin(
-    status: Optional[str] = None,
+    status: str | None = None,
     page: int = Query(1, ge=1),
     page_size: int = Query(20, ge=1, le=100),
     db: Session = Depends(get_db),

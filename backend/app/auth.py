@@ -1,9 +1,10 @@
-from datetime import datetime, timedelta, timezone
-from typing import Optional, cast
+from datetime import UTC, datetime, timedelta
+
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
 from passlib.context import CryptContext
+
 from app.config import settings
 
 # Auth Config
@@ -28,12 +29,12 @@ def get_password_hash(password: str) -> str:
 
 
 # Token Utils
-def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
+def create_access_token(data: dict, expires_delta: timedelta | None = None):
     to_encode = data.copy()
     if expires_delta:
-        expire = datetime.now(timezone.utc) + expires_delta
+        expire = datetime.now(UTC) + expires_delta
     else:
-        expire = datetime.now(timezone.utc) + timedelta(
+        expire = datetime.now(UTC) + timedelta(
             minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES
         )
 
@@ -41,7 +42,7 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     to_encode.update(
         {
             "exp": expire,
-            "iat": datetime.now(timezone.utc),
+            "iat": datetime.now(UTC),
             "iss": settings.JWT_ISSUER,
             "aud": settings.JWT_AUDIENCE,
         }
@@ -86,7 +87,7 @@ def get_current_admin(token: str = Depends(oauth2_scheme)):
             raise credentials_exception
 
     except JWTError:
-        raise credentials_exception
+        raise credentials_exception from None
 
     return username
 
@@ -115,4 +116,4 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
         return email
 
     except JWTError:
-        raise credentials_exception
+        raise credentials_exception from None

@@ -1,7 +1,7 @@
 import os
 import sys
 import warnings
-from typing import List, Optional
+
 from pydantic import field_validator
 from pydantic_settings import BaseSettings
 
@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     ENVIRONMENT: str = "development"
 
     # Security
-    SECRET_KEY: Optional[str] = None
+    SECRET_KEY: str | None = None
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24  # 1 day
 
@@ -25,12 +25,12 @@ class Settings(BaseSettings):
     JWT_AUDIENCE: str = "fxsociety-client"
 
     # Admin Credentials - NO DEFAULTS
-    ADMIN_USERNAME: Optional[str] = None
-    ADMIN_PASSWORD: Optional[str] = None
+    ADMIN_USERNAME: str | None = None
+    ADMIN_PASSWORD: str | None = None
 
     # CORS
     # Default to localhost for dev
-    CORS_ORIGINS: List[str] = [
+    CORS_ORIGINS: list[str] = [
         "http://localhost:5173",
         "http://127.0.0.1:5173",
         "http://localhost:5174",
@@ -67,7 +67,8 @@ class Settings(BaseSettings):
                 )
                 warnings.warn(
                     "\n\n!!! DEV MODE: Using insecure SECRET_KEY !!!\n"
-                    "Set 'SECRET_KEY' environment variable for production.\n"
+                    "Set 'SECRET_KEY' environment variable for production.\n",
+                    stacklevel=2,
                 )
             else:
                 errors.append(
@@ -80,7 +81,8 @@ class Settings(BaseSettings):
                 object.__setattr__(self, "ADMIN_USERNAME", "dev_admin")
                 warnings.warn(
                     "\n\n!!! DEV MODE: Using default ADMIN_USERNAME='dev_admin' !!!\n"
-                    "Set 'ADMIN_USERNAME' environment variable for production.\n"
+                    "Set 'ADMIN_USERNAME' environment variable for production.\n",
+                    stacklevel=2,
                 )
             else:
                 errors.append(
@@ -93,7 +95,8 @@ class Settings(BaseSettings):
                 object.__setattr__(self, "ADMIN_PASSWORD", "dev_password_123")
                 warnings.warn(
                     "\n\n!!! DEV MODE: Using default ADMIN_PASSWORD !!!\n"
-                    "Set 'ADMIN_PASSWORD' environment variable for production.\n"
+                    "Set 'ADMIN_PASSWORD' environment variable for production.\n",
+                    stacklevel=2,
                 )
             else:
                 errors.append(

@@ -1,8 +1,8 @@
 import os
 from pathlib import Path
 
-from sqlalchemy import create_engine, text, inspect
-from sqlalchemy.orm import sessionmaker, declarative_base
+from sqlalchemy import create_engine, inspect, text
+from sqlalchemy.orm import declarative_base, sessionmaker
 
 # Database URL selection (local/Vercel)
 DATABASE_DIR = Path(__file__).parent.parent
@@ -69,7 +69,7 @@ def check_and_migrate_db():
 
 def init_db():
     """Initialize database tables."""
-    from app.models import product, order, user  # noqa: F401
+    from app.models import order, product, user  # noqa: F401
 
     # Create tables if not exist
     Base.metadata.create_all(bind=engine)

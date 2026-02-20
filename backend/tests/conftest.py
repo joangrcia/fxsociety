@@ -1,18 +1,18 @@
 """Pytest configuration and fixtures for fxsociety backend tests."""
 
 import os
+
 import pytest
+from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
-from fastapi.testclient import TestClient
 
 # Set environment to development for tests (allows insecure defaults)
 os.environ["ENVIRONMENT"] = "development"
 
-from app.main import app
 from app.database import Base, get_db
-
+from app.main import app
 
 # Create in-memory SQLite database for testing
 TEST_DATABASE_URL = "sqlite:///:memory:"

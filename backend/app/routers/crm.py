@@ -1,23 +1,22 @@
+from datetime import datetime, timedelta
+
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
-from sqlalchemy import func, desc
-from datetime import datetime, timedelta
-from typing import List
 
+from app.auth import get_current_admin
 from app.database import get_db
-from app.models import User, Order, Ticket, CustomerTag, CustomerNote, ActivityLog
+from app.models import ActivityLog, CustomerNote, CustomerTag, Order, Ticket, User
 from app.schemas.crm import (
-    CustomerTagCreate,
-    CustomerTagResponse,
+    ActivityLogResponse,
     CustomerNoteCreate,
     CustomerNoteResponse,
-    ActivityLogResponse,
     CustomerSummary,
+    CustomerTagCreate,
+    CustomerTagResponse,
     DashboardStats,
 )
 from app.schemas.order import OrderWithProductResponse
 from app.schemas.ticket import TicketResponse
-from app.auth import get_current_admin
 from app.utils.activity import log_activity
 
 router = APIRouter(prefix="/api/admin", tags=["crm"])
@@ -78,7 +77,7 @@ def list_customers(
     else:
         query = query.order_by(User.created_at.desc())  # Default
 
-    total = query.count()
+    query.count()
     users = query.offset((page - 1) * page_size).limit(page_size).all()
 
     results = []
@@ -153,7 +152,7 @@ def get_customer_summary(
 
 
 @router.get(
-    "/customers/{customer_id}/orders", response_model=List[OrderWithProductResponse]
+    "/customers/{customer_id}/orders", response_model=list[OrderWithProductResponse]
 )
 def get_customer_orders(
     customer_id: int,
@@ -192,7 +191,7 @@ def get_customer_orders(
     return items
 
 
-@router.get("/customers/{customer_id}/tickets", response_model=List[TicketResponse])
+@router.get("/customers/{customer_id}/tickets", response_model=list[TicketResponse])
 def get_customer_tickets(
     customer_id: int,
     db: Session = Depends(get_db),
@@ -209,7 +208,7 @@ def get_customer_tickets(
 # --- Tags ---
 
 
-@router.get("/customers/{customer_id}/tags", response_model=List[CustomerTagResponse])
+@router.get("/customers/{customer_id}/tags", response_model=list[CustomerTagResponse])
 def get_customer_tags(
     customer_id: int,
     db: Session = Depends(get_db),
@@ -262,7 +261,7 @@ def remove_customer_tag(
 # --- Notes ---
 
 
-@router.get("/customers/{customer_id}/notes", response_model=List[CustomerNoteResponse])
+@router.get("/customers/{customer_id}/notes", response_model=list[CustomerNoteResponse])
 def get_customer_notes(
     customer_id: int,
     db: Session = Depends(get_db),
@@ -298,7 +297,7 @@ def add_customer_note(
 
 
 @router.get(
-    "/customers/{customer_id}/activity", response_model=List[ActivityLogResponse]
+    "/customers/{customer_id}/activity", response_model=list[ActivityLogResponse]
 )
 def get_customer_activity(
     customer_id: int,

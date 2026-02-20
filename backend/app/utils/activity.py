@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
+
 from app.models.crm import ActivityLog
-import json
 
 
 def log_activity(

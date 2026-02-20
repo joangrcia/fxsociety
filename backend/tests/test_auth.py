@@ -1,7 +1,5 @@
 """Tests for authentication endpoints."""
 
-import pytest
-
 
 def test_admin_login_success(client):
     """Test admin login with valid credentials."""

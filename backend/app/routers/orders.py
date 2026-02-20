@@ -1,18 +1,17 @@
-from fastapi import APIRouter, Depends, HTTPException, Query
-from sqlalchemy.orm import Session
-from typing import Optional
+from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
+from sqlalchemy.orm import Session
 
+from app.auth import get_current_admin, get_current_user
 from app.database import get_db
 from app.models import Order, Product, User
 from app.schemas import (
     OrderCreate,
-    OrderResponse,
-    OrderWithProductResponse,
     OrderListResponse,
+    OrderResponse,
     OrderStatusPublicResponse,
+    OrderWithProductResponse,
 )
-from app.auth import get_current_admin, get_current_user, oauth2_scheme
 from app.utils.activity import log_activity
 
 router = APIRouter(prefix="/api/orders", tags=["orders"])
@@ -32,7 +31,7 @@ def create_order(
         db.query(Product)
         .filter(
             Product.id == order_data.product_id,
-            Product.is_active == True,
+            Product.is_active,
         )
         .first()
     )
@@ -149,7 +148,7 @@ def get_order_status(
 
 @router.get("/admin/all", response_model=OrderListResponse)
 def list_all_orders_admin(
-    status: Optional[str] = None,
+    status: str | None = None,
     page: int = 1,
     page_size: int = 20,
     db: Session = Depends(get_db),

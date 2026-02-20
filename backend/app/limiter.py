@@ -1,6 +1,7 @@
 import time
 from collections import defaultdict
-from fastapi import Request, HTTPException, status
+
+from fastapi import HTTPException, Request, status
 
 
 class RateLimiter:

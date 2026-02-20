@@ -1,7 +1,7 @@
-from pydantic import BaseModel, EmailStr, field_validator
-from typing import Optional
-from datetime import datetime
 import re
+from datetime import datetime
+
+from pydantic import BaseModel, EmailStr, field_validator
 
 
 class OrderCreate(BaseModel):
@@ -9,7 +9,7 @@ class OrderCreate(BaseModel):
     name: str
     email: EmailStr
     whatsapp: str
-    notes: Optional[str] = None
+    notes: str | None = None
 
     @field_validator("name")
     @classmethod
@@ -38,7 +38,7 @@ class OrderResponse(BaseModel):
     name: str
     email: str
     whatsapp: str
-    notes: Optional[str] = None
+    notes: str | None = None
     status: str
     created_at: datetime
     updated_at: datetime
@@ -49,9 +49,9 @@ class OrderResponse(BaseModel):
 class OrderWithProductResponse(OrderResponse):
     product_title: str
     product_price: int
-    product_category: Optional[str] = None
-    product_slug: Optional[str] = None
-    product_image: Optional[str] = None
+    product_category: str | None = None
+    product_slug: str | None = None
+    product_image: str | None = None
 
     model_config = {"from_attributes": True}
 
@@ -68,5 +68,5 @@ class OrderStatusPublicResponse(BaseModel):
     status: str
     product_title: str
     product_price: int
-    product_category: Optional[str] = None
+    product_category: str | None = None
     created_at: datetime

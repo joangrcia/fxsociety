@@ -1,18 +1,18 @@
-from fastapi import APIRouter, Depends, HTTPException, Query
-from sqlalchemy.orm import Session
-from sqlalchemy import or_
-from typing import Optional
 from math import ceil
 
+from fastapi import APIRouter, Depends, HTTPException, Query
+from sqlalchemy import or_
+from sqlalchemy.orm import Session
+
+from app.auth import get_current_admin
 from app.database import get_db
 from app.models import Product
 from app.schemas import (
-    ProductResponse,
-    ProductListResponse,
     ProductCreate,
+    ProductListResponse,
+    ProductResponse,
     ProductUpdate,
 )
-from app.auth import get_current_admin
 
 router = APIRouter(prefix="/api/products", tags=["products"])
 
@@ -22,9 +22,9 @@ router = APIRouter(prefix="/api/products", tags=["products"])
 
 @router.get("", response_model=ProductListResponse)
 def list_products(
-    category: Optional[str] = Query(None, description="Filter by category"),
-    search: Optional[str] = Query(None, description="Search in title and description"),
-    sort: Optional[str] = Query(
+    category: str | None = Query(None, description="Filter by category"),
+    search: str | None = Query(None, description="Search in title and description"),
+    sort: str | None = Query(
         "newest", description="Sort: newest, price_asc, price_desc, name"
     ),
     page: int = Query(1, ge=1, description="Page number"),
@@ -32,7 +32,7 @@ def list_products(
     db: Session = Depends(get_db),
 ):
     """List all active products with filtering, search, and pagination."""
-    query = db.query(Product).filter(Product.is_active == True)
+    query = db.query(Product).filter(Product.is_active)
 
     # Filter by category
     if category:
@@ -87,7 +87,7 @@ def get_product(
             db.query(Product)
             .filter(
                 Product.id == int(id_or_slug),
-                Product.is_active == True,
+                Product.is_active,
             )
             .first()
         )
@@ -100,7 +100,7 @@ def get_product(
             db.query(Product)
             .filter(
                 Product.slug == id_or_slug,
-                Product.is_active == True,
+                Product.is_active,
             )
             .first()
         )
@@ -116,7 +116,7 @@ def get_product(
 
 @router.get("/admin/all", response_model=ProductListResponse)
 def list_all_products_admin(
-    search: Optional[str] = Query(None, description="Search products"),
+    search: str | None = Query(None, description="Search products"),
     page: int = Query(1, ge=1),
     page_size: int = Query(20, ge=1, le=100),
     db: Session = Depends(get_db),

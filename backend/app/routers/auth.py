@@ -1,20 +1,20 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
-from sqlalchemy.orm import Session
-from sqlalchemy import func
 from pydantic import BaseModel
+from sqlalchemy import func
+from sqlalchemy.orm import Session
 
-from app.database import get_db
-from app.models import User, Order
-from app.schemas.user import UserCreate, UserResponse
 from app.auth import (
-    verify_admin_credentials,
     create_access_token,
-    verify_password,
-    get_password_hash,
     get_current_user,
+    get_password_hash,
+    verify_admin_credentials,
+    verify_password,
 )
+from app.database import get_db
 from app.limiter import login_limiter
+from app.models import Order, User
+from app.schemas.user import UserCreate, UserResponse
 
 router = APIRouter(prefix="/api/auth", tags=["auth"])
 
@@ -63,7 +63,7 @@ async def login_for_access_token(
 
         # Claim existing orders with matching email
         db.query(Order).filter(
-            func.lower(Order.email) == email, Order.user_id == None
+            func.lower(Order.email) == email, Order.user_id is None
         ).update({Order.user_id: user.id}, synchronize_session=False)
         db.commit()
 
