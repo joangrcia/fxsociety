@@ -59,3 +59,14 @@ class OrderWithProductResponse(OrderResponse):
 class OrderListResponse(BaseModel):
     items: list[OrderWithProductResponse]
     total: int
+
+
+class OrderStatusPublicResponse(BaseModel):
+    """Minimal order info for public lookup - no PII exposed."""
+
+    order_code: str
+    status: str
+    product_title: str
+    product_price: int
+    product_category: Optional[str] = None
+    created_at: datetime

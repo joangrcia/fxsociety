@@ -1,25 +1,32 @@
 import os
-import secrets
+import sys
 import warnings
-from typing import List
-from pydantic import AnyHttpUrl, field_validator
+from typing import List, Optional
+from pydantic import field_validator
 from pydantic_settings import BaseSettings
+
+
+def _is_dev_mode() -> bool:
+    """Check if running in development mode."""
+    return os.getenv("ENVIRONMENT", "development").lower() in ("development", "dev")
 
 
 class Settings(BaseSettings):
     PROJECT_NAME: str = "fxsociety API"
+    ENVIRONMENT: str = "development"
 
     # Security
-    SECRET_KEY: str = os.getenv(
-        "SECRET_KEY", "insecure-dev-key-change-this-immediately"
-    )
+    SECRET_KEY: Optional[str] = None
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24  # 1 day
 
-    # Admin Credentials
-    # Defaulting to None/Empty to enforce explicit setting or warn
-    ADMIN_USERNAME: str = os.getenv("ADMIN_USERNAME", "admin")
-    ADMIN_PASSWORD: str = os.getenv("ADMIN_PASSWORD", "admin123")
+    # JWT Claims
+    JWT_ISSUER: str = "fxsociety"
+    JWT_AUDIENCE: str = "fxsociety-client"
+
+    # Admin Credentials - NO DEFAULTS
+    ADMIN_USERNAME: Optional[str] = None
+    ADMIN_PASSWORD: Optional[str] = None
 
     # CORS
     # Default to localhost for dev
@@ -41,21 +48,71 @@ class Settings(BaseSettings):
             return v
         raise ValueError(v)
 
-    def check_security(self):
-        warnings.simplefilter("always", UserWarning)
-        if self.SECRET_KEY == "insecure-dev-key-change-this-immediately":
-            warnings.warn(
-                "\n\n!!! CRITICAL SECURITY WARNING !!!\n"
-                "You are using the default insecure SECRET_KEY.\n"
-                "Set 'SECRET_KEY' in your environment variables for production.\n"
-            )
+    def _validate_required_settings(self) -> None:
+        """Validate that required settings are properly configured.
 
-        if self.ADMIN_PASSWORD == "admin123":
-            warnings.warn(
-                "\n\n!!! SECURITY WARNING !!!\n"
-                "You are using the default ADMIN_PASSWORD ('admin123').\n"
-                "Set 'ADMIN_PASSWORD' in your environment variables.\n"
+        In production: Hard-fail if critical settings are missing.
+        In development: Use insecure defaults with loud warnings.
+        """
+        is_dev = _is_dev_mode()
+        warnings.simplefilter("always", UserWarning)
+        errors = []
+
+        # SECRET_KEY validation
+        if not self.SECRET_KEY:
+            if is_dev:
+                # Use insecure default for local development only
+                object.__setattr__(
+                    self, "SECRET_KEY", "insecure-dev-key-DO-NOT-USE-IN-PRODUCTION"
+                )
+                warnings.warn(
+                    "\n\n!!! DEV MODE: Using insecure SECRET_KEY !!!\n"
+                    "Set 'SECRET_KEY' environment variable for production.\n"
+                )
+            else:
+                errors.append(
+                    "SECRET_KEY is required in production. Set it in environment variables."
+                )
+
+        # ADMIN_USERNAME validation
+        if not self.ADMIN_USERNAME:
+            if is_dev:
+                object.__setattr__(self, "ADMIN_USERNAME", "dev_admin")
+                warnings.warn(
+                    "\n\n!!! DEV MODE: Using default ADMIN_USERNAME='dev_admin' !!!\n"
+                    "Set 'ADMIN_USERNAME' environment variable for production.\n"
+                )
+            else:
+                errors.append(
+                    "ADMIN_USERNAME is required in production. Set it in environment variables."
+                )
+
+        # ADMIN_PASSWORD validation
+        if not self.ADMIN_PASSWORD:
+            if is_dev:
+                object.__setattr__(self, "ADMIN_PASSWORD", "dev_password_123")
+                warnings.warn(
+                    "\n\n!!! DEV MODE: Using default ADMIN_PASSWORD !!!\n"
+                    "Set 'ADMIN_PASSWORD' environment variable for production.\n"
+                )
+            else:
+                errors.append(
+                    "ADMIN_PASSWORD is required in production. Set it in environment variables."
+                )
+
+        # Hard-fail in production if any required settings are missing
+        if errors:
+            print("\n" + "=" * 60, file=sys.stderr)
+            print("FATAL: Missing required configuration", file=sys.stderr)
+            print("=" * 60, file=sys.stderr)
+            for error in errors:
+                print(f"  - {error}", file=sys.stderr)
+            print(
+                "\nSet ENVIRONMENT=development to use insecure defaults for local dev.",
+                file=sys.stderr,
             )
+            print("=" * 60 + "\n", file=sys.stderr)
+            sys.exit(1)
 
     class Config:
         env_file = ".env"
@@ -63,4 +120,4 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
-settings.check_security()
+settings._validate_required_settings()

@@ -10,6 +10,7 @@ from app.schemas.order import (
     OrderResponse,
     OrderWithProductResponse,
     OrderListResponse,
+    OrderStatusPublicResponse,
 )
 
 __all__ = [
@@ -22,4 +23,5 @@ __all__ = [
     "OrderResponse",
     "OrderWithProductResponse",
     "OrderListResponse",
+    "OrderStatusPublicResponse",
 ]

@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta, timezone
-from typing import Optional
+from typing import Optional, cast
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
@@ -10,6 +10,12 @@ from app.config import settings
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/login")
 # Use Argon2 instead of bcrypt to avoid version issues and length limits
 pwd_context = CryptContext(schemes=["argon2"], deprecated="auto")
+
+
+def _get_secret_key() -> str:
+    """Get SECRET_KEY with runtime assertion (validated at startup)."""
+    assert settings.SECRET_KEY is not None, "SECRET_KEY must be set"
+    return settings.SECRET_KEY
 
 
 # Password Utils
@@ -31,10 +37,16 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
             minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES
         )
 
-    to_encode.update({"exp": expire})
-    encoded_jwt = jwt.encode(
-        to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM
+    # Add standard JWT claims
+    to_encode.update(
+        {
+            "exp": expire,
+            "iat": datetime.now(timezone.utc),
+            "iss": settings.JWT_ISSUER,
+            "aud": settings.JWT_AUDIENCE,
+        }
     )
+    encoded_jwt = jwt.encode(to_encode, _get_secret_key(), algorithm=settings.ALGORITHM)
     return encoded_jwt
 
 
@@ -57,10 +69,14 @@ def get_current_admin(token: str = Depends(oauth2_scheme)):
     )
     try:
         payload = jwt.decode(
-            token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM]
+            token,
+            _get_secret_key(),
+            algorithms=[settings.ALGORITHM],
+            audience=settings.JWT_AUDIENCE,
+            issuer=settings.JWT_ISSUER,
         )
-        username: str = payload.get("sub")
-        role: str = payload.get("role")
+        username = payload.get("sub")
+        role = payload.get("role")
 
         if username is None or role != "admin":
             raise credentials_exception
@@ -84,10 +100,14 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
     )
     try:
         payload = jwt.decode(
-            token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM]
+            token,
+            _get_secret_key(),
+            algorithms=[settings.ALGORITHM],
+            audience=settings.JWT_AUDIENCE,
+            issuer=settings.JWT_ISSUER,
         )
-        email: str = payload.get("sub")
-        role: str = payload.get("role")
+        email = payload.get("sub")
+        role = payload.get("role")
 
         if email is None or role != "user":
             raise credentials_exception
