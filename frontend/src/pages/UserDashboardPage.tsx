@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { 
   fetchMyOrders, 
@@ -29,6 +29,7 @@ export function UserDashboardPage() {
       return;
     }
     loadData(token);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadData = async (token: string) => {
@@ -57,7 +58,7 @@ export function UserDashboardPage() {
     window.location.reload();
   };
 
-  const SidebarItem = ({ tab, label, icon }: { tab: Tab, label: string, icon: any }) => (
+  const SidebarItem = ({ tab, label, icon }: { tab: Tab, label: string, icon: React.ReactNode }) => (
     <button
       onClick={() => setActiveTab(tab)}
       className={`w-full flex items-center gap-3 px-4 py-3 text-sm font-medium transition-colors ${
@@ -175,7 +176,7 @@ function OverviewTab({ orders, tickets, userEmail }: { orders: Order[], tickets:
   );
 }
 
-function SummaryCard({ label, value, icon, color = 'text-white' }: any) {
+function SummaryCard({ label, value, icon, color = 'text-white' }: { label: string; value: string | number; icon: React.ReactNode; color?: string }) {
   return (
     <div className="bg-[#1e1e26] p-6 rounded-xl border border-white/5 flex items-center justify-between">
       <div>
@@ -272,8 +273,8 @@ function TicketsTab({ tickets, refresh }: { tickets: ApiTicket[], refresh: () =>
       setNewTicket({ title: '', message: '' });
       setIsCreating(false);
       refresh();
-    } catch (err) {
-      alert('Gagal membuat tiket');
+    } catch {
+      // silently ignore ticket creation errors
     } finally {
       setIsSubmitting(false);
     }

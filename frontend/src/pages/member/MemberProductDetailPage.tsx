@@ -63,7 +63,7 @@ export function MemberProductDetailPage() {
         ].map((tab) => (
           <button
             key={tab.id}
-            onClick={() => setActiveTab(tab.id as any)}
+            onClick={() => setActiveTab(tab.id as 'download' | 'guide' | 'updates')}
             className={`
               px-6 py-3 text-sm font-medium border-b-2 transition-colors
               ${activeTab === tab.id 

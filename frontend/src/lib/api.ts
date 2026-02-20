@@ -35,7 +35,7 @@ export interface ApiProductCreate {
   is_active?: boolean;
 }
 
-export interface ApiProductUpdate extends Partial<ApiProductCreate> {}
+export type ApiProductUpdate = Partial<ApiProductCreate>;
 
 export interface ApiProductListResponse {
   items: ApiProduct[];
@@ -166,7 +166,7 @@ export interface ActivityLogResponse {
   customer_id: number;
   type: string;
   reference_id?: string;
-  metadata_json?: any;
+  metadata_json?: Record<string, unknown>;
   created_at: string;
 }
 
