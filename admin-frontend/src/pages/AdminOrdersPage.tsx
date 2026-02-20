@@ -53,7 +53,7 @@ export function AdminOrdersPage() {
     <select
       value={filterStatus}
       onChange={(e) => setFilterStatus(e.target.value)}
-      className="bg-[#1e1e26] text-zinc-300 text-sm rounded-lg border border-white/10 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+      className="bg-[#1e1e26] text-zinc-300 text-sm rounded-lg border border-white/10 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
     >
       <option value="all">Semua Status</option>
       <option value="pending">Menunggu Konfirmasi</option>
@@ -64,7 +64,7 @@ export function AdminOrdersPage() {
   );
 
   return (
-    <AdminLayout title="Orders Management" actions={actions}>
+    <AdminLayout title="Manajemen Pesanan" actions={actions}>
       {isLoading ? (
         <div className="space-y-4">
           {[...Array(3)].map((_, i) => (
@@ -112,7 +112,7 @@ function AdminOrderCard({ order, onUpdateStatus }: { order: Order; onUpdateStatu
 
           <div>
             <h3 className="text-white font-medium text-lg">{order.productTitle}</h3>
-            <p className="text-emerald-400 font-bold">{formatPrice(order.productPrice)}</p>
+            <p className="text-orange-400 font-bold">{formatPrice(order.productPrice)}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
@@ -157,7 +157,7 @@ function AdminOrderCard({ order, onUpdateStatus }: { order: Order; onUpdateStatu
           {order.status === 'confirmed' && (
             <button
               onClick={() => onUpdateStatus(order, 'completed')}
-              className="w-full px-3 py-2 bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 rounded-lg text-sm font-medium transition-colors"
+              className="w-full px-3 py-2 bg-orange-500/10 text-orange-400 hover:bg-orange-500/20 rounded-lg text-sm font-medium transition-colors"
             >
               Selesaikan
             </button>

@@ -32,7 +32,7 @@ export function AdminLayout({ children, title, actions }: AdminLayoutProps) {
         to={to}
         className={`flex items-center gap-3 px-4 py-3 text-sm font-medium transition-colors rounded-lg mb-1 ${
           isActive
-            ? 'bg-emerald-500/10 text-emerald-400'
+            ? 'bg-orange-500/10 text-orange-400'
             : 'text-zinc-400 hover:text-white hover:bg-white/5'
         }`}
       >
@@ -52,7 +52,7 @@ export function AdminLayout({ children, title, actions }: AdminLayoutProps) {
         <div className="p-6 h-full flex flex-col">
           <div className="flex items-center justify-between mb-8">
             <span className="text-xl font-bold text-white">
-              fx<span className="text-emerald-500">society</span>
+              fx<span className="text-orange-500">society</span>
               <span className="text-xs text-zinc-500 ml-2">CRM</span>
             </span>
             <button 
@@ -66,27 +66,27 @@ export function AdminLayout({ children, title, actions }: AdminLayoutProps) {
           <nav className="flex-1 space-y-1">
             <NavItem 
               to="/dashboard" 
-              label="Overview" 
+              label="Ringkasan" 
               icon={<svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>}
             />
             <NavItem 
               to="/customers" 
-              label="Customers" 
+              label="Pelanggan" 
               icon={<svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>}
             />
             <NavItem 
               to="/orders" 
-              label="Orders" 
+              label="Pesanan" 
               icon={<svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>}
             />
             <NavItem 
               to="/tickets" 
-              label="Tickets" 
+              label="Tiket" 
               icon={<svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" /></svg>}
             />
             <NavItem 
               to="/products" 
-              label="Products" 
+              label="Produk" 
               icon={<svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>}
             />
           </nav>
@@ -97,7 +97,7 @@ export function AdminLayout({ children, title, actions }: AdminLayoutProps) {
               className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-zinc-400 hover:text-white transition-colors w-full rounded-lg hover:bg-white/5"
             >
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
-              Logout
+              Keluar
             </button>
           </div>
         </div>

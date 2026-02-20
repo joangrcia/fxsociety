@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 
 const navigationLinks = [
-  { label: 'Home', href: '/' },
+  { label: 'Beranda', href: '/' },
   { label: 'Shop', href: '/shop' },
-  { label: 'How It Works', href: '/how-it-works' },
-  { label: 'About Us', href: '/about' },
-  { label: 'Support', href: '/support' },
+  { label: 'Cara Kerja', href: '/how-it-works' },
+  { label: 'Tentang Kami', href: '/about' },
+  { label: 'Bantuan', href: '/support' },
 ];
 
 const socialLinks = [
@@ -49,9 +49,9 @@ export function Footer() {
           <div className="md:col-span-2">
             <Link 
               to="/" 
-              className="text-2xl font-bold text-white hover:text-emerald-400 transition-colors"
+              className="text-2xl font-bold text-white hover:text-orange-400 transition-colors"
             >
-              fx<span className="text-emerald-500">society</span>
+              fx<span className="text-orange-500">society</span>
             </Link>
             <p className="mt-4 text-zinc-400 text-sm leading-relaxed max-w-md">
               Tools dan panduan trading yang dirancang khusus untuk pemula. 
@@ -69,7 +69,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-zinc-400 hover:text-emerald-400 transition-colors text-sm"
+                    className="text-zinc-400 hover:text-orange-400 transition-colors text-sm"
                   >
                     {link.label}
                   </Link>
@@ -87,7 +87,7 @@ export function Footer() {
               <li>
                 <a 
                   href="mailto:support@fxsociety.id" 
-                  className="hover:text-emerald-400 transition-colors"
+                  className="hover:text-orange-400 transition-colors"
                 >
                   support@fxsociety.id
                 </a>
@@ -95,7 +95,7 @@ export function Footer() {
               <li>
                 <a 
                   href="https://wa.me/6281234567890" 
-                  className="hover:text-emerald-400 transition-colors"
+                  className="hover:text-orange-400 transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -112,7 +112,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-zinc-500 hover:text-emerald-400 transition-colors"
+                  className="text-zinc-500 hover:text-orange-400 transition-colors"
                   aria-label={social.label}
                 >
                   {social.icon}

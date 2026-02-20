@@ -89,7 +89,7 @@ export const AdminNotFoundPage: React.FC = () => {
 
           <div className="pt-4 flex justify-center">
             <Link 
-              to="/admin/dashboard" 
+              to="/dashboard" 
               className="group relative inline-flex items-center gap-2 px-6 py-3 bg-orange-600 hover:bg-orange-500 text-white font-medium rounded-lg transition-all duration-300 shadow-[0_0_20px_rgba(234,88,12,0.3)] hover:shadow-[0_0_30px_rgba(234,88,12,0.5)] overflow-hidden"
             >
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />

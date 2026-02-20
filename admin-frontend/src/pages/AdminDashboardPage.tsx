@@ -88,7 +88,7 @@ export function AdminDashboardPage() {
             <StatCard 
               label="Customer Baru (7 Hari)" 
               value={stats?.new_customers_7d || 0} 
-              color="text-emerald-400"
+              color="text-orange-400"
               icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" /></svg>} 
             />
             <StatCard 
@@ -104,7 +104,7 @@ export function AdminDashboardPage() {
             <div className="bg-[#1e1e26] rounded-xl border border-white/5 overflow-hidden">
               <div className="p-4 border-b border-white/5 flex justify-between items-center">
                 <h3 className="font-bold text-white">Pesanan Pending Terbaru</h3>
-                <Link to="/orders" className="text-sm text-emerald-400 hover:text-emerald-300">Lihat Semua</Link>
+                <Link to="/orders" className="text-sm text-orange-400 hover:text-orange-300">Lihat Semua</Link>
               </div>
               <div className="divide-y divide-white/5">
                 {pendingOrders.length > 0 ? (
@@ -112,7 +112,7 @@ export function AdminDashboardPage() {
                     <div key={order.id} className="p-4 hover:bg-white/5 transition-colors">
                       <div className="flex justify-between mb-1">
                         <span className="text-white font-medium">{order.productTitle}</span>
-                        <span className="text-emerald-400 text-sm font-bold">{formatPrice(order.productPrice)}</span>
+                        <span className="text-orange-400 text-sm font-bold">{formatPrice(order.productPrice)}</span>
                       </div>
                       <div className="flex justify-between text-xs text-zinc-500">
                         <span>{order.customerName}</span>
@@ -130,7 +130,7 @@ export function AdminDashboardPage() {
             <div className="bg-[#1e1e26] rounded-xl border border-white/5 overflow-hidden">
               <div className="p-4 border-b border-white/5 flex justify-between items-center">
                 <h3 className="font-bold text-white">Customer Terbaru</h3>
-                <Link to="/customers" className="text-sm text-emerald-400 hover:text-emerald-300">Lihat Semua</Link>
+                <Link to="/customers" className="text-sm text-orange-400 hover:text-orange-300">Lihat Semua</Link>
               </div>
               <div className="divide-y divide-white/5">
                 {newCustomers.length > 0 ? (
@@ -139,7 +139,7 @@ export function AdminDashboardPage() {
                       <div className="flex justify-between mb-1">
                         <span className="text-white font-medium">{customer.full_name || customer.email}</span>
                         <span className="text-zinc-400 text-xs bg-white/10 px-2 py-0.5 rounded">
-                          {customer.total_orders} Orders
+                          {customer.total_orders} Pesanan
                         </span>
                       </div>
                       <div className="text-xs text-zinc-500">
