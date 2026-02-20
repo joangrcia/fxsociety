@@ -25,6 +25,7 @@ export function AdminProductsPage() {
 
   useEffect(() => {
     loadProducts();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadProducts = async () => {
@@ -56,7 +57,7 @@ export function AdminProductsPage() {
     try {
       await toggleProductActiveAdmin(token, parseInt(product.id));
       loadProducts();
-    } catch (err) {
+    } catch {
       alert('Gagal update status produk');
     }
   };
@@ -104,7 +105,7 @@ export function AdminProductsPage() {
   );
 }
 
-function ProductList({ products, isLoading, onEdit, onToggleActive }: any) {
+function ProductList({ products, isLoading, onEdit, onToggleActive }: { products: Product[]; isLoading: boolean; onEdit: (p: Product) => void; onToggleActive: (p: Product) => void }) {
   if (isLoading) {
     return <div className="space-y-4">{[...Array(3)].map((_, i) => <div key={i} className="bg-[#1e1e26] h-24 rounded-xl animate-pulse" />)}</div>;
   }
@@ -181,14 +182,15 @@ function ProductForm({ product, onSubmit, onCancel }: { product?: Product, onSub
         await createProductAdmin(token, formData);
       }
       onSubmit();
-    } catch (err: any) {
-      alert('Error: ' + (err.detail || err.message));
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : String(err);
+      alert('Error: ' + message);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const handleChange = (field: keyof ApiProductCreate, value: any) => {
+  const handleChange = (field: keyof ApiProductCreate, value: string | number | boolean | string[]) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 

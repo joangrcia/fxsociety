@@ -13,6 +13,7 @@ export function AdminOrdersPage() {
 
   useEffect(() => {
     loadOrders();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterStatus]);
 
   const loadOrders = async () => {
@@ -44,7 +45,7 @@ export function AdminOrdersPage() {
     try {
       await updateOrderStatus(token, order.numericId, newStatus);
       loadOrders(); 
-    } catch (err) {
+    } catch {
       alert('Gagal update status');
     }
   };

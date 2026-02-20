@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AdminLayout } from '../components/admin/AdminLayout';
 import { 
@@ -21,6 +21,7 @@ export function AdminDashboardPage() {
 
   useEffect(() => {
     loadData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadData = async () => {
@@ -48,7 +49,7 @@ export function AdminDashboardPage() {
     }
   };
 
-  const StatCard = ({ label, value, color, icon }: any) => (
+  const StatCard = ({ label, value, color, icon }: { label: string; value: string | number; color: string; icon: React.ReactNode }) => (
     <div className="bg-[#1e1e26] p-6 rounded-xl border border-white/5">
       <div className="flex justify-between items-start">
         <div>

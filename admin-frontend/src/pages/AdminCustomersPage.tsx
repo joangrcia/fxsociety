@@ -18,6 +18,7 @@ export function AdminCustomersPage() {
 
   useEffect(() => {
     loadCustomers();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSearch]);
 
   const loadCustomers = async () => {

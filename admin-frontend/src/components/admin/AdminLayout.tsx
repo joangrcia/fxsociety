@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 // import { Button } from '../shared';
 
@@ -8,9 +8,32 @@ interface AdminLayoutProps {
   actions?: React.ReactNode;
 }
 
+interface NavItemProps {
+  to: string;
+  icon: React.ReactNode;
+  label: string;
+}
+
+function NavItem({ to, icon, label }: NavItemProps) {
+  const location = useLocation();
+  const isActive = location.pathname.startsWith(to);
+  return (
+    <Link
+      to={to}
+      className={`flex items-center gap-3 px-4 py-3 text-sm font-medium transition-colors rounded-lg mb-1 ${
+        isActive
+          ? 'bg-orange-500/10 text-orange-400'
+          : 'text-zinc-400 hover:text-white hover:bg-white/5'
+      }`}
+    >
+      {icon}
+      {label}
+    </Link>
+  );
+}
+
 export function AdminLayout({ children, title, actions }: AdminLayoutProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,23 +46,6 @@ export function AdminLayout({ children, title, actions }: AdminLayoutProps) {
   const handleLogout = () => {
     localStorage.removeItem('admin_token');
     navigate('/login');
-  };
-
-  const NavItem = ({ to, icon, label }: { to: string; icon: any; label: string }) => {
-    const isActive = location.pathname.startsWith(to);
-    return (
-      <Link
-        to={to}
-        className={`flex items-center gap-3 px-4 py-3 text-sm font-medium transition-colors rounded-lg mb-1 ${
-          isActive
-            ? 'bg-orange-500/10 text-orange-400'
-            : 'text-zinc-400 hover:text-white hover:bg-white/5'
-        }`}
-      >
-        {icon}
-        {label}
-      </Link>
-    );
   };
 
   return (

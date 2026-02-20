@@ -43,6 +43,7 @@ export function AdminCustomerDetailPage() {
 
   useEffect(() => {
     if (id) loadData(parseInt(id));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const loadData = async (customerId: number) => {
@@ -90,7 +91,7 @@ export function AdminCustomerDetailPage() {
       const tag = await addCustomerTag(token, customer.id, newTag.trim());
       setTags([...tags, tag]);
       setNewTag('');
-    } catch (err) {
+    } catch {
       alert('Failed to add tag');
     }
   };
@@ -103,7 +104,7 @@ export function AdminCustomerDetailPage() {
     try {
       await removeCustomerTag(token, customer.id, tag);
       setTags(tags.filter(t => t.tag !== tag));
-    } catch (err) {
+    } catch {
       alert('Failed to remove tag');
     }
   };
@@ -118,7 +119,7 @@ export function AdminCustomerDetailPage() {
       const note = await addCustomerNote(token, customer.id, newNote.trim());
       setNotes([note, ...notes]);
       setNewNote('');
-    } catch (err) {
+    } catch {
       alert('Failed to add note');
     }
   };
