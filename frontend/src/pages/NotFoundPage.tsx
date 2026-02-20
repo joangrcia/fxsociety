@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Home, ShoppingBag, ArrowRight } from 'lucide-react';
 import { Button } from '../components/shared/Button';
@@ -46,7 +45,7 @@ export const NotFoundPage = () => {
               </Link>
               <Link to="/shop">
                 <Button 
-                  variant="outline" 
+                  variant="secondary" 
                   className="w-full sm:w-auto gap-2 border-white/10 hover:bg-white/5 backdrop-blur-sm"
                 >
                   <ShoppingBag className="w-4 h-4" />

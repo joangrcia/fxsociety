@@ -19,11 +19,11 @@ function formatPrice(price: number): string {
 
 const getGuidanceCue = (category: ProductCategory): string => {
   switch (category) {
-    case 'indikator': return '🔰 Cocok untuk Pemula';
-    case 'robot': return '⚡ Otomatisasi Penuh';
-    case 'ebook': return '📚 Panduan Lengkap';
-    case 'merchandise': return '✨ Official Gear';
-    default: return '⭐ Pilihan Tepat';
+    case 'indikator': return 'Cocok untuk Pemula';
+    case 'robot': return 'Otomatisasi Penuh';
+    case 'ebook': return 'Panduan Lengkap';
+    case 'merchandise': return 'Official Gear';
+    default: return 'Pilihan Tepat';
   }
 };
 

@@ -4,11 +4,11 @@ import { Button } from './Button';
 import { useAuth } from '../../context/AuthContext';
 
 const navItems = [
-  { label: 'Home', href: '/' },
+  { label: 'Beranda', href: '/' },
   { label: 'Shop', href: '/shop' },
-  { label: 'How It Works', href: '/how-it-works' },
-  { label: 'About Us', href: '/about' },
-  { label: 'Support', href: '/support' },
+  { label: 'Cara Kerja', href: '/how-it-works' },
+  { label: 'Tentang Kami', href: '/about' },
+  { label: 'Bantuan', href: '/support' },
 ];
 
 export function Navbar() {
@@ -88,7 +88,7 @@ export function Navbar() {
                 to="/member"
                 className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-orange-600 hover:bg-orange-500 transition-all shadow-lg shadow-orange-500/20 ml-2"
               >
-                Member Area
+                Area Member
               </Link>
             )}
           </div>
@@ -97,7 +97,7 @@ export function Navbar() {
           <div className="hidden md:block">
             {!isAuthenticated && (
               <Button variant="secondary" size="sm" href="/login">
-                Login
+                Masuk
               </Button>
             )}
           </div>
@@ -149,14 +149,14 @@ export function Navbar() {
                   to="/member"
                   className="px-4 py-3 rounded-lg text-base font-bold text-orange-400 bg-orange-500/10 transition-all duration-200"
                 >
-                  Member Area
+                  Area Member
                 </Link>
               )}
 
               <div className="mt-4 px-4">
                 {!isAuthenticated && (
                   <Button variant="secondary" size="md" href="/login" className="w-full">
-                    Login
+                    Masuk
                   </Button>
                 )}
               </div>

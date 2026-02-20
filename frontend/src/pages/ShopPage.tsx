@@ -67,17 +67,17 @@ export function ShopPage() {
         {/* Cinematic Header */}
         <section className="relative mb-12 overflow-hidden rounded-[2rem] border border-white/5 bg-[#0f0f16] px-6 py-16 md:px-12 md:py-20 shadow-2xl">
           {/* Background Effects */}
-          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-4xl bg-orange-500/5 blur-[120px] rounded-full" />
             <div className="absolute top-0 right-0 w-96 h-96 bg-orange-500/10 blur-[100px] rounded-full mix-blend-screen" />
-            <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-500/5 blur-[100px] rounded-full mix-blend-screen" />
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-orange-500/5 blur-[100px] rounded-full mix-blend-screen" />
             <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10 bg-center" />
           </div>
 
           <div className="relative z-10 text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-orange-500/20 bg-orange-500/5 text-orange-400 text-xs tracking-widest uppercase font-medium mb-6 animate-fade-in">
               <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
-              Official Store
+              Toko Resmi
             </div>
 
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-6 animate-slide-up">

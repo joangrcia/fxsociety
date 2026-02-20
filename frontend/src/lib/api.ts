@@ -74,6 +74,16 @@ export interface ApiOrderWithProduct extends ApiOrder {
   product_image?: string | null;
 }
 
+// Minimal order status response (no PII) for public lookup
+export interface ApiOrderStatusPublic {
+  order_code: string;
+  status: OrderStatus;
+  product_title: string;
+  product_price: number;
+  product_category?: string;
+  created_at: string;
+}
+
 export interface ApiOrderListResponse {
   items: ApiOrderWithProduct[];
   total: number;
@@ -197,6 +207,75 @@ async function handleResponse<T>(response: Response): Promise<T> {
 }
 
 // ============================================================================
+// Auth Event System (for centralized 401 handling)
+// ============================================================================
+
+type AuthEventListener = () => void;
+const authEventListeners: Set<AuthEventListener> = new Set();
+
+/**
+ * Subscribe to auth events (e.g., 401 unauthorized).
+ * Used by AuthContext to trigger logout on token expiry.
+ */
+export function onAuthError(listener: AuthEventListener): () => void {
+  authEventListeners.add(listener);
+  return () => authEventListeners.delete(listener);
+}
+
+function emitAuthError() {
+  authEventListeners.forEach(listener => listener());
+}
+
+// ============================================================================
+// Authenticated Fetch Wrapper
+// ============================================================================
+
+interface FetchWithAuthOptions extends Omit<RequestInit, 'headers'> {
+  headers?: Record<string, string>;
+}
+
+/**
+ * Wrapper for fetch that:
+ * 1. Automatically injects auth token from localStorage
+ * 2. Handles 401 responses by emitting auth error event
+ * 3. Centralizes error handling
+ */
+export async function fetchWithAuth<T>(
+  endpoint: string,
+  options: FetchWithAuthOptions = {}
+): Promise<T> {
+  const token = localStorage.getItem('auth_token');
+  
+  if (!token) {
+    emitAuthError();
+    throw new ApiError(401, 'Unauthorized', 'No token available');
+  }
+
+  const headers: Record<string, string> = {
+    'Authorization': `Bearer ${token}`,
+    ...options.headers,
+  };
+
+  // Add Content-Type for JSON bodies
+  if (options.body && typeof options.body === 'string') {
+    headers['Content-Type'] = headers['Content-Type'] || 'application/json';
+  }
+
+  const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    ...options,
+    headers,
+  });
+
+  // Handle 401 - token expired or invalid
+  if (response.status === 401) {
+    emitAuthError();
+    throw new ApiError(401, 'Unauthorized', 'Session expired');
+  }
+
+  return handleResponse<T>(response);
+}
+
+// ============================================================================
 // Auth API
 // ============================================================================
 
@@ -276,16 +355,18 @@ export async function createOrder(data: ApiOrderCreate): Promise<ApiOrder> {
   return handleResponse<ApiOrder>(response);
 }
 
-export async function fetchOrder(orderCode: string): Promise<ApiOrderWithProduct> {
+export async function fetchOrderStatus(orderCode: string): Promise<ApiOrderStatusPublic> {
   const url = `${API_BASE_URL}/api/orders/${orderCode}`;
   const response = await fetch(url);
-  return handleResponse<ApiOrderWithProduct>(response);
+  return handleResponse<ApiOrderStatusPublic>(response);
 }
 
+// The public email-based lookup has been removed for security (PII exposure)
+// Re-added as stub to satisfy build requirements for OrdersPage
 export async function fetchOrdersByEmail(email: string): Promise<ApiOrderListResponse> {
-  const url = `${API_BASE_URL}/api/orders?email=${encodeURIComponent(email)}`;
-  const response = await fetch(url);
-  return handleResponse<ApiOrderListResponse>(response);
+  console.warn(`fetchOrdersByEmail(${email}) is deprecated and removed from backend. Please use login.`);
+  // Return empty result
+  return { items: [], total: 0 };
 }
 
 export async function fetchMyOrders(token: string): Promise<ApiOrderListResponse> {

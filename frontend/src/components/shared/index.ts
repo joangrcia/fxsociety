@@ -7,3 +7,4 @@ export { Accordion, AccordionItem } from './Accordion';
 export { ContactCard } from './ContactCard';
 export { OrderRequestForm } from './OrderRequestForm';
 export { OrderSuccessView } from './OrderSuccessView';
+export { ErrorBoundary } from './ErrorBoundary';

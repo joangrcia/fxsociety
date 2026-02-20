@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 
 const navigationLinks = [
-  { label: 'Home', href: '/' },
+  { label: 'Beranda', href: '/' },
   { label: 'Shop', href: '/shop' },
-  { label: 'How It Works', href: '/how-it-works' },
-  { label: 'About Us', href: '/about' },
-  { label: 'Support', href: '/support' },
+  { label: 'Cara Kerja', href: '/how-it-works' },
+  { label: 'Tentang Kami', href: '/about' },
+  { label: 'Bantuan', href: '/support' },
 ];
 
 const socialLinks = [
@@ -42,7 +42,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#020202] border-t border-white/5 relative overflow-hidden">
+    <footer className="bg-[#0a0a0f] border-t border-white/5 relative overflow-hidden">
       {/* Subtle top glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-orange-500/20 to-transparent" />
       
@@ -69,7 +69,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-zinc-600 hover:text-white transition-colors duration-300"
+                  className="text-zinc-600 hover:text-orange-500 transition-colors duration-300"
                   aria-label={social.label}
                 >
                   {social.icon}
@@ -81,7 +81,7 @@ export function Footer() {
           {/* Navigation */}
           <div className="md:col-span-3">
             <h4 className="text-xs font-bold text-white uppercase tracking-[0.2em] mb-6 opacity-80">
-              Explore
+              Jelajahi
             </h4>
             <ul className="space-y-4">
               {navigationLinks.map((link) => (
@@ -100,7 +100,7 @@ export function Footer() {
           {/* Contact */}
           <div className="md:col-span-4">
             <h4 className="text-xs font-bold text-white uppercase tracking-[0.2em] mb-6 opacity-80">
-              Support
+              Bantuan
             </h4>
             <ul className="space-y-4 text-sm text-zinc-500 font-light">
               <li className="flex items-start gap-3 group cursor-pointer">
@@ -138,8 +138,8 @@ export function Footer() {
         {/* Disclaimer & Copyright */}
         <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <p className="text-[10px] text-zinc-600 leading-relaxed max-w-2xl font-light">
-            <strong className="text-zinc-500 font-medium">Risk Warning:</strong> Trading derivatives carries a high level of risk to your capital 
-            and should only be traded with money you can afford to lose. Ensure you understand the risks involved.
+            <strong className="text-zinc-500 font-medium">Peringatan Risiko:</strong> Perdagangan derivatif membawa risiko tinggi terhadap modal Anda 
+            dan sebaiknya hanya dilakukan dengan uang yang Anda rela untuk kehilangan. Pastikan Anda memahami risiko yang terlibat.
           </p>
           <p className="text-[10px] text-zinc-600 font-mono whitespace-nowrap">
             © {currentYear} fxsociety inc.

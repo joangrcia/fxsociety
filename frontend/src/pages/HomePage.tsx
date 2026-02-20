@@ -77,7 +77,7 @@ function Hero3D() {
         <div className="space-y-8 order-2 lg:order-1 text-center lg:text-left z-20">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-orange-500/20 bg-orange-500/5 text-orange-400 text-xs tracking-widest uppercase font-medium">
             <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-[pulse-glow_2s_ease-in-out_infinite]" />
-            Beginner Friendly
+            Ramah Pemula
           </div>
           
           <h1 className="text-5xl sm:text-7xl font-bold tracking-tighter text-white leading-[0.9]">
@@ -97,7 +97,7 @@ function Hero3D() {
               to="/shop?category=ebook" 
               className="px-8 py-4 rounded-xl bg-white text-black font-bold hover:bg-zinc-200 transition-colors flex items-center gap-2"
             >
-              Mulai Belajar
+              Mulai Sekarang
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </Link>
             <Link 
@@ -135,7 +135,7 @@ function Hero3D() {
                 </div>
                 {/* Floating Price Tag */}
                 <div className="absolute top-4 right-4 bg-orange-500 text-black text-[10px] font-bold px-2 py-1 rounded">
-                  Chapter 1
+                  Bab 1
                 </div>
               </div>
               {/* Data Rows */}
@@ -159,10 +159,10 @@ function Hero3D() {
             {/* Floating Element: Code Snippet */}
             <div className="absolute -left-12 bottom-20 w-40 h-24 glass-card rounded-xl p-3 transform translate-z-[40px] animate-[float-medium_7s_ease-in-out_infinite_0.5s]">
                <div className="space-y-1.5 font-mono text-[8px] text-zinc-500">
-                  <div className="text-orange-400">Step 1: Learn</div>
-                  <div className="pl-2 border-l border-white/10">Understand Basics</div>
-                  <div className="pl-2 border-l border-white/10">Risk Management</div>
-                  <div className="text-green-400">Step 2: Practice</div>
+                  <div className="text-orange-400">Step 1: Belajar</div>
+                  <div className="pl-2 border-l border-white/10">Pahami Dasar</div>
+                  <div className="pl-2 border-l border-white/10">Manajemen Resiko</div>
+                  <div className="text-green-400">Step 2: Praktek</div>
                </div>
             </div>
 
@@ -233,14 +233,14 @@ function GuidedEntry() {
             
             {/* Top: Tools (Indicators & Robots) */}
             <div className="flex-1 group relative rounded-3xl overflow-hidden border border-white/5 bg-[#0f0f12]">
-               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent" />
+               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent" />
                <div className="absolute inset-0 p-8 flex flex-col justify-center z-10">
-                  <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-4 text-blue-400 border border-blue-500/20">
+                  <div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center mb-4 text-orange-400 border border-orange-500/20">
                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                   </div>
                   <h3 className="text-xl font-bold text-white mb-2">Alat Bantu Trading</h3>
                   <p className="text-zinc-500 text-sm mb-4">Indikator & Robot untuk membantu analisa Anda (opsional).</p>
-                  <Link to="/shop" className="text-blue-400 font-medium hover:text-blue-300 flex items-center gap-1 text-sm after:absolute after:inset-0">
+                  <Link to="/shop" className="text-orange-400 font-medium hover:text-orange-300 flex items-center gap-1 text-sm after:absolute after:inset-0">
                     Lihat Tools <span className="text-lg">→</span>
                   </Link>
                </div>
@@ -248,14 +248,14 @@ function GuidedEntry() {
 
             {/* Bottom: Support */}
             <div className="flex-1 group relative rounded-3xl overflow-hidden border border-white/5 bg-[#0f0f12]">
-               <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent" />
+               <div className="absolute inset-0 bg-gradient-to-br from-zinc-500/5 to-transparent" />
                <div className="absolute inset-0 p-8 flex flex-col justify-center z-10">
-                  <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center mb-4 text-emerald-400 border border-emerald-500/20">
+                  <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center mb-4 text-white border border-white/10">
                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
                   </div>
                   <h3 className="text-xl font-bold text-white mb-2">Bantuan & Support</h3>
                   <p className="text-zinc-500 text-sm mb-4">Tim kami siap membantu kendala teknis Anda.</p>
-                  <Link to="/support" className="text-emerald-400 font-medium hover:text-emerald-300 flex items-center gap-1 text-sm after:absolute after:inset-0">
+                  <Link to="/support" className="text-white font-medium hover:text-zinc-300 flex items-center gap-1 text-sm after:absolute after:inset-0">
                     Hubungi Kami <span className="text-lg">→</span>
                   </Link>
                </div>
@@ -335,7 +335,7 @@ function FooterCTA() {
         {/* Floating Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/5 bg-white/5 backdrop-blur-md text-zinc-400 text-xs tracking-[0.2em] uppercase font-medium mb-12 animate-[float-slow_4s_ease-in-out_infinite]">
           <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
-          Join The Elite
+          Gabung Elite
         </div>
 
         {/* Massive Headline */}
@@ -366,7 +366,7 @@ function FooterCTA() {
             
             {/* Button Content */}
             <span className="relative z-20 text-white font-semibold tracking-wide text-lg">
-              Akses Member Area
+              Akses Area Member
             </span>
             <svg 
               className="relative z-20 w-5 h-5 text-orange-400 transition-transform duration-300 group-hover:translate-x-1" 
@@ -379,7 +379,7 @@ function FooterCTA() {
           </Link>
           
           <div className="mt-8 text-xs text-zinc-600 font-mono tracking-widest uppercase opacity-60">
-            Secure • Private • Premium
+            Aman • Privat • Premium
           </div>
         </div>
       </div>
