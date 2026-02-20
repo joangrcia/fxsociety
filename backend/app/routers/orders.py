@@ -10,8 +10,9 @@ from app.schemas import (
     OrderResponse,
     OrderWithProductResponse,
     OrderListResponse,
+    OrderStatusPublicResponse,
 )
-from app.auth import get_current_admin, get_current_user
+from app.auth import get_current_admin, get_current_user, oauth2_scheme
 from app.utils.activity import log_activity
 
 router = APIRouter(prefix="/api/orders", tags=["orders"])
@@ -113,78 +114,34 @@ def list_my_orders(
     return OrderListResponse(items=items, total=len(items))
 
 
-@router.get("/{order_code}", response_model=OrderWithProductResponse)
-def get_order(
+@router.get("/{order_code}", response_model=OrderStatusPublicResponse)
+def get_order_status(
     order_code: str,
     db: Session = Depends(get_db),
 ):
-    """Get order by order code (public lookup)."""
+    """Get order status by order code (public lookup - no PII exposed).
+
+    Returns only: order_code, status, product info, created_at.
+    For full order details, use /me endpoint with authentication.
+    """
     order = db.query(Order).filter(Order.order_code == order_code.upper()).first()
 
     if not order:
         raise HTTPException(status_code=404, detail="Pesanan tidak ditemukan")
 
-    return OrderWithProductResponse(
-        id=order.id,
+    return OrderStatusPublicResponse(
         order_code=order.order_code,
-        product_id=order.product_id,
-        name=order.name,
-        email=order.email,
-        whatsapp=order.whatsapp,
-        notes=order.notes,
         status=order.status,
-        created_at=order.created_at,
-        updated_at=order.updated_at,
         product_title=order.product.title,
         product_price=order.product.price_idr,
         product_category=order.product.category,
-        product_slug=order.product.slug,
-        product_image=order.product.images[0]
-        if order.product.images and len(order.product.images) > 0
-        else None,
+        created_at=order.created_at,
     )
 
 
-@router.get("", response_model=OrderListResponse)
-def list_orders_by_email(
-    email: str = Query(..., description="Filter by customer email"),
-    db: Session = Depends(get_db),
-):
-    """List orders for a specific email (public but filtered)."""
-    if not email:
-        raise HTTPException(status_code=400, detail="Email parameter diperlukan")
-
-    orders = (
-        db.query(Order)
-        .filter(Order.email == email.lower())
-        .order_by(Order.created_at.desc())
-        .all()
-    )
-
-    items = [
-        OrderWithProductResponse(
-            id=o.id,
-            order_code=o.order_code,
-            product_id=o.product_id,
-            name=o.name,
-            email=o.email,
-            whatsapp=o.whatsapp,
-            notes=o.notes,
-            status=o.status,
-            created_at=o.created_at,
-            updated_at=o.updated_at,
-            product_title=o.product.title,
-            product_price=o.product.price_idr,
-            product_category=o.product.category,
-            product_slug=o.product.slug,
-            product_image=o.product.images[0]
-            if o.product.images and len(o.product.images) > 0
-            else None,
-        )
-        for o in orders
-    ]
-
-    return OrderListResponse(items=items, total=len(items))
+# REMOVED: Public email-based order lookup (security risk - exposes PII)
+# Use /api/orders/me with authentication instead.
+# Legacy endpoint removed to prevent email enumeration attacks.
 
 
 # --- Admin Endpoints ---
