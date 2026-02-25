@@ -74,7 +74,7 @@ def select_database_url(base_dir: Path) -> str:
         return "sqlite:////tmp/fxsociety.db"
 
     # Match backend/app/database.py default path: <repo>/backend/fxsociety.db
-    shared_backend_db = base_dir.parent.parent / "backend" / "fxsociety.db"
+    shared_backend_db = base_dir.parent / "backend" / "fxsociety.db"
     return f"sqlite:///{shared_backend_db}"
 
 def database_config_from_url(database_url: str) -> dict[str, str]:
