@@ -1,0 +1,8 @@
+frontend/
+admin-frontend/
+backend/
+backend2/
+docs/
+.sisyphus/
+.ruff_cache/
+node_modules/
