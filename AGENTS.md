@@ -17,12 +17,19 @@ Product Scope:
 Target Audience: Beginner traders (non-technical)  
 Primary Language (UI & content): Indonesian (Bahasa Indonesia)
 
-Backend: FastAPI  
-Database: SQLite  
-Frontend: Any framework  
-CSS Framework: Tailwind CSS  
+Backend: Django (DRF) in `backend2/` (FastAPI in `backend/` is deprecated/fallback)
+Database: SQLite
+Frontend: React (Vite) in `frontend/` and `admin-frontend/`
+CSS Framework: Tailwind CSS
 Payment: No payment gateway (manual approval / admin confirmation)
 
+## Repository Structure & Deployment (MANDATORY)
+
+This repository uses specific branches for environments. NEVER mix them.
+
+- `master`: Local Development ONLY. Contains full source (`backend2/`, `frontend/`, `admin-frontend/`). API defaults to `localhost:8000`.
+- `deploy-be`: Production Backend ONLY. Orphan branch containing flattened `backend2/` files for cPanel Passenger hosting. Absolute SQLite path.
+- `deploy`: Production Frontend ONLY. Orphan branch containing built static assets (`dist/`) pointing to `api.fxsociety.id`.
 ---
 
 ## Core Principles (MANDATORY)
