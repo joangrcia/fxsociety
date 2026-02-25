@@ -1,0 +1,7 @@
+Django
+djangorestframework
+django-cors-headers
+python-jose[cryptography]
+passlib
+argon2-cffi
+dj-database-url

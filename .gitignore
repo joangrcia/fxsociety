@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+tests/
+
+# Linting / tooling cache
+.ruff_cache/
+.mypy_cache/
+
+# Database files
+*.db
+*.sqlite3
+
+# Build / dist
+*.egg-info/
+dist/
+build/
+
+# Locks and local config
+uv.lock
+.env
+*.env.local
+
+# IDE
+.vscode/
+.idea/
