@@ -1,5 +1,6 @@
 # pyright: reportMissingImports=false, reportUnknownVariableType=false, reportUnknownMemberType=false
 
+import os
 from pathlib import Path
 
 from corsheaders.defaults import default_headers, default_methods
@@ -12,7 +13,11 @@ RUNTIME_CONFIG = load_runtime_config()
 
 SECRET_KEY = RUNTIME_CONFIG["SECRET_KEY"]
 DEBUG = RUNTIME_CONFIG["ENVIRONMENT"].lower() in ("development", "dev")
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = (
+    os.environ.get("ALLOWED_HOSTS", "").split(",")
+    if os.environ.get("ALLOWED_HOSTS")
+    else (["*"] if DEBUG else [])
+)
 ENVIRONMENT = RUNTIME_CONFIG["ENVIRONMENT"]
 ADMIN_USERNAME = RUNTIME_CONFIG["ADMIN_USERNAME"]
 ADMIN_PASSWORD = RUNTIME_CONFIG["ADMIN_PASSWORD"]

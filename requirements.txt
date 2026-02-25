@@ -1,7 +1,7 @@
-Django
-djangorestframework
-django-cors-headers
-python-jose[cryptography]
-passlib
-argon2-cffi
-dj-database-url
+Django==5.2.11
+djangorestframework==3.16.1
+django-cors-headers==4.9.0
+python-jose[cryptography]==3.4.0
+passlib==1.7.4
+argon2-cffi==25.1.0
+dj-database-url==3.1.2
