@@ -154,14 +154,17 @@ class RegisterView(APIView):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        user = User.objects.create(
-            email=email,
-            full_name=validated_data.get("full_name"),
-            password_hash=get_password_hash(str(validated_data.get("password", ""))),
-            is_active=bool(validated_data.get("is_active", True)),
-            created_at=timezone.now(),
-        )
-        return Response(UserResponseSerializer(user).data)
+        try:
+            user = User.objects.create(
+                email=email,
+                full_name=validated_data.get("full_name"),
+                password_hash=get_password_hash(str(validated_data.get("password", ""))),
+                is_active=bool(validated_data.get("is_active", True)),
+                created_at=timezone.now(),
+            )
+            return Response(UserResponseSerializer(user).data)
+        except Exception as e:
+            return Response({"detail": f"Database error: {str(e)}"}, status=500)
 
 
 class MeView(APIView):
