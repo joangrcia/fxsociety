@@ -73,9 +73,9 @@ def select_database_url(base_dir: Path) -> str:
     if os.getenv("VERCEL"):
         return "sqlite:////tmp/fxsociety.db"
 
-    # Production: absolute writable path for cPanel shared hosting
-    return "sqlite:////home/u1481892/db/fxsociety.sqlite3"
-
+    # Match backend/app/database.py default path: <repo>/backend/fxsociety.db
+    shared_backend_db = base_dir.parent.parent / "backend" / "fxsociety.db"
+    return f"sqlite:///{shared_backend_db}"
 
 def database_config_from_url(database_url: str) -> dict[str, str]:
     normalized = database_url.strip()
