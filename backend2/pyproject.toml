@@ -1,0 +1,49 @@
+[project]
+name = "fxsociety-backend2"
+version = "0.1.0"
+description = "Django backend for fxsociety trading marketplace"
+requires-python = ">=3.11"
+dependencies = [
+    "Django",
+    "djangorestframework",
+    "django-cors-headers",
+    "python-jose[cryptography]",
+    "passlib",
+    "argon2-cffi",
+    "dj-database-url",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-django",
+    "ruff",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest",
+    "pytest-django",
+    "ruff",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    "E",      # pycodestyle errors
+    "W",      # pycodestyle warnings
+    "F",      # pyflakes
+    "I",      # isort
+    "B",      # flake8-bugbear
+    "C4",     # flake8-comprehensions
+    "UP",     # pyupgrade
+]
+ignore = [
+    "E501",   # line too long (handled by formatter)
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["app"]
