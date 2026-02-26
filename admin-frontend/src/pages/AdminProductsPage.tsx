@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AdminLayout } from '../components/admin/AdminLayout';
 import { Button } from '../components/shared';
@@ -126,7 +126,7 @@ function ProductList({ products, isLoading, onEdit, onToggleActive }: { products
               ) : (
                 <span className="text-[10px] bg-zinc-500/20 text-zinc-400 px-2 py-0.5 rounded">Inactive</span>
               )}
-              {product.badge && <span className="text-[10px] bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded uppercase">{product.badge}</span>}
+              {product.badge && <span className="text-[10px] bg-slate-400/20 text-slate-300 px-2 py-0.5 rounded uppercase">{product.badge}</span>}
             </div>
             <p className="text-sm text-zinc-400">{formatPrice(product.price)} • {product.category}</p>
           </div>
@@ -134,7 +134,7 @@ function ProductList({ products, isLoading, onEdit, onToggleActive }: { products
           <div className="flex gap-2">
             <button 
               onClick={() => onEdit(product)}
-              className="px-3 py-1.5 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 rounded-lg text-sm"
+              className="px-3 py-1.5 bg-slate-400/10 text-slate-300 hover:bg-slate-400/20 rounded-lg text-sm"
             >
               Edit
             </button>

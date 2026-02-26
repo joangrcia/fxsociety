@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { ProductCard } from '../components/shared';
 import { fetchProducts, apiProductToProduct, type ProductCategory } from '../lib/api';
 import type { Product } from '../types/product';
@@ -68,20 +68,20 @@ export function ShopPage() {
         <section className="relative mb-12 overflow-hidden rounded-[2rem] border border-white/5 bg-[#0f0f16] px-6 py-16 md:px-12 md:py-20 shadow-2xl">
           {/* Background Effects */}
             <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-4xl bg-orange-500/5 blur-[120px] rounded-full" />
-            <div className="absolute top-0 right-0 w-96 h-96 bg-orange-500/10 blur-[100px] rounded-full mix-blend-screen" />
-            <div className="absolute bottom-0 left-0 w-80 h-80 bg-orange-500/5 blur-[100px] rounded-full mix-blend-screen" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-4xl bg-slate-400/5 blur-[120px] rounded-full" />
+            <div className="absolute top-0 right-0 w-96 h-96 bg-slate-400/10 blur-[100px] rounded-full mix-blend-screen" />
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-slate-400/5 blur-[100px] rounded-full mix-blend-screen" />
             <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10 bg-center" />
           </div>
 
           <div className="relative z-10 text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-orange-500/20 bg-orange-500/5 text-orange-400 text-xs tracking-widest uppercase font-medium mb-6 animate-fade-in">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-400/20 bg-slate-400/5 text-slate-300 text-xs tracking-widest uppercase font-medium mb-6 animate-fade-in">
+              <span className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-pulse" />
               Toko Resmi
             </div>
 
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-6 animate-slide-up">
-              Marketplace <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">FXSociety</span>
+              Marketplace <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400">FXSociety</span>
             </h1>
 
             <p className="text-lg md:text-xl text-zinc-400 leading-relaxed animate-slide-up" style={{ animationDelay: '100ms' }}>
@@ -107,7 +107,7 @@ export function ShopPage() {
                       className={`
                         shrink-0 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300
                         ${activeCategory === filter.key
-                          ? 'bg-orange-500 text-white shadow-[0_0_20px_rgba(249,115,22,0.4)] scale-105'
+                          ? 'bg-slate-400 text-white shadow-[0_0_20px_rgba(203,213,225,0.4)] scale-105'
                           : 'bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-white border border-white/5'
                         }
                       `}
@@ -125,7 +125,7 @@ export function ShopPage() {
                     <select
                       value={sortBy}
                       onChange={(e) => setSortBy(e.target.value as SortOption)}
-                      className="appearance-none bg-[#1e1e26] text-zinc-300 text-sm rounded-xl border border-white/10 pl-4 pr-10 py-2.5 focus:outline-none focus:ring-2 focus:ring-orange-500/50 cursor-pointer hover:border-white/20 transition-colors"
+                      className="appearance-none bg-[#1e1e26] text-zinc-300 text-sm rounded-xl border border-white/10 pl-4 pr-10 py-2.5 focus:outline-none focus:ring-2 focus:ring-slate-400/50 cursor-pointer hover:border-white/20 transition-colors"
                     >
                       {sortOptions.map((option) => (
                         <option key={option.key} value={option.key}>
@@ -145,7 +145,7 @@ export function ShopPage() {
                       placeholder="Cari..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full bg-[#1e1e26] text-white text-sm rounded-xl border border-white/10 pl-10 pr-10 py-2.5 focus:outline-none focus:ring-2 focus:ring-orange-500/50 placeholder:text-zinc-600 hover:border-white/20 transition-colors"
+                      className="w-full bg-[#1e1e26] text-white text-sm rounded-xl border border-white/10 pl-10 pr-10 py-2.5 focus:outline-none focus:ring-2 focus:ring-slate-400/50 placeholder:text-zinc-600 hover:border-white/20 transition-colors"
                     />
                     <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -206,7 +206,7 @@ export function ShopPage() {
                  <p className="text-zinc-500 max-w-sm mx-auto">
                    Coba ubah kata kunci pencarian atau kategori filter Anda.
                  </p>
-                 <button onClick={() => { setActiveCategory('all'); setSearchQuery(''); }} className="mt-6 text-orange-400 hover:text-orange-300 font-medium text-sm">
+                 <button onClick={() => { setActiveCategory('all'); setSearchQuery(''); }} className="mt-6 text-slate-300 hover:text-slate-200 font-medium text-sm">
                    Reset Filter
                  </button>
                </div>

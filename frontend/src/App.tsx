@@ -1,4 +1,4 @@
-import { useEffect, Suspense, lazy } from 'react';
+﻿import { useEffect, Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Navbar, Footer, ErrorBoundary } from './components/shared';
 import { MemberLayout } from './components/member';
@@ -28,7 +28,7 @@ function PageLoader() {
   return (
     <div className="min-h-screen bg-[#0a0a0f] flex items-center justify-center">
       <div className="flex flex-col items-center gap-4">
-        <div className="w-10 h-10 border-3 border-orange-500 border-t-transparent rounded-full animate-spin" />
+        <div className="w-10 h-10 border-3 border-slate-400 border-t-transparent rounded-full animate-spin" />
         <p className="text-zinc-500 text-sm">Memuat...</p>
       </div>
     </div>

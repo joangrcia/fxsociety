@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 // import { Button } from '../shared';
 
@@ -22,7 +22,7 @@ function NavItem({ to, icon, label }: NavItemProps) {
       to={to}
       className={`flex items-center gap-3 px-4 py-3 text-sm font-medium transition-colors rounded-lg mb-1 ${
         isActive
-          ? 'bg-orange-500/10 text-orange-400'
+          ? 'bg-slate-400/10 text-slate-300'
           : 'text-zinc-400 hover:text-white hover:bg-white/5'
       }`}
     >
@@ -58,7 +58,7 @@ export function AdminLayout({ children, title, actions }: AdminLayoutProps) {
         <div className="p-6 h-full flex flex-col">
           <div className="flex items-center justify-between mb-8">
             <span className="text-xl font-bold text-white">
-              fx<span className="text-orange-500">society</span>
+              fx<span className="text-slate-400">society</span>
               <span className="text-xs text-zinc-500 ml-2">CRM</span>
             </span>
             <button 

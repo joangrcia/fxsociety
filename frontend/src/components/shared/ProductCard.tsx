@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 import { Badge } from './Badge';
 import type { Product } from '../../types/product';
 import type { BadgeStatus, ProductCategory } from './Badge';
@@ -87,7 +87,7 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
 
         {/* Title */}
-        <h3 className="text-lg font-medium text-white mb-2 line-clamp-1 group-hover:text-orange-200 transition-colors duration-300">
+        <h3 className="text-lg font-medium text-white mb-2 line-clamp-1 group-hover:text-slate-100 transition-colors duration-300">
           {title}
         </h3>
         
@@ -100,7 +100,7 @@ export function ProductCard({ product }: ProductCardProps) {
         <div className="mt-auto flex items-end justify-between border-t border-white/5 pt-4">
           <div className="flex flex-col">
             <span className="text-[10px] text-zinc-600 mb-0.5 font-medium uppercase tracking-wide">Harga</span>
-            <span className="text-lg font-semibold text-zinc-200 group-hover:text-orange-400 transition-colors">
+            <span className="text-lg font-semibold text-zinc-200 group-hover:text-slate-300 transition-colors">
               {formatPrice(price)}
             </span>
           </div>

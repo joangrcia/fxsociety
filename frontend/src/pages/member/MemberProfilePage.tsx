@@ -1,4 +1,4 @@
-import { useAuth } from '../../context/AuthContext';
+﻿import { useAuth } from '../../context/AuthContext';
 
 export function MemberProfilePage() {
   const { user } = useAuth();
@@ -18,7 +18,7 @@ export function MemberProfilePage() {
       <div className="bg-[#14141a] rounded-2xl border border-white/5 overflow-hidden">
         {/* Profile Header */}
         <div className="p-8 border-b border-white/5 flex items-center gap-6">
-          <div className="w-20 h-20 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center text-white text-3xl font-bold">
+          <div className="w-20 h-20 rounded-full bg-gradient-to-br from-slate-300 via-white to-slate-400 flex items-center justify-center text-white text-3xl font-bold">
             {initial}
           </div>
           <div>

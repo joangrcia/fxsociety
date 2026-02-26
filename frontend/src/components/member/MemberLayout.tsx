@@ -1,4 +1,4 @@
-import { Outlet, Navigate } from 'react-router-dom';
+﻿import { Outlet, Navigate } from 'react-router-dom';
 import { MemberSidebar } from './MemberSidebar';
 import { useAuth } from '../../context/AuthContext';
 
@@ -8,7 +8,7 @@ export function MemberLayout() {
   if (isLoading) {
     // Show loading state (or null) while verifying session
     return <div className="min-h-screen bg-[#0a0a0f] flex items-center justify-center">
-      <div className="w-8 h-8 border-4 border-orange-500/30 border-t-orange-500 rounded-full animate-spin" />
+      <div className="w-8 h-8 border-4 border-slate-400/30 border-t-slate-400 rounded-full animate-spin" />
     </div>;
   }
 

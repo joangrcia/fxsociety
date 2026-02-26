@@ -1,8 +1,8 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
 /* ============================================
    fxsociety Design System
-   Dark theme with orange accent
+  Dark theme with silver metallic accent
    ============================================ */
 
 /* CSS Variables for Design System */
@@ -21,7 +21,7 @@
   /* Border colors */
   --color-border-subtle: rgba(255, 255, 255, 0.05);
   --color-border-default: rgba(255, 255, 255, 0.1);
-  --color-border-accent: rgba(249, 115, 22, 0.35);
+  --color-border-accent: rgba(203, 213, 225, 0.35);
 
   /* Shadows */
   --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
@@ -48,7 +48,7 @@ body {
 
 /* Focus visible for accessibility */
 *:focus-visible {
-  @apply outline-none ring-2 ring-orange-500 ring-offset-2 ring-offset-bg-base;
+  @apply outline-none ring-2 ring-slate-400 ring-offset-2 ring-offset-bg-base;
 }
 
 /* Smooth transitions for interactive elements */
@@ -64,15 +64,15 @@ a, button {
 
   /* Outlined text (stroke) */
   .text-stroke {
-    -webkit-text-stroke: 1px rgba(249, 115, 22, 0.65);
-    text-stroke: 1px rgba(249, 115, 22, 0.65);
+    -webkit-text-stroke: 1px rgba(59, 130, 246, 0.65);
+    text-stroke: 1px rgba(59, 130, 246, 0.65);
   }
 
   /* Subtle orange glow for premium highlights */
   .text-shadow-glow {
     text-shadow:
-      0 0 18px rgba(249, 115, 22, 0.22),
-      0 0 3px rgba(249, 115, 22, 0.28);
+      0 0 18px rgba(59, 130, 246, 0.22),
+      0 0 3px rgba(59, 130, 246, 0.28);
   }
 
   /* Animations */
@@ -99,7 +99,7 @@ a, button {
   /* Styled scrollbar (best-effort across browsers) */
   .scrollbar-styled {
     scrollbar-width: thin;
-    scrollbar-color: rgba(249, 115, 22, 0.35) rgba(255, 255, 255, 0.06);
+    scrollbar-color: rgba(59, 130, 246, 0.35) rgba(255, 255, 255, 0.06);
   }
 
   .scrollbar-styled::-webkit-scrollbar {
@@ -113,13 +113,13 @@ a, button {
   }
 
   .scrollbar-styled::-webkit-scrollbar-thumb {
-    background: rgba(249, 115, 22, 0.35);
+    background: rgba(59, 130, 246, 0.35);
     border-radius: 999px;
     border: 2px solid rgba(10, 10, 15, 0.7);
   }
 
   .scrollbar-styled::-webkit-scrollbar-thumb:hover {
-    background: rgba(249, 115, 22, 0.5);
+    background: rgba(59, 130, 246, 0.5);
   }
 
   /* Horizontal overflow fade mask */

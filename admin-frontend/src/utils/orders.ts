@@ -1,4 +1,4 @@
-import type { Order } from '../types/order';
+﻿import type { Order } from '../types/order';
 
 export function formatPrice(price: number): string {
   return new Intl.NumberFormat('id-ID', {
@@ -31,8 +31,8 @@ export function getStatusLabel(status: Order['status']): string {
 
 export function getStatusColor(status: Order['status']): string {
   const colors: Record<Order['status'], string> = {
-    pending: 'bg-amber-500/20 text-amber-400 border-amber-500/30',
-    confirmed: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+    pending: 'bg-slate-400/20 text-slate-300 border-slate-400/30',
+    confirmed: 'bg-slate-400/20 text-slate-300 border-slate-400/30',
     completed: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
     cancelled: 'bg-zinc-500/20 text-zinc-400 border-zinc-500/30',
   };

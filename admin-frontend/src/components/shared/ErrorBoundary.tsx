@@ -1,4 +1,4 @@
-import { Component, type ReactNode, type ErrorInfo } from 'react';
+﻿import { Component, type ReactNode, type ErrorInfo } from 'react';
 import { AlertTriangle, RefreshCw, ArrowLeft } from 'lucide-react';
 
 interface Props {
@@ -69,7 +69,7 @@ export class ErrorBoundary extends Component<Props, State> {
             <div className="flex flex-col sm:flex-row gap-3 justify-center mt-8">
               <button
                 onClick={this.handleReload}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-orange-600 hover:bg-orange-500 text-white font-medium rounded-lg transition-colors shadow-[0_0_20px_rgba(234,88,12,0.3)]"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-500 hover:bg-slate-400 text-white font-medium rounded-lg transition-colors shadow-[0_0_20px_rgba(148,163,184,0.3)]"
               >
                 <RefreshCw className="w-4 h-4" />
                 Muat Ulang

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { 
   fetchMyOrders, 
@@ -155,7 +155,7 @@ function OverviewTab({ orders, tickets, userEmail }: { orders: Order[], tickets:
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <SummaryCard label="Total Pesanan" value={orders.length} icon="🛍️" />
         <SummaryCard label="Produk Dimiliki" value={activeProducts} icon="📦" />
-        <SummaryCard label="Tiket Terbuka" value={openTickets} icon="🎫" color={openTickets > 0 ? 'text-amber-400' : undefined} />
+        <SummaryCard label="Tiket Terbuka" value={openTickets} icon="🎫" color={openTickets > 0 ? 'text-slate-300' : undefined} />
       </div>
 
       <div>
@@ -334,7 +334,7 @@ function TicketsTab({ tickets, refresh }: { tickets: ApiTicket[], refresh: () =>
                 <span className={`px-2 py-1 text-xs rounded capitalize ${
                   ticket.status === 'open' ? 'bg-emerald-500/10 text-emerald-400' : 
                   ticket.status === 'closed' ? 'bg-zinc-500/10 text-zinc-400' : 
-                  'bg-blue-500/10 text-blue-400'
+                  'bg-slate-400/10 text-slate-300'
                 }`}>
                   {ticket.status}
                 </span>

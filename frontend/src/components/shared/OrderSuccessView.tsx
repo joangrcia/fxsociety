@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 import { Button } from './Button';
 import type { Order } from '../../types/order';
 import { formatPrice, formatDate, getStatusLabel, getStatusColor } from '../../utils/orders';
@@ -22,8 +22,8 @@ export function OrderSuccessView({ order }: OrderSuccessViewProps) {
   return (
     <div className="text-center">
       {/* Success Icon */}
-      <div className="w-20 h-20 rounded-full bg-orange-500/20 flex items-center justify-center mx-auto mb-6">
-        <svg className="w-10 h-10 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <div className="w-20 h-20 rounded-full bg-slate-400/20 flex items-center justify-center mx-auto mb-6">
+        <svg className="w-10 h-10 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
         </svg>
       </div>
@@ -62,7 +62,7 @@ export function OrderSuccessView({ order }: OrderSuccessViewProps) {
           {/* Total */}
           <div className="flex justify-between items-center pt-4 border-t border-white/5">
             <span className="text-zinc-300 font-medium">Total</span>
-            <span className="text-orange-400 text-xl font-bold">{formatPrice(order.productPrice)}</span>
+            <span className="text-slate-300 text-xl font-bold">{formatPrice(order.productPrice)}</span>
           </div>
 
           {/* Date */}
@@ -78,19 +78,19 @@ export function OrderSuccessView({ order }: OrderSuccessViewProps) {
         <h3 className="text-white font-semibold mb-4">Instruksi Pembayaran</h3>
         <ol className="space-y-3 text-sm text-zinc-400">
           <li className="flex gap-3">
-            <span className="w-6 h-6 rounded-full bg-orange-500/20 text-orange-400 flex items-center justify-center shrink-0 text-xs font-medium">1</span>
+            <span className="w-6 h-6 rounded-full bg-slate-400/20 text-slate-300 flex items-center justify-center shrink-0 text-xs font-medium">1</span>
             <span>Transfer ke rekening BCA <strong className="text-white">1234567890</strong> a.n. <strong className="text-white">FXSociety</strong></span>
           </li>
           <li className="flex gap-3">
-            <span className="w-6 h-6 rounded-full bg-orange-500/20 text-orange-400 flex items-center justify-center shrink-0 text-xs font-medium">2</span>
-            <span>Transfer sesuai total: <strong className="text-orange-400">{formatPrice(order.productPrice)}</strong></span>
+            <span className="w-6 h-6 rounded-full bg-slate-400/20 text-slate-300 flex items-center justify-center shrink-0 text-xs font-medium">2</span>
+            <span>Transfer sesuai total: <strong className="text-slate-300">{formatPrice(order.productPrice)}</strong></span>
           </li>
           <li className="flex gap-3">
-            <span className="w-6 h-6 rounded-full bg-orange-500/20 text-orange-400 flex items-center justify-center shrink-0 text-xs font-medium">3</span>
+            <span className="w-6 h-6 rounded-full bg-slate-400/20 text-slate-300 flex items-center justify-center shrink-0 text-xs font-medium">3</span>
             <span>Kirim bukti transfer via WhatsApp untuk konfirmasi</span>
           </li>
           <li className="flex gap-3">
-            <span className="w-6 h-6 rounded-full bg-orange-500/20 text-orange-400 flex items-center justify-center shrink-0 text-xs font-medium">4</span>
+            <span className="w-6 h-6 rounded-full bg-slate-400/20 text-slate-300 flex items-center justify-center shrink-0 text-xs font-medium">4</span>
             <span>Produk akan dikirim setelah pembayaran dikonfirmasi (maks. 1x24 jam)</span>
           </li>
         </ol>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { useParams, Link, useLocation, useNavigate } from 'react-router-dom';
 import { Badge, Button, OrderRequestForm, OrderSuccessView } from '../components/shared';
 import { 
@@ -314,8 +314,8 @@ export function ProductDetailPage() {
         </div>
 
         {/* Disclaimer */}
-        <div className="mt-12 p-4 bg-amber-500/10 border border-amber-500/20 rounded-xl">
-          <p className="text-sm text-amber-200/80">
+        <div className="mt-12 p-4 bg-slate-400/10 border border-slate-400/20 rounded-xl">
+          <p className="text-sm text-slate-100/80">
             <strong>Disclaimer:</strong> Trading mengandung risiko tinggi. Tidak ada jaminan profit 
             dari penggunaan produk ini. Pastikan Anda memahami risiko sebelum membeli.
           </p>

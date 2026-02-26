@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 
 export function MemberSupportPage() {
   const [selectedProduct, setSelectedProduct] = useState('');
@@ -30,7 +30,7 @@ export function MemberSupportPage() {
             <select 
               value={selectedProduct}
               onChange={(e) => setSelectedProduct(e.target.value)}
-              className="w-full bg-[#0a0a0f] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-orange-500/50"
+              className="w-full bg-[#0a0a0f] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-slate-400/50"
             >
               <option value="">Saya butuh bantuan umum</option>
               <option value="Ebook Trading for Beginners">Ebook Trading for Beginners</option>
@@ -44,14 +44,14 @@ export function MemberSupportPage() {
               <div className="flex gap-4">
                 <label className={`
                   flex-1 cursor-pointer border rounded-xl px-4 py-3 flex items-center justify-center gap-2 transition-all
-                  ${platform === 'MT4' ? 'bg-orange-500/10 border-orange-500/50 text-orange-400' : 'bg-[#0a0a0f] border-white/10 text-zinc-400 hover:border-white/20'}
+                  ${platform === 'MT4' ? 'bg-slate-400/10 border-slate-400/50 text-slate-300' : 'bg-[#0a0a0f] border-white/10 text-zinc-400 hover:border-white/20'}
                 `}>
                   <input type="radio" name="platform" value="MT4" checked={platform === 'MT4'} onChange={() => setPlatform('MT4')} className="hidden" />
                   <span className="font-bold">MT4</span>
                 </label>
                 <label className={`
                   flex-1 cursor-pointer border rounded-xl px-4 py-3 flex items-center justify-center gap-2 transition-all
-                  ${platform === 'MT5' ? 'bg-orange-500/10 border-orange-500/50 text-orange-400' : 'bg-[#0a0a0f] border-white/10 text-zinc-400 hover:border-white/20'}
+                  ${platform === 'MT5' ? 'bg-slate-400/10 border-slate-400/50 text-slate-300' : 'bg-[#0a0a0f] border-white/10 text-zinc-400 hover:border-white/20'}
                 `}>
                   <input type="radio" name="platform" value="MT5" checked={platform === 'MT5'} onChange={() => setPlatform('MT5')} className="hidden" />
                   <span className="font-bold">MT5</span>

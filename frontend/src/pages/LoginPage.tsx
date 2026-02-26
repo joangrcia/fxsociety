@@ -1,4 +1,4 @@
-import { useState, useEffect, type FormEvent } from 'react';
+﻿import { useState, useEffect, type FormEvent } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { login as apiLogin } from '../lib/api';
 import { useAuth } from '../context/AuthContext';
@@ -62,7 +62,7 @@ export function LoginPage() {
       <div className="absolute inset-0 bg-gradient-to-tr from-[#09090b] via-[#121215] to-[#18181b] opacity-100" />
       
       {/* Subtle Warmth (simulating morning light) */}
-      <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-orange-500/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-slate-400/5 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-zinc-800/20 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="w-full max-w-[420px] relative z-10 animate-fade-in-up">
@@ -72,7 +72,7 @@ export function LoginPage() {
             to="/" 
             className="inline-block text-2xl font-bold text-white mb-8 tracking-tight opacity-90 hover:opacity-100 transition-opacity"
           >
-            fx<span className="text-orange-500 font-normal">society</span>
+            fx<span className="text-slate-400 font-normal">society</span>
           </Link>
           <h1 className="text-3xl md:text-4xl font-light text-white mb-4 tracking-wide">
             Selamat Datang Kembali
@@ -104,7 +104,7 @@ export function LoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-transparent border-b border-zinc-800 focus:border-orange-500/50 text-white py-3 px-1 outline-none transition-all duration-300 placeholder:text-zinc-800 font-light text-base focus:bg-white/[0.02] rounded-t-lg"
+                className="w-full bg-transparent border-b border-zinc-800 focus:border-slate-400/50 text-white py-3 px-1 outline-none transition-all duration-300 placeholder:text-zinc-800 font-light text-base focus:bg-white/[0.02] rounded-t-lg"
                 placeholder="nama@email.com"
                 required
               />
@@ -121,7 +121,7 @@ export function LoginPage() {
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full bg-transparent border-b border-zinc-800 focus:border-orange-500/50 text-white py-3 px-1 outline-none transition-all duration-300 placeholder:text-zinc-800 font-light text-base focus:bg-white/[0.02] rounded-t-lg pr-10"
+                  className="w-full bg-transparent border-b border-zinc-800 focus:border-slate-400/50 text-white py-3 px-1 outline-none transition-all duration-300 placeholder:text-zinc-800 font-light text-base focus:bg-white/[0.02] rounded-t-lg pr-10"
                   placeholder="••••••••"
                   required
                 />

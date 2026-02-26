@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 import { Home, ShoppingBag, ArrowRight } from 'lucide-react';
 import { Button } from '../components/shared/Button';
 import { Navbar } from '../components/shared/Navbar';
@@ -6,12 +6,12 @@ import { Footer } from '../components/shared/Footer';
 
 export const NotFoundPage = () => {
   return (
-    <div className="min-h-screen bg-[#0a0a0f] text-white overflow-hidden flex flex-col font-sans selection:bg-orange-500/30">
+    <div className="min-h-screen bg-[#0a0a0f] text-white overflow-hidden flex flex-col font-sans selection:bg-slate-400/30">
       <Navbar />
 
       <main className="flex-grow flex items-center justify-center relative z-10 p-6 pt-24 lg:pt-32">
         {/* Ambient Background Effects */}
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-orange-500/10 rounded-full blur-[120px] pointer-events-none animate-pulse-slow" />
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-slate-400/10 rounded-full blur-[120px] pointer-events-none animate-pulse-slow" />
         <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-indigo-900/20 rounded-full blur-[100px] pointer-events-none" />
 
         {/* Grid Overlay */}
@@ -37,7 +37,7 @@ export const NotFoundPage = () => {
               <Link to="/">
                 <Button 
                   variant="primary" 
-                  className="w-full sm:w-auto gap-2 group shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:shadow-[0_0_30px_rgba(249,115,22,0.5)] transition-all duration-300"
+                  className="w-full sm:w-auto gap-2 group shadow-[0_0_20px_rgba(203,213,225,0.3)] hover:shadow-[0_0_30px_rgba(203,213,225,0.5)] transition-all duration-300"
                 >
                   <Home className="w-4 h-4" />
                   Kembali ke Home
@@ -63,32 +63,32 @@ export const NotFoundPage = () => {
             <div className="cube-scene relative w-64 h-64 transform-style-3d animate-float-spin">
               
               {/* Inner Glowing Core */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-orange-500/20 rounded-full blur-[40px] animate-pulse-fast" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-slate-400/20 rounded-full blur-[40px] animate-pulse-fast" />
 
               {/* Cube Faces */}
-              <div className="cube-face front  absolute w-full h-full border border-orange-500/30 bg-orange-900/5 backdrop-blur-[2px] flex items-center justify-center translate-z-32">
+              <div className="cube-face front  absolute w-full h-full border border-slate-400/30 bg-slate-900/5 backdrop-blur-[2px] flex items-center justify-center translate-z-32">
                 <span className="text-8xl font-black text-white/10 select-none">4</span>
               </div>
               <div className="cube-face back   absolute w-full h-full border border-white/10 bg-white/5 backdrop-blur-[2px] flex items-center justify-center -translate-z-32 rotate-y-180">
                  <span className="text-8xl font-black text-white/10 select-none">4</span>
               </div>
-              <div className="cube-face right  absolute w-full h-full border border-orange-500/30 bg-orange-900/5 backdrop-blur-[2px] flex items-center justify-center rotate-y-90 translate-z-32">
+              <div className="cube-face right  absolute w-full h-full border border-slate-400/30 bg-slate-900/5 backdrop-blur-[2px] flex items-center justify-center rotate-y-90 translate-z-32">
                  <span className="text-8xl font-black text-white/10 select-none">0</span>
               </div>
               <div className="cube-face left   absolute w-full h-full border border-white/10 bg-white/5 backdrop-blur-[2px] flex items-center justify-center -rotate-y-90 translate-z-32">
                  <span className="text-8xl font-black text-white/10 select-none">0</span>
               </div>
-              <div className="cube-face top    absolute w-full h-full border border-orange-500/20 bg-gradient-to-br from-orange-500/10 to-transparent flex items-center justify-center rotate-x-90 translate-z-32">
-                <div className="w-16 h-16 border border-orange-500/40 rounded-full" />
+              <div className="cube-face top    absolute w-full h-full border border-slate-400/20 bg-gradient-to-br from-slate-400/10 to-transparent flex items-center justify-center rotate-x-90 translate-z-32">
+                <div className="w-16 h-16 border border-slate-400/40 rounded-full" />
               </div>
               <div className="cube-face bottom absolute w-full h-full border border-white/5 bg-black/40 flex items-center justify-center -rotate-x-90 translate-z-32 shadow-[0_0_50px_rgba(0,0,0,0.8)]">
-                <div className="w-full h-full bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1),transparent)]" />
+                <div className="w-full h-full bg-[radial-gradient(circle_at_center,rgba(203,213,225,0.1),transparent)]" />
               </div>
 
               {/* Floating Particles around cube */}
-              <div className="absolute -top-10 -right-10 w-4 h-4 bg-orange-500 rounded-sm animate-bounce-custom opacity-80 shadow-[0_0_10px_orange]" />
+              <div className="absolute -top-10 -right-10 w-4 h-4 bg-slate-400 rounded-sm animate-bounce-custom opacity-80 shadow-[0_0_10px_blue]" />
               <div className="absolute top-1/2 -left-12 w-2 h-2 bg-white rounded-full animate-ping opacity-50" />
-              <div className="absolute -bottom-8 left-1/4 w-3 h-3 border border-orange-400 animate-spin-slow" />
+              <div className="absolute -bottom-8 left-1/4 w-3 h-3 border border-slate-300 animate-spin-slow" />
 
             </div>
           </div>

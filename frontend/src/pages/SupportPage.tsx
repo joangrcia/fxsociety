@@ -1,4 +1,4 @@
-import { Accordion, ContactCard } from '../components/shared';
+﻿import { Accordion, ContactCard } from '../components/shared';
 
 const faqItems = [
   {
@@ -37,15 +37,15 @@ export function SupportPage() {
       <div className="max-w-5xl mx-auto">
         {/* Cinematic Header */}
         <div className="text-center mb-16 relative">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-orange-500/10 blur-[80px] rounded-full -z-10" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-slate-400/10 blur-[80px] rounded-full -z-10" />
           
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-orange-500/20 bg-orange-500/5 text-orange-400 text-xs tracking-widest uppercase font-medium mb-6 animate-fade-in">
-            <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-400/20 bg-slate-400/5 text-slate-300 text-xs tracking-widest uppercase font-medium mb-6 animate-fade-in">
+            <span className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-pulse" />
             Customer Success
           </div>
           
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-slide-up">
-            Pusat <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Bantuan</span>
+            Pusat <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400">Bantuan</span>
           </h1>
           <p className="text-zinc-400 max-w-xl mx-auto text-lg leading-relaxed animate-slide-up" style={{ animationDelay: '100ms' }}>
             Kami siap membantu perjalanan trading Anda. <br/>
@@ -88,7 +88,7 @@ export function SupportPage() {
           {/* FAQ Section */}
           <section className="lg:col-span-2 animate-slide-up" style={{ animationDelay: '300ms' }}>
             <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-              <span className="w-1 h-6 bg-orange-500 rounded-full" />
+              <span className="w-1 h-6 bg-slate-400 rounded-full" />
               Pertanyaan Umum
             </h2>
             <Accordion items={faqItems} defaultOpenIndex={0} />
@@ -99,13 +99,13 @@ export function SupportPage() {
             <h2 className="text-xl font-bold text-white mb-6">Jam Operasional</h2>
             <div className="bg-[#14141a] rounded-2xl p-6 border border-white/5 relative overflow-hidden group">
                {/* Decorative glow */}
-               <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/5 blur-[50px] rounded-full group-hover:bg-orange-500/10 transition-colors" />
+               <div className="absolute top-0 right-0 w-32 h-32 bg-slate-400/5 blur-[50px] rounded-full group-hover:bg-slate-400/10 transition-colors" />
 
               <div className="relative z-10 space-y-4">
                 <div className="flex flex-col gap-1 pb-4 border-b border-white/5">
                   <span className="text-zinc-400 text-sm">Senin - Jumat</span>
                   <span className="text-white font-semibold text-lg">09.00 - 17.00 WIB</span>
-                  <span className="text-xs text-orange-400 font-medium bg-orange-500/10 self-start px-2 py-0.5 rounded">Fast Response</span>
+                  <span className="text-xs text-slate-300 font-medium bg-slate-400/10 self-start px-2 py-0.5 rounded">Fast Response</span>
                 </div>
                 
                 <div className="flex flex-col gap-1 pb-4 border-b border-white/5">
@@ -129,7 +129,7 @@ export function SupportPage() {
               <p className="text-sm text-zinc-400 leading-relaxed mb-4">
                 Untuk kendala instalasi Robot EA atau Indikator, siapkan screenshot error atau video singkat agar kami bisa membantu lebih cepat.
               </p>
-              <a href="https://wa.me/6281234567890" className="text-orange-400 hover:text-orange-300 text-sm font-medium flex items-center gap-1 transition-colors">
+              <a href="https://wa.me/6281234567890" className="text-slate-300 hover:text-slate-200 text-sm font-medium flex items-center gap-1 transition-colors">
                 Chat Tim Teknis <span className="text-lg">→</span>
               </a>
             </div>

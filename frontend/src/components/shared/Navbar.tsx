@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from './Button';
 import { useAuth } from '../../context/AuthContext';
@@ -55,9 +55,9 @@ export function Navbar() {
           {/* Logo */}
           <Link 
             to="/" 
-            className="text-xl md:text-2xl font-bold text-white hover:text-orange-300 transition-colors"
+            className="text-xl md:text-2xl font-bold text-white hover:text-slate-200 transition-colors"
           >
-            fx<span className="text-orange-500">society</span>
+            fx<span className="text-slate-400">society</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -72,7 +72,7 @@ export function Navbar() {
                     px-4 py-2 rounded-lg text-sm font-medium
                     transition-all duration-200
                     ${isActive
-                      ? 'text-orange-300 bg-orange-500/10'
+                      ? 'text-slate-200 bg-slate-400/10'
                       : 'text-zinc-400 hover:text-white hover:bg-white/5'
                     }
                   `}
@@ -86,7 +86,7 @@ export function Navbar() {
             {isAuthenticated && (
               <Link
                 to="/member"
-                className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-orange-600 hover:bg-orange-500 transition-all shadow-lg shadow-orange-500/20 ml-2"
+                className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-slate-500 hover:bg-slate-400 transition-all shadow-lg shadow-slate-400/20 ml-2"
               >
                 Area Member
               </Link>
@@ -134,7 +134,7 @@ export function Navbar() {
                       px-4 py-3 rounded-lg text-base font-medium
                       transition-all duration-200
                       ${isActive 
-                        ? 'text-orange-300 bg-orange-500/10' 
+                        ? 'text-slate-200 bg-slate-400/10'
                         : 'text-zinc-400 hover:text-white hover:bg-white/5'
                       }
                     `}
@@ -147,7 +147,7 @@ export function Navbar() {
               {isAuthenticated && (
                 <Link
                   to="/member"
-                  className="px-4 py-3 rounded-lg text-base font-bold text-orange-400 bg-orange-500/10 transition-all duration-200"
+                  className="px-4 py-3 rounded-lg text-base font-bold text-slate-300 bg-slate-400/10 transition-all duration-200"
                 >
                   Area Member
                 </Link>

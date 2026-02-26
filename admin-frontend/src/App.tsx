@@ -1,4 +1,4 @@
-import { Suspense, lazy } from 'react';
+﻿import { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ErrorBoundary } from './components/shared';
 import { ProtectedRoute } from './components/admin/ProtectedRoute';
@@ -19,7 +19,7 @@ function PageLoader() {
   return (
     <div className="min-h-screen bg-slate-950 flex items-center justify-center">
       <div className="flex flex-col items-center gap-4">
-        <div className="w-10 h-10 border-3 border-orange-500 border-t-transparent rounded-full animate-spin" />
+        <div className="w-10 h-10 border-3 border-slate-400 border-t-transparent rounded-full animate-spin" />
         <p className="text-slate-500 text-sm font-mono">Memuat...</p>
       </div>
     </div>

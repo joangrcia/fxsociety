@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react';
+﻿import { type ReactNode } from 'react';
 import { Button } from '../components/shared';
 
 // --- Components ---
@@ -7,10 +7,10 @@ function SectionLabel({ children }: { children: ReactNode }) {
   return (
     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6">
       <span className="relative flex h-2 w-2">
-        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-        <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-300 opacity-75"></span>
+        <span className="relative inline-flex rounded-full h-2 w-2 bg-slate-400"></span>
       </span>
-      <span className="text-xs font-medium text-orange-200 tracking-wide uppercase">{children}</span>
+      <span className="text-xs font-medium text-slate-100 tracking-wide uppercase">{children}</span>
     </div>
   );
 }
@@ -18,16 +18,16 @@ function SectionLabel({ children }: { children: ReactNode }) {
 function ValueCard({ icon, title, description, delay = 0 }: { icon: ReactNode; title: string; description: string; delay?: number }) {
   return (
     <div 
-      className="group relative p-8 rounded-3xl bg-zinc-900/40 border border-white/5 hover:border-orange-500/20 hover:bg-zinc-900/60 transition-all duration-500 hover:-translate-y-1 overflow-hidden"
+      className="group relative p-8 rounded-3xl bg-zinc-900/40 border border-white/5 hover:border-slate-400/20 hover:bg-zinc-900/60 transition-all duration-500 hover:-translate-y-1 overflow-hidden"
       style={{ animationDelay: `${delay}ms` }}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-orange-500/0 via-orange-500/0 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-400/0 via-slate-400/0 to-slate-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       
       <div className="relative z-10">
-        <div className="w-14 h-14 rounded-2xl bg-zinc-800/50 border border-white/5 flex items-center justify-center text-orange-400 mb-6 group-hover:scale-110 group-hover:bg-orange-500/10 group-hover:border-orange-500/20 transition-all duration-300">
+        <div className="w-14 h-14 rounded-2xl bg-zinc-800/50 border border-white/5 flex items-center justify-center text-slate-300 mb-6 group-hover:scale-110 group-hover:bg-slate-400/10 group-hover:border-slate-400/20 transition-all duration-300">
           {icon}
         </div>
-        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-orange-100 transition-colors">{title}</h3>
+        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-slate-50 transition-colors">{title}</h3>
         <p className="text-zinc-400 leading-relaxed text-sm">{description}</p>
       </div>
     </div>
@@ -37,7 +37,7 @@ function ValueCard({ icon, title, description, delay = 0 }: { icon: ReactNode; t
 function QuoteBlock({ children, author, role }: { children: ReactNode; author: string; role: string }) {
   return (
     <div className="relative p-8 md:p-12 rounded-3xl bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border border-white/5 overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-500/50 via-orange-500/10 to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-slate-400/50 via-slate-400/10 to-transparent" />
       <svg className="absolute top-8 left-8 w-12 h-12 text-white/5 -z-0 transform -translate-x-2 -translate-y-2" fill="currentColor" viewBox="0 0 24 24">
         <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V11C14.017 11.5523 13.5693 12 13.017 12H12.017V5H22.017V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 8.44772 5.0166 9V11C5.0166 11.5523 4.56889 12 4.0166 12H3.0166V5H13.0166V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z" />
       </svg>
@@ -46,7 +46,7 @@ function QuoteBlock({ children, author, role }: { children: ReactNode; author: s
           "{children}"
         </div>
         <div className="mt-6 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400 font-bold text-sm border border-orange-500/20">
+          <div className="w-10 h-10 rounded-full bg-slate-400/20 flex items-center justify-center text-slate-300 font-bold text-sm border border-slate-400/20">
             F
           </div>
           <div>
@@ -63,12 +63,12 @@ function QuoteBlock({ children, author, role }: { children: ReactNode; author: s
 
 export function AboutPage() {
   return (
-    <main className="bg-[#0a0a0f] min-h-screen relative overflow-x-hidden selection:bg-orange-500/30 selection:text-orange-200">
+    <main className="bg-[#0a0a0f] min-h-screen relative overflow-x-hidden selection:bg-slate-400/30 selection:text-slate-100">
       
       {/* Background Ambience */}
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-[1000px] h-[600px] bg-orange-500/5 rounded-full blur-[120px] mix-blend-screen opacity-40 animate-float" />
-        <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-blue-500/5 rounded-full blur-[120px] mix-blend-screen opacity-20" />
+        <div className="absolute top-0 left-1/4 w-[1000px] h-[600px] bg-slate-400/5 rounded-full blur-[120px] mix-blend-screen opacity-40 animate-float" />
+        <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-slate-400/5 rounded-full blur-[120px] mix-blend-screen opacity-20" />
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] brightness-100 contrast-150" />
       </div>
 
@@ -81,7 +81,7 @@ export function AboutPage() {
           
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-8 leading-[1.1] animate-slide-up [animation-delay:200ms]">
             Trading yang lebih <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400">
               Manusiawi
             </span>
             <span className="text-zinc-600">.</span>
@@ -188,7 +188,7 @@ export function AboutPage() {
               {
                 title: 'Copy Jujur',
                 desc: 'Kami menulis dengan bahasa realistis. Jika ada risiko, kami tulis risiko. Tidak ada yang disembunyikan di fine print.',
-                color: 'bg-blue-500'
+                color: 'bg-slate-400'
               },
               {
                 title: 'Panduan Rapi',
@@ -201,7 +201,7 @@ export function AboutPage() {
                 color: 'bg-purple-500'
               }
             ].map((item, i) => (
-              <div key={i} className="group p-6 rounded-2xl bg-zinc-900/50 border border-white/5 hover:border-orange-500/20 transition-all">
+              <div key={i} className="group p-6 rounded-2xl bg-zinc-900/50 border border-white/5 hover:border-slate-400/20 transition-all">
                 <div className={`w-2 h-2 rounded-full ${item.color} mb-4 shadow-[0_0_10px_currentColor]`} />
                 <h3 className="text-lg font-semibold text-white mb-2">{item.title}</h3>
                 <p className="text-zinc-400 text-sm leading-relaxed">{item.desc}</p>
@@ -233,7 +233,7 @@ export function AboutPage() {
           <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-b from-zinc-800 to-zinc-900 border border-white/10 p-10 md:p-20 text-center shadow-2xl">
              
              {/* Decorative glows */}
-             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-orange-500/20 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-slate-400/20 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
              
              <div className="relative z-10">
                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Siap belajar dengan tenang?</h2>
@@ -241,7 +241,10 @@ export function AboutPage() {
                  Jelajahi tool trading kami yang didesain untuk membantu Anda tumbuh pelan-pelan.
                </p>
                
-               <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                   <Button href="/shop" size="lg" className="h-12 px-8 text-base shadow-[0_0_20px_rgba(203,213,225,0.3)] hover:shadow-[0_0_30px_rgba(203,213,225,0.5)] transition-shadow">
+                     Lihat Produk
+                   </Button>
                  <Button href="/shop" size="lg" className="h-12 px-8 text-base shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:shadow-[0_0_30px_rgba(249,115,22,0.5)] transition-shadow">
                    Lihat Produk
                  </Button>

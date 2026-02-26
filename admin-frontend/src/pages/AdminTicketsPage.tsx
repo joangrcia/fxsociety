@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AdminLayout } from '../components/admin/AdminLayout';
 import { fetchAllTicketsAdmin, ApiError, type ApiTicket } from '../lib/api';
@@ -70,7 +70,7 @@ export function AdminTicketsPage() {
                 <span className={`px-2 py-1 text-xs rounded capitalize ${
                   ticket.status === 'open' ? 'bg-emerald-500/10 text-emerald-400' : 
                   ticket.status === 'closed' ? 'bg-zinc-500/10 text-zinc-400' : 
-                  'bg-blue-500/10 text-blue-400'
+                  'bg-slate-400/10 text-slate-300'
                 }`}>
                   {ticket.status}
                 </span>

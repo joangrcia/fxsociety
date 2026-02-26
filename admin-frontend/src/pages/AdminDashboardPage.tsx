@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AdminLayout } from '../components/admin/AdminLayout';
 import { 
@@ -77,7 +77,7 @@ export function AdminDashboardPage() {
             <StatCard 
               label="Pesanan Pending" 
               value={stats?.pending_orders || 0} 
-              color="text-amber-400"
+              color="text-slate-300"
               icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>} 
             />
             <StatCard 
@@ -89,13 +89,13 @@ export function AdminDashboardPage() {
             <StatCard 
               label="Customer Baru (7 Hari)" 
               value={stats?.new_customers_7d || 0} 
-              color="text-orange-400"
+              color="text-slate-300"
               icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" /></svg>} 
             />
             <StatCard 
               label="Perlu Follow-up" 
               value={stats?.follow_up_needed || 0} 
-              color="text-blue-400"
+              color="text-slate-300"
               icon={<svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3" /></svg>} 
             />
           </div>
@@ -105,7 +105,7 @@ export function AdminDashboardPage() {
             <div className="bg-[#1e1e26] rounded-xl border border-white/5 overflow-hidden">
               <div className="p-4 border-b border-white/5 flex justify-between items-center">
                 <h3 className="font-bold text-white">Pesanan Pending Terbaru</h3>
-                <Link to="/orders" className="text-sm text-orange-400 hover:text-orange-300">Lihat Semua</Link>
+                <Link to="/orders" className="text-sm text-slate-300 hover:text-slate-200">Lihat Semua</Link>
               </div>
               <div className="divide-y divide-white/5">
                 {pendingOrders.length > 0 ? (
@@ -113,7 +113,7 @@ export function AdminDashboardPage() {
                     <div key={order.id} className="p-4 hover:bg-white/5 transition-colors">
                       <div className="flex justify-between mb-1">
                         <span className="text-white font-medium">{order.productTitle}</span>
-                        <span className="text-orange-400 text-sm font-bold">{formatPrice(order.productPrice)}</span>
+                        <span className="text-slate-300 text-sm font-bold">{formatPrice(order.productPrice)}</span>
                       </div>
                       <div className="flex justify-between text-xs text-zinc-500">
                         <span>{order.customerName}</span>
@@ -131,7 +131,7 @@ export function AdminDashboardPage() {
             <div className="bg-[#1e1e26] rounded-xl border border-white/5 overflow-hidden">
               <div className="p-4 border-b border-white/5 flex justify-between items-center">
                 <h3 className="font-bold text-white">Customer Terbaru</h3>
-                <Link to="/customers" className="text-sm text-orange-400 hover:text-orange-300">Lihat Semua</Link>
+                <Link to="/customers" className="text-sm text-slate-300 hover:text-slate-200">Lihat Semua</Link>
               </div>
               <div className="divide-y divide-white/5">
                 {newCustomers.length > 0 ? (

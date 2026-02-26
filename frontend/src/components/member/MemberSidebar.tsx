@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+﻿import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
 interface SidebarItemProps {
@@ -15,13 +15,13 @@ function SidebarItem({ to, icon, label, active }: SidebarItemProps) {
       className={`
         flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group
         ${active 
-          ? 'bg-orange-500/10 text-orange-400 border border-orange-500/20' 
+          ? 'bg-slate-400/10 text-slate-300 border border-slate-400/20'
           : 'text-zinc-400 hover:text-white hover:bg-white/5'
         }
       `}
     >
       <div className={`
-        ${active ? 'text-orange-400' : 'text-zinc-500 group-hover:text-white'} 
+        ${active ? 'text-slate-300' : 'text-zinc-500 group-hover:text-white'}
         transition-colors
       `}>
         {icon}
@@ -42,7 +42,7 @@ export function MemberSidebar() {
       {/* Logo Area */}
       <div className="p-6 border-b border-white/5">
         <Link to="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center text-white font-bold text-lg">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-slate-300 via-white to-slate-400 flex items-center justify-center text-white font-bold text-lg">
             F
           </div>
           <span className="text-xl font-bold text-white tracking-tight">

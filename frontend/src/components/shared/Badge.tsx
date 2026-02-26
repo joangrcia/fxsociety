@@ -1,4 +1,4 @@
-type BadgeVariant = 'category' | 'status';
+﻿type BadgeVariant = 'category' | 'status';
 type BadgeStatus = 'new' | 'popular' | 'bestseller' | 'soldout';
 type ProductCategory = 'indikator' | 'robot' | 'ebook' | 'merchandise';
 
@@ -24,16 +24,16 @@ const statusLabels: Record<BadgeStatus, string> = {
 };
 
 const categoryStyles: Record<ProductCategory, string> = {
-  indikator: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+  indikator: 'bg-slate-400/20 text-slate-300 border-slate-400/30',
   robot: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
-  ebook: 'bg-amber-500/20 text-amber-400 border-amber-500/30',
+  ebook: 'bg-slate-400/20 text-slate-300 border-slate-400/30',
   merchandise: 'bg-pink-500/20 text-pink-400 border-pink-500/30',
 };
 
 const statusStyles: Record<BadgeStatus, string> = {
-  new: 'bg-orange-500/20 text-orange-300 border-orange-500/30',
-  popular: 'bg-orange-500/20 text-orange-300 border-orange-500/30',
-  bestseller: 'bg-orange-500/20 text-orange-300 border-orange-500/30',
+  new: 'bg-slate-400/20 text-slate-200 border-slate-400/30',
+  popular: 'bg-slate-400/20 text-slate-200 border-slate-400/30',
+  bestseller: 'bg-slate-400/20 text-slate-200 border-slate-400/30',
   soldout: 'bg-zinc-500/20 text-zinc-400 border-zinc-500/30',
 };
 

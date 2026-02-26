@@ -1,4 +1,4 @@
-type BadgeVariant = 'category' | 'status';
+﻿type BadgeVariant = 'category' | 'status';
 type BadgeStatus = 'new' | 'popular' | 'bestseller' | 'soldout';
 type ProductCategory = 'indikator' | 'robot' | 'ebook' | 'merchandise';
 
@@ -24,9 +24,9 @@ const statusLabels: Record<BadgeStatus, string> = {
 };
 
 const categoryStyles: Record<ProductCategory, string> = {
-  indikator: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+  indikator: 'bg-slate-400/20 text-slate-300 border-slate-400/30',
   robot: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
-  ebook: 'bg-amber-500/20 text-amber-400 border-amber-500/30',
+  ebook: 'bg-slate-400/20 text-slate-300 border-slate-400/30',
   merchandise: 'bg-pink-500/20 text-pink-400 border-pink-500/30',
 };
 

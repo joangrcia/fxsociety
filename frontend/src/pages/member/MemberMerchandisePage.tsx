@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 
 interface MerchOrder {
   id: string;
@@ -38,8 +38,8 @@ export function MemberMerchandisePage() {
                 <div className="flex items-center gap-3 mb-1">
                   <h3 className="font-mono text-lg text-white">#{order.id}</h3>
                   <span className={`px-2.5 py-0.5 rounded-full text-xs font-medium border
-                    ${order.status === 'processing' ? 'bg-blue-500/10 text-blue-400 border-blue-500/20' : ''}
-                    ${order.status === 'shipped' ? 'bg-orange-500/10 text-orange-400 border-orange-500/20' : ''}
+                    ${order.status === 'processing' ? 'bg-slate-400/10 text-slate-300 border-slate-400/20' : ''}
+                    ${order.status === 'shipped' ? 'bg-slate-400/10 text-slate-300 border-slate-400/20' : ''}
                     ${order.status === 'delivered' ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : ''}
                   `}>
                     {order.status === 'processing' ? 'Diproses' : order.status === 'shipped' ? 'Dikirim' : 'Diterima'}
@@ -74,14 +74,14 @@ export function MemberMerchandisePage() {
                   <div className="bg-[#0a0a0f] rounded-xl p-4 border border-white/5">
                     <div className="flex justify-between items-center mb-2">
                       <span className="text-sm text-zinc-400">{order.courier}</span>
-                      <button className="text-xs text-orange-400 hover:text-orange-300 font-medium">Salin Resi</button>
+                      <button className="text-xs text-slate-300 hover:text-slate-200 font-medium">Salin Resi</button>
                     </div>
                     <div className="font-mono text-lg text-white tracking-widest">{order.trackingNumber}</div>
                     <a 
                       href={`https://cekresi.com/?noresi=${order.trackingNumber}`} 
                       target="_blank" 
                       rel="noreferrer"
-                      className="inline-block mt-3 text-sm text-blue-400 hover:text-blue-300"
+                      className="inline-block mt-3 text-sm text-slate-300 hover:text-slate-200"
                     >
                       Lacak Paket →
                     </a>

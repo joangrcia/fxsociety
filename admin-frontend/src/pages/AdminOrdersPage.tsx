@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AdminLayout } from '../components/admin/AdminLayout';
 import { fetchAllOrdersAdmin, updateOrderStatus, ApiError, apiOrderToOrder } from '../lib/api';
@@ -54,7 +54,7 @@ export function AdminOrdersPage() {
     <select
       value={filterStatus}
       onChange={(e) => setFilterStatus(e.target.value)}
-      className="bg-[#1e1e26] text-zinc-300 text-sm rounded-lg border border-white/10 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+      className="bg-[#1e1e26] text-zinc-300 text-sm rounded-lg border border-white/10 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-slate-400"
     >
       <option value="all">Semua Status</option>
       <option value="pending">Menunggu Konfirmasi</option>
@@ -113,7 +113,7 @@ function AdminOrderCard({ order, onUpdateStatus }: { order: Order; onUpdateStatu
 
           <div>
             <h3 className="text-white font-medium text-lg">{order.productTitle}</h3>
-            <p className="text-orange-400 font-bold">{formatPrice(order.productPrice)}</p>
+            <p className="text-slate-300 font-bold">{formatPrice(order.productPrice)}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
@@ -142,7 +142,7 @@ function AdminOrderCard({ order, onUpdateStatus }: { order: Order; onUpdateStatu
             <>
               <button
                 onClick={() => onUpdateStatus(order, 'confirmed')}
-                className="w-full px-3 py-2 bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 rounded-lg text-sm font-medium transition-colors"
+                className="w-full px-3 py-2 bg-slate-400/10 text-slate-300 hover:bg-slate-400/20 rounded-lg text-sm font-medium transition-colors"
               >
                 Konfirmasi
               </button>
@@ -158,7 +158,7 @@ function AdminOrderCard({ order, onUpdateStatus }: { order: Order; onUpdateStatu
           {order.status === 'confirmed' && (
             <button
               onClick={() => onUpdateStatus(order, 'completed')}
-              className="w-full px-3 py-2 bg-orange-500/10 text-orange-400 hover:bg-orange-500/20 rounded-lg text-sm font-medium transition-colors"
+              className="w-full px-3 py-2 bg-slate-400/10 text-slate-300 hover:bg-slate-400/20 rounded-lg text-sm font-medium transition-colors"
             >
               Selesaikan
             </button>

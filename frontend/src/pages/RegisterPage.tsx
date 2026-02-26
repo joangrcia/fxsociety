@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react';
+﻿import { useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../components/shared';
 import { registerUser, ApiError } from '../lib/api';
@@ -43,8 +43,8 @@ export function RegisterPage() {
   return (
     <main className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#0a0a0f] px-4 py-12">
       {/* Background Ambience */}
-      <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-orange-500/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
-      <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-orange-600/10 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
+      <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-slate-400/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
+      <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-slate-500/10 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
 
       <div className="relative z-10 w-full max-w-md">
         {/* Header Section */}
@@ -53,7 +53,7 @@ export function RegisterPage() {
             to="/" 
             className="inline-block text-3xl font-bold text-white hover:opacity-80 transition-opacity tracking-tight"
           >
-            fx<span className="text-orange-500">society</span>
+            fx<span className="text-slate-400">society</span>
           </Link>
           <h1 className="text-2xl font-bold text-white mt-6 mb-2">
             Selamat Datang
@@ -66,7 +66,7 @@ export function RegisterPage() {
         {/* Glass Card */}
         <div className="relative group">
           {/* Glow effect behind card */}
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-2xl blur opacity-50 group-hover:opacity-75 transition duration-500"></div>
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-slate-400/20 to-slate-500/20 rounded-2xl blur opacity-50 group-hover:opacity-75 transition duration-500"></div>
           
           <div className="relative bg-[#14141a]/60 backdrop-blur-xl rounded-2xl p-8 border border-white/10 shadow-2xl">
             {error && (
@@ -93,7 +93,7 @@ export function RegisterPage() {
                     placeholder="Masukkan nama lengkap"
                     required
                     className="w-full bg-white/5 text-white rounded-xl border border-white/10 px-4 py-3 text-sm 
-                    focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500/50 
+                    focus:outline-none focus:ring-2 focus:ring-slate-400/50 focus:border-slate-400/50
                     placeholder:text-zinc-600 transition-all duration-300 group-hover/input:border-white/20"
                   />
                 </div>
@@ -113,7 +113,7 @@ export function RegisterPage() {
                     placeholder="nama@email.com"
                     required
                     className="w-full bg-white/5 text-white rounded-xl border border-white/10 px-4 py-3 text-sm 
-                    focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500/50 
+                    focus:outline-none focus:ring-2 focus:ring-slate-400/50 focus:border-slate-400/50
                     placeholder:text-zinc-600 transition-all duration-300 group-hover/input:border-white/20"
                   />
                 </div>
@@ -133,7 +133,7 @@ export function RegisterPage() {
                     placeholder="Buat password aman"
                     required
                     className="w-full bg-white/5 text-white rounded-xl border border-white/10 px-4 py-3 pr-12 text-sm 
-                    focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500/50 
+                    focus:outline-none focus:ring-2 focus:ring-slate-400/50 focus:border-slate-400/50
                     placeholder:text-zinc-600 transition-all duration-300 group-hover/input:border-white/20"
                   />
                   <button
@@ -159,7 +159,7 @@ export function RegisterPage() {
               <div className="pt-2">
                 <Button
                   type="submit"
-                  className="w-full bg-orange-500 hover:bg-orange-400 text-white font-medium py-3 rounded-xl shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:shadow-[0_0_30px_rgba(249,115,22,0.5)] transition-all duration-300"
+                  className="w-full bg-slate-400 hover:bg-slate-300 text-white font-medium py-3 rounded-xl shadow-[0_0_20px_rgba(203,213,225,0.3)] hover:shadow-[0_0_30px_rgba(203,213,225,0.5)] transition-all duration-300"
                   isLoading={isLoading}
                 >
                   Buat Akun
@@ -173,7 +173,7 @@ export function RegisterPage() {
                 Sudah memiliki akun?{' '}
                 <Link
                   to="/login"
-                  className="text-orange-500 hover:text-orange-400 font-medium transition-colors hover:underline decoration-orange-500/30 underline-offset-4"
+                  className="text-slate-400 hover:text-slate-300 font-medium transition-colors hover:underline decoration-slate-400/30 underline-offset-4"
                 >
                   Login sekarang
                 </Link>
