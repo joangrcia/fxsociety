@@ -21,6 +21,9 @@
   /* Border colors */
   --color-border-subtle: rgba(255, 255, 255, 0.05);
   --color-border-default: rgba(255, 255, 255, 0.1);
+  --color-border-accent: rgba(59, 130, 246, 0.35);
+  --color-border-subtle: rgba(255, 255, 255, 0.05);
+  --color-border-default: rgba(255, 255, 255, 0.1);
   --color-border-accent: rgba(203, 213, 225, 0.35);
 
   /* Shadows */

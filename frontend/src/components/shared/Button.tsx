@@ -1,4 +1,4 @@
-﻿import { type ReactNode, type ButtonHTMLAttributes } from 'react';
+import { type ReactNode, type ButtonHTMLAttributes } from 'react';
 import { Link } from 'react-router-dom';
 
 type ButtonVariant = 'primary' | 'secondary' | 'ghost';
@@ -16,10 +16,10 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary: `
-    bg-slate-400 text-white
-    hover:bg-slate-300
-    active:bg-slate-500
-    disabled:bg-slate-400/50
+    bg-blue-600 text-white
+    hover:bg-blue-500
+    active:bg-blue-700
+    disabled:bg-blue-600/50
   `,
   secondary: `
     bg-transparent text-slate-200

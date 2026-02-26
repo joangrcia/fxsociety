@@ -44,7 +44,7 @@ export function Footer() {
   return (
     <footer className="bg-[#0a0a0f] border-t border-white/5 relative overflow-hidden">
       {/* Subtle top glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-slate-400/20 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
@@ -54,7 +54,7 @@ export function Footer() {
               to="/" 
               className="text-2xl font-bold text-white hover:opacity-80 transition-opacity tracking-tight"
             >
-              fx<span className="text-slate-300">society</span>
+              fx<span className="text-blue-500">society</span>
             </Link>
             <p className="text-zinc-500 text-sm leading-relaxed max-w-sm font-light">
               Ecosystem trading modern untuk pemula. 
@@ -69,7 +69,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-zinc-600 hover:text-slate-300 transition-colors duration-300"
+                  className="text-zinc-600 hover:text-blue-400 transition-colors duration-300"
                   aria-label={social.label}
                 >
                   {social.icon}
@@ -104,7 +104,7 @@ export function Footer() {
             </h4>
             <ul className="space-y-4 text-sm text-zinc-500 font-light">
               <li className="flex items-start gap-3 group cursor-pointer">
-                 <span className="text-zinc-700 group-hover:text-slate-300 transition-colors mt-0.5">
+                 <span className="text-zinc-700 group-hover:text-blue-400 transition-colors mt-0.5">
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
@@ -117,7 +117,7 @@ export function Footer() {
                 </a>
               </li>
               <li className="flex items-start gap-3 group cursor-pointer">
-                 <span className="text-zinc-700 group-hover:text-slate-300 transition-colors mt-0.5">
+                 <span className="text-zinc-700 group-hover:text-blue-400 transition-colors mt-0.5">
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                   </svg>
