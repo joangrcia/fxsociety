@@ -1,4 +1,4 @@
-import{j as e,L as t,r as a,f as o,a as d}from"./index-DYaF5W9w.js";import{P as x}from"./ProductCard-C_Zx10L3.js";import"./Badge-DWxUq_As.js";const c=`
+import{j as e,L as t,r as a,f as o,a as d}from"./index-BqLjboeP.js";import{P as x}from"./ProductCard-BUZu45oC.js";import"./Badge-DFohYmgh.js";const c=`
   @keyframes float-slow {
     0%, 100% { transform: translateY(0px) rotateX(0deg); }
     50% { transform: translateY(-20px) rotateX(2deg); }
