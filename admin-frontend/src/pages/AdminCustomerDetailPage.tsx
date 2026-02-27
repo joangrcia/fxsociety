@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { AdminLayout } from '../components/admin/AdminLayout';
+import { useToast } from '../context/ToastContext';
 import { 
   fetchCustomer, 
   fetchCustomerOrders, 
@@ -40,6 +41,7 @@ export function AdminCustomerDetailPage() {
   const [newNote, setNewNote] = useState('');
   
   const navigate = useNavigate();
+  const { showToast } = useToast();
 
   useEffect(() => {
     if (id) loadData(parseInt(id));
@@ -92,7 +94,7 @@ export function AdminCustomerDetailPage() {
       setTags([...tags, tag]);
       setNewTag('');
     } catch {
-      alert('Failed to add tag');
+      showToast('Gagal menambahkan tag', 'error');
     }
   };
 
@@ -105,7 +107,7 @@ export function AdminCustomerDetailPage() {
       await removeCustomerTag(token, customer.id, tag);
       setTags(tags.filter(t => t.tag !== tag));
     } catch {
-      alert('Failed to remove tag');
+      showToast('Gagal menghapus tag', 'error');
     }
   };
 
@@ -120,7 +122,7 @@ export function AdminCustomerDetailPage() {
       setNotes([note, ...notes]);
       setNewNote('');
     } catch {
-      alert('Failed to add note');
+      showToast('Gagal menambahkan catatan', 'error');
     }
   };
 

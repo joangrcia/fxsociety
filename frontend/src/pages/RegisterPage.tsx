@@ -1,7 +1,7 @@
 ﻿import { useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Button } from '../components/shared';
 import { registerUser, ApiError } from '../lib/api';
+import { useToast } from '../context/ToastContext';
 
 export function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -13,6 +13,7 @@ export function RegisterPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
+  const { showToast } = useToast();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -22,7 +23,7 @@ export function RegisterPage() {
     try {
       await registerUser(formData);
       // Success, redirect to login
-      alert('Registrasi berhasil! Silakan login.');
+      showToast('Registrasi berhasil! Silakan login.', 'success');
       navigate('/login');
     } catch (err) {
       console.error('Registration failed:', err);

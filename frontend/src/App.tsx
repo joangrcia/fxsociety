@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-route
 import { Navbar, Footer, ErrorBoundary } from './components/shared';
 import { MemberLayout } from './components/member';
 import { AuthProvider } from './context/AuthContext';
+import { ToastProvider } from './context/ToastContext';
 
 // Lazy load page components for code splitting
 // Using named exports requires wrapping with default
@@ -88,9 +89,11 @@ function App() {
   return (
     <ErrorBoundary>
       <AuthProvider>
-        <BrowserRouter>
-          <AppLayout />
-        </BrowserRouter>
+        <ToastProvider>
+          <BrowserRouter>
+            <AppLayout />
+          </BrowserRouter>
+        </ToastProvider>
       </AuthProvider>
     </ErrorBoundary>
   );

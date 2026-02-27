@@ -2,6 +2,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ErrorBoundary } from './components/shared';
 import { ProtectedRoute } from './components/admin/ProtectedRoute';
+import { ToastProvider } from './context/ToastContext';
 
 // Lazy load page components for code splitting
 // Using named exports requires wrapping with default
@@ -29,26 +30,28 @@ function PageLoader() {
 function App() {
   return (
     <ErrorBoundary>
-      <BrowserRouter basename="/admin">
-        <Suspense fallback={<PageLoader />}>
-          <Routes>
-            {/* Public route */}
-            <Route path="/login" element={<AdminLoginPage />} />
-            
-            {/* Protected routes */}
-            <Route path="/dashboard" element={<ProtectedRoute><AdminDashboardPage /></ProtectedRoute>} />
-            <Route path="/" element={<ProtectedRoute><Navigate to="/customers" replace /></ProtectedRoute>} />
-            <Route path="/customers" element={<ProtectedRoute><AdminCustomersPage /></ProtectedRoute>} />
-            <Route path="/customers/:id" element={<ProtectedRoute><AdminCustomerDetailPage /></ProtectedRoute>} />
-            <Route path="/orders" element={<ProtectedRoute><AdminOrdersPage /></ProtectedRoute>} />
-            <Route path="/tickets" element={<ProtectedRoute><AdminTicketsPage /></ProtectedRoute>} />
-            <Route path="/products" element={<ProtectedRoute><AdminProductsPage /></ProtectedRoute>} />
-            
-            {/* Catch all - 404 */}
-            <Route path="*" element={<AdminNotFoundPage />} />
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
+      <ToastProvider>
+        <BrowserRouter basename="/admin">
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              {/* Public route */}
+              <Route path="/login" element={<AdminLoginPage />} />
+              
+              {/* Protected routes */}
+              <Route path="/dashboard" element={<ProtectedRoute><AdminDashboardPage /></ProtectedRoute>} />
+              <Route path="/" element={<ProtectedRoute><Navigate to="/customers" replace /></ProtectedRoute>} />
+              <Route path="/customers" element={<ProtectedRoute><AdminCustomersPage /></ProtectedRoute>} />
+              <Route path="/customers/:id" element={<ProtectedRoute><AdminCustomerDetailPage /></ProtectedRoute>} />
+              <Route path="/orders" element={<ProtectedRoute><AdminOrdersPage /></ProtectedRoute>} />
+              <Route path="/tickets" element={<ProtectedRoute><AdminTicketsPage /></ProtectedRoute>} />
+              <Route path="/products" element={<ProtectedRoute><AdminProductsPage /></ProtectedRoute>} />
+              
+              {/* Catch all - 404 */}
+              <Route path="*" element={<AdminNotFoundPage />} />
+            </Routes>
+          </Suspense>
+        </BrowserRouter>
+      </ToastProvider>
     </ErrorBoundary>
   );
 }

@@ -97,6 +97,10 @@ a, button {
     animation: spin-slow 7s linear infinite;
   }
 
+  .animate-slide-in-right {
+    animation: slide-in-right 350ms ease-out both;
+  }
+
   /* Styled scrollbar (best-effort across browsers) */
   .scrollbar-styled {
     scrollbar-width: thin;
@@ -199,6 +203,17 @@ a, button {
     }
     to {
       transform: rotate(360deg);
+    }
+  }
+
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
     }
   }
 }

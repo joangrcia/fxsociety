@@ -2,7 +2,8 @@
 import { useNavigate } from 'react-router-dom';
 import { AdminLayout } from '../components/admin/AdminLayout';
 import { Button } from '../components/shared';
-import { 
+import { useToast } from '../context/ToastContext';
+import {
   fetchAllProductsAdmin, 
   createProductAdmin, 
   updateProductAdmin, 
@@ -22,6 +23,7 @@ export function AdminProductsPage() {
   const [viewMode, setViewMode] = useState<ViewMode>('list');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const navigate = useNavigate();
+  const { showToast } = useToast();
 
   useEffect(() => {
     loadProducts();
@@ -58,7 +60,7 @@ export function AdminProductsPage() {
       await toggleProductActiveAdmin(token, parseInt(product.id));
       loadProducts();
     } catch {
-      alert('Gagal update status produk');
+      showToast('Gagal update status produk', 'error');
     }
   };
 
@@ -156,6 +158,7 @@ function ProductList({ products, isLoading, onEdit, onToggleActive }: { products
 }
 
 function ProductForm({ product, onSubmit, onCancel }: { product?: Product, onSubmit: () => void, onCancel: () => void }) {
+  const { showToast } = useToast();
   const [formData, setFormData] = useState<ApiProductCreate>({
     title: product?.title || '',
     slug: product?.slug || '',
@@ -184,7 +187,7 @@ function ProductForm({ product, onSubmit, onCancel }: { product?: Product, onSub
       onSubmit();
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : String(err);
-      alert('Error: ' + message);
+      showToast('Error: ' + message, 'error');
     } finally {
       setIsSubmitting(false);
     }

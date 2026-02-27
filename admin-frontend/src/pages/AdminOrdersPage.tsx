@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { AdminLayout } from '../components/admin/AdminLayout';
 import { fetchAllOrdersAdmin, updateOrderStatus, ApiError, apiOrderToOrder } from '../lib/api';
 import { formatPrice, formatDate, getStatusLabel, getStatusColor } from '../utils/orders';
+import { useToast } from '../context/ToastContext';
+import { useConfirmDialog } from '../components/shared/ConfirmDialog';
 import type { Order, OrderStatus } from '../types/order';
 
 export function AdminOrdersPage() {
@@ -10,6 +12,8 @@ export function AdminOrdersPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [filterStatus, setFilterStatus] = useState<string>('all');
   const navigate = useNavigate();
+  const { showToast } = useToast();
+  const { confirm, dialog } = useConfirmDialog();
 
   useEffect(() => {
     loadOrders();
@@ -37,16 +41,21 @@ export function AdminOrdersPage() {
 
   const handleStatusUpdate = async (order: Order, newStatus: OrderStatus) => {
     if (!order.numericId) return;
-    if (!confirm(`Ubah status pesanan ${order.id} menjadi ${getStatusLabel(newStatus)}?`)) return;
+    const confirmed = await confirm(
+      'Ubah Status Pesanan',
+      `Ubah status pesanan ${order.id} menjadi ${getStatusLabel(newStatus)}?`
+    );
+    if (!confirmed) return;
 
     const token = localStorage.getItem('admin_token');
     if (!token) return;
 
     try {
       await updateOrderStatus(token, order.numericId, newStatus);
-      loadOrders(); 
+      showToast('Status pesanan berhasil diupdate', 'success');
+      loadOrders();
     } catch {
-      alert('Gagal update status');
+      showToast('Gagal update status', 'error');
     }
   };
 
@@ -87,6 +96,7 @@ export function AdminOrdersPage() {
           <p className="text-zinc-400">Tidak ada pesanan ditemukan.</p>
         </div>
       )}
+      {dialog}
     </AdminLayout>
   );
 }

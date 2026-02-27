@@ -1,7 +1,8 @@
 ﻿import { useState, useEffect } from 'react';
 import { useParams, Link, useLocation, useNavigate } from 'react-router-dom';
 import { Badge, Button, OrderRequestForm, OrderSuccessView } from '../components/shared';
-import { 
+import { useToast } from '../context/ToastContext';
+import {
   fetchProduct, 
   createOrder, 
   apiProductToProduct, 
@@ -20,6 +21,7 @@ export function ProductDetailPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const location = useLocation();
+  const { showToast } = useToast();
   const [viewState, setViewState] = useState<ViewState>('detail');
   const [loadingState, setLoadingState] = useState<LoadingState>('loading');
   const [product, setProduct] = useState<Product | null>(null);
@@ -116,7 +118,7 @@ export function ProductDetailPage() {
       setViewState('success');
     } catch (err) {
       console.error('Failed to create order:', err);
-      alert('Gagal membuat pesanan. Silakan coba lagi.');
+      showToast('Gagal membuat pesanan. Silakan coba lagi.', 'error');
     } finally {
       setIsSubmitting(false);
     }
