@@ -61,10 +61,10 @@ const faqItems = [
 
 function SectionLabel({ children }: { children: ReactNode }) {
   return (
-    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6 shadow-[0_0_15px_rgba(203,213,225,0.1)]">
+    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-blue-500/20 backdrop-blur-md mb-6 shadow-[0_0_15px_rgba(59,130,246,0.08)]">
       <span className="relative flex h-2 w-2">
-        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-300 opacity-75"></span>
-        <span className="relative inline-flex rounded-full h-2 w-2 bg-slate-400"></span>
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+        <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
       </span>
       <span className="text-xs font-medium text-slate-100 tracking-wide uppercase">{children}</span>
     </div>
@@ -118,9 +118,9 @@ function StepCard({ step, index }: { step: FlowStep; index: number }) {
       <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 items-center justify-center z-20">
         <div className="relative group/marker">
           {/* Pulse effect */}
-          <div className="absolute inset-0 rounded-full bg-slate-400/20 blur-xl group-hover/marker:bg-slate-400/40 transition-all duration-500" />
+          <div className="absolute inset-0 rounded-full bg-blue-500/15 blur-xl group-hover/marker:bg-blue-500/30 transition-all duration-500" />
           
-          <div className="relative h-14 w-14 rounded-full border border-slate-400/30 bg-[#0a0a0f] text-slate-100 flex items-center justify-center font-bold text-lg shadow-[0_0_0_4px_rgba(20,20,26,1)] group-hover/marker:scale-110 group-hover/marker:border-slate-400/60 transition-all duration-300">
+          <div className="relative h-14 w-14 rounded-full border border-blue-500/40 bg-[#0a0a0f] text-slate-100 flex items-center justify-center font-bold text-lg shadow-[0_0_0_4px_rgba(20,20,26,1),0_0_20px_rgba(59,130,246,0.15)] group-hover/marker:scale-110 group-hover/marker:border-blue-400/70 group-hover/marker:shadow-[0_0_0_4px_rgba(20,20,26,1),0_0_30px_rgba(59,130,246,0.3)] transition-all duration-300">
             {stepNumber}
           </div>
         </div>
@@ -134,10 +134,11 @@ export function HowItWorksPage() {
   return (
     <main className="bg-[#0a0a0f] min-h-screen relative overflow-x-hidden selection:bg-slate-400/30 selection:text-slate-100">
       
-      {/* --- Background Ambience (Consistent with AboutPage) --- */}
+      {/* --- Background Ambience --- */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute top-0 right-1/4 w-[800px] h-[600px] bg-slate-400/5 rounded-full blur-[120px] mix-blend-screen opacity-30" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[500px] bg-slate-400/5 rounded-full blur-[120px] mix-blend-screen opacity-20" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[500px] bg-blue-500/6 rounded-full blur-[120px] mix-blend-screen opacity-40" />
+        <div className="absolute top-1/3 right-0 w-[400px] h-[400px] bg-blue-400/5 rounded-full blur-[100px] mix-blend-screen opacity-30" />
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] brightness-100 contrast-150" />
       </div>
 
@@ -213,8 +214,8 @@ export function HowItWorksPage() {
             <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-zinc-900 to-[#14141a] border border-white/10 p-10 md:p-16 text-center shadow-2xl">
                
                {/* Decorative glows */}
-               <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-slate-400/10 rounded-full blur-[80px] pointer-events-none" />
-               <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-slate-400/5 rounded-full blur-[80px] pointer-events-none" />
+               <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/8 rounded-full blur-[80px] pointer-events-none" />
+               <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-400/5 rounded-full blur-[80px] pointer-events-none" />
                
                <div className="relative z-10">
                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">

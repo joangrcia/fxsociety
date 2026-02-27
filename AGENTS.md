@@ -105,18 +105,33 @@ Rules:
 - Dark-based UI
 - Do NOT use pure black everywhere
 - Use layered dark backgrounds to create depth:
-  - Page background
-  - Section surface
-  - Card surface
+  - Page background: `#0a0a0f` / `#050505`
+  - Section surface: `#0f0f12` / `#08080a`
+  - Card surface: `#14141a` / `#1e1e26`
 
-### Accent Color
+### Accent Colors
 
-- Use ONLY ONE primary accent color (e.g. emerald or cyan)
-- Accent color usage is LIMITED to:
-  - Primary CTA buttons
-  - Highlighted keywords
-  - Badges or indicators
-- Do NOT introduce multiple accent colors
+The design uses **silver metallic as dominant** with **blue as secondary accent**.
+
+**Silver (dominant):**
+- Primary CTA buttons: `bg-gradient-to-br from-slate-100 via-white to-slate-300 text-black`
+- Gradient headings: `bg-gradient-to-r from-slate-100 via-white to-slate-400`
+- Borders, badges, bullet dots: `slate-400/20`, `slate-400/10`
+
+**Blue (accent — subtle, never dominant):**
+- Ambient background orbs: `bg-blue-500/5` to `bg-blue-500/8`, `blur-[100px–150px]`
+- Active nav item border: `border-blue-500/20`
+- Input focus ring: `focus:ring-blue-500/30 focus:border-blue-500/30`
+- Badge/pill dot indicator: `bg-blue-500 animate-pulse`
+- Button hover glow: `hover:shadow-[0_0_24px_rgba(59,130,246,0.18)]`
+- Category filter pill active state: `bg-blue-600/80 border-blue-500/30`
+- Step number markers: `border-blue-500/40 shadow-[0_0_20px_rgba(59,130,246,0.15)]`
+- Scrollbar: `rgba(59, 130, 246, 0.35)`
+
+**Rules:**
+- Silver must always dominate visually
+- Blue opacity must stay low (4–20%) to remain ambient/subtle
+- Do NOT introduce any third accent color
 
 ---
 
@@ -126,12 +141,14 @@ Cards are the primary UI building blocks.
 
 Card requirements:
 
-- Large rounded corners (rounded-xl or rounded-2xl)
-- Subtle, low-contrast borders
-- Soft shadows for depth
+- Large rounded corners (`rounded-xl` or `rounded-2xl`, hero cards use `rounded-3xl`)
+- Subtle, low-contrast borders: `border border-white/5` or `border border-white/10`
+- Soft shadows for depth: `shadow-2xl`
+- Background: `bg-[#14141a]` or `bg-[#0f0f12]`
 - Hover interactions:
-  - Slight upward movement
-  - Border highlight or subtle glow
+  - Slight upward movement: `hover:-translate-y-1`
+  - Border highlight: `hover:border-white/20` or `hover:border-blue-500/20`
+  - Subtle glow: `hover:shadow-[0_8px_32px_rgba(0,0,0,0.4)]`
 
 Common card types:
 
@@ -141,6 +158,49 @@ Common card types:
 - Testimonial cards
 
 Product cards MUST be adaptable to different product types.
+
+---
+
+## Component Patterns
+
+### Badge / Pill Label
+```jsx
+<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/20 bg-blue-500/5 text-slate-300 text-xs tracking-widest uppercase font-medium">
+  <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+  Label Text
+</div>
+```
+
+### Background Ambient Orbs (use on every page)
+```jsx
+<div className="absolute inset-0 pointer-events-none">
+  <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/6 rounded-full blur-[120px]" />
+  <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-400/5 rounded-full blur-[100px]" />
+</div>
+```
+
+### Input Fields
+```jsx
+<input className="w-full bg-white/5 text-white rounded-xl border border-white/10 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500/30 placeholder:text-zinc-600 transition-all" />
+```
+
+### Primary CTA Button (silver + blue hover glow)
+```jsx
+<button className="bg-gradient-to-br from-slate-100 via-white to-slate-300 text-black font-bold rounded-xl hover:shadow-[0_0_24px_rgba(59,130,246,0.18)] transition-all">
+  CTA Text
+</button>
+```
+
+### Hero Section
+- Height: `min-h-screen` (NOT `h-[85vh]` — use full viewport height)
+- Layout: `flex items-center justify-center`
+- Mobile: hide decorative 3D elements with `hidden lg:flex`
+- Text content: `max-w-xl mx-auto lg:mx-0` for proper mobile centering
+
+### Navbar Mobile Menu
+- Background: `bg-[#0d0d14]/98 backdrop-blur-xl`
+- Menu item text: `text-zinc-200 font-semibold` (NOT `text-zinc-400` — too low contrast)
+- Active item border: `border-blue-500/20`
 
 ---
 

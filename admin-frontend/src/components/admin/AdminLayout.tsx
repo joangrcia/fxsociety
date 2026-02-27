@@ -1,6 +1,5 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-// import { Button } from '../shared';
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -22,7 +21,7 @@ function NavItem({ to, icon, label }: NavItemProps) {
       to={to}
       className={`flex items-center gap-3 px-4 py-3 text-sm font-medium transition-colors rounded-lg mb-1 ${
         isActive
-          ? 'bg-blue-500/10 text-blue-400'
+          ? 'bg-white/10 text-white border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.05)]'
           : 'text-zinc-400 hover:text-white hover:bg-white/5'
       }`}
     >
@@ -58,7 +57,7 @@ export function AdminLayout({ children, title, actions }: AdminLayoutProps) {
         <div className="p-6 h-full flex flex-col">
           <div className="flex items-center justify-between mb-8">
             <span className="text-xl font-bold text-white">
-              fx<span className="text-blue-500">society</span>
+              fx<span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-100 to-slate-400">society</span>
               <span className="text-xs text-zinc-500 ml-2">CRM</span>
             </span>
             <button 

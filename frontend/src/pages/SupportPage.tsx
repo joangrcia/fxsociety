@@ -37,10 +37,10 @@ export function SupportPage() {
       <div className="max-w-5xl mx-auto">
         {/* Cinematic Header */}
         <div className="text-center mb-16 relative">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-slate-400/10 blur-[80px] rounded-full -z-10" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-500/8 blur-[80px] rounded-full -z-10" />
           
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-400/20 bg-slate-400/5 text-slate-300 text-xs tracking-widest uppercase font-medium mb-6 animate-fade-in">
-            <span className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
             Customer Success
           </div>
           
@@ -88,7 +88,7 @@ export function SupportPage() {
           {/* FAQ Section */}
           <section className="lg:col-span-2 animate-slide-up" style={{ animationDelay: '300ms' }}>
             <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-              <span className="w-1 h-6 bg-slate-400 rounded-full" />
+              <span className="w-1 h-6 bg-blue-500 rounded-full" />
               Pertanyaan Umum
             </h2>
             <Accordion items={faqItems} defaultOpenIndex={0} />

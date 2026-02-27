@@ -69,14 +69,14 @@ export function ShopPage() {
           {/* Background Effects */}
             <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-4xl bg-slate-400/5 blur-[120px] rounded-full" />
-            <div className="absolute top-0 right-0 w-96 h-96 bg-slate-400/10 blur-[100px] rounded-full mix-blend-screen" />
-            <div className="absolute bottom-0 left-0 w-80 h-80 bg-slate-400/5 blur-[100px] rounded-full mix-blend-screen" />
+            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/8 blur-[100px] rounded-full mix-blend-screen" />
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-400/5 blur-[100px] rounded-full mix-blend-screen" />
             <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10 bg-center" />
           </div>
 
           <div className="relative z-10 text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-400/20 bg-slate-400/5 text-slate-300 text-xs tracking-widest uppercase font-medium mb-6 animate-fade-in">
-              <span className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
               Toko Resmi
             </div>
 
@@ -107,7 +107,7 @@ export function ShopPage() {
                       className={`
                         shrink-0 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300
                         ${activeCategory === filter.key
-                          ? 'bg-slate-400 text-white shadow-[0_0_20px_rgba(203,213,225,0.4)] scale-105'
+                          ? 'bg-blue-600/80 text-white shadow-[0_0_20px_rgba(59,130,246,0.35)] scale-105 border border-blue-500/30'
                           : 'bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-white border border-white/5'
                         }
                       `}

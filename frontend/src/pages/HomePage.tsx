@@ -22,10 +22,6 @@ const customStyles = `
     0%, 100% { opacity: 0.5; transform: scale(1); }
     50% { opacity: 1; transform: scale(1.2); }
   }
-  @keyframes scanline {
-    0% { transform: translateY(-100%); }
-    100% { transform: translateY(100%); }
-  }
   @keyframes shine {
     0% { left: -100%; }
     100% { left: 100%; }
@@ -63,26 +59,28 @@ const customStyles = `
   }
 `;
 
-// --- Components ---
-
 function Hero3D() {
   return (
-    <div className="relative h-[85vh] w-full overflow-hidden flex items-center justify-center bg-[#050505] perspective-2000">
+    <div className="relative min-h-screen w-full overflow-hidden flex items-center justify-center bg-[#050505] perspective-2000">
       {/* Background Ambience */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_60%)] pointer-events-none" />
-      <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.03),transparent_60%)] pointer-events-none" />
+      <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      {/* Blue ambient orb — bottom left */}
+      <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
+      {/* Blue ambient orb — top right */}
+      <div className="absolute -top-20 right-0 w-[350px] h-[350px] bg-blue-400/4 rounded-full blur-[100px] pointer-events-none" />
       
-      <div className="relative z-10 w-full max-w-7xl px-6 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="relative z-10 w-full max-w-7xl px-6 grid lg:grid-cols-2 gap-12 items-center py-24 lg:py-0">
         {/* Text Content */}
-        <div className="space-y-8 order-2 lg:order-1 text-center lg:text-left z-20">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/20 bg-blue-500/5 text-blue-400 text-xs tracking-widest uppercase font-medium">
+        <div className="space-y-8 order-2 lg:order-1 text-center lg:text-left z-20 max-w-xl mx-auto lg:mx-0">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-400/20 bg-slate-400/5 text-slate-300 text-xs tracking-widest uppercase font-medium">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-[pulse-glow_2s_ease-in-out_infinite]" />
             Ramah Pemula
           </div>
           
           <h1 className="text-5xl sm:text-7xl font-bold tracking-tighter text-white leading-[0.9]">
             Tempat Belajar <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-400 to-blue-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-100 via-white to-slate-400">
               Trading
             </span>
           </h1>
@@ -94,8 +92,8 @@ function Hero3D() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
             <Link 
-              to="/shop?category=ebook" 
-              className="px-8 py-4 rounded-xl bg-white text-black font-bold hover:bg-zinc-200 transition-colors flex items-center gap-2"
+              to="/shop" 
+              className="px-8 py-4 rounded-xl bg-gradient-to-br from-slate-100 via-white to-slate-300 text-black font-bold hover:from-white hover:to-slate-200 transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_28px_rgba(59,130,246,0.15),0_0_12px_rgba(255,255,255,0.1)]"
             >
               Mulai Sekarang
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -109,8 +107,8 @@ function Hero3D() {
           </div>
         </div>
 
-        {/* 3D Composition */}
-        <div className="relative order-1 lg:order-2 h-[500px] w-full flex items-center justify-center transform-style-3d perspective-2000 lg:scale-110">
+        {/* 3D Composition — hidden on mobile */}
+        <div className="hidden lg:flex relative order-1 lg:order-2 h-[500px] w-full items-center justify-center transform-style-3d perspective-2000 lg:scale-110">
           <div className="relative w-[300px] h-[400px] transform-style-3d animate-[float-slow_6s_ease-in-out_infinite] rotate-y-12 rotate-x-12">
             
             {/* Main Interface Card */}
@@ -127,14 +125,14 @@ function Hero3D() {
               {/* Chart Area */}
               <div className="flex-1 bg-black/40 rounded-lg border border-white/5 relative overflow-hidden flex items-center justify-center p-4">
                 <div className="text-center space-y-2">
-                   <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto text-blue-400">
+                   <div className="w-12 h-12 bg-slate-400/10 rounded-full flex items-center justify-center mx-auto text-slate-400 border border-white/5">
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
                    </div>
                    <div className="h-2 w-20 bg-white/10 rounded-full mx-auto" />
                    <div className="h-2 w-16 bg-white/10 rounded-full mx-auto" />
                 </div>
                 {/* Floating Price Tag */}
-                <div className="absolute top-4 right-4 bg-blue-600 text-white text-[10px] font-bold px-2 py-1 rounded shadow-[0_0_10px_rgba(37,99,235,0.3)]">
+                <div className="absolute top-4 right-4 bg-slate-200 text-black text-[10px] font-bold px-2 py-1 rounded shadow-lg">
                   Bab 1
                 </div>
               </div>
@@ -147,8 +145,8 @@ function Hero3D() {
 
             {/* Floating Element: Buy Signal */}
             <div className="absolute -right-16 top-20 w-32 h-16 glass-card rounded-xl flex items-center justify-center gap-3 transform translate-z-[60px] animate-[float-medium_5s_ease-in-out_infinite_1s]">
-              <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center border border-green-500/30">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+              <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center border border-blue-500/30">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="text-blue-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
               </div>
               <div>
                 <div className="text-[10px] text-zinc-400">STATUS</div>
@@ -159,15 +157,15 @@ function Hero3D() {
             {/* Floating Element: Code Snippet */}
             <div className="absolute -left-12 bottom-20 w-40 h-24 glass-card rounded-xl p-3 transform translate-z-[40px] animate-[float-medium_7s_ease-in-out_infinite_0.5s]">
                <div className="space-y-1.5 font-mono text-[8px] text-zinc-500">
-                  <div className="text-blue-400 font-bold">Step 1: Belajar</div>
+                  <div className="text-slate-300">Step 1: Belajar</div>
                   <div className="pl-2 border-l border-white/10">Pahami Dasar</div>
                   <div className="pl-2 border-l border-white/10">Manajemen Resiko</div>
-                  <div className="text-green-400">Step 2: Praktek</div>
+                  <div className="text-slate-100 font-bold">Step 2: Praktek</div>
                </div>
             </div>
 
             {/* Glow Effect behind */}
-            <div className="absolute inset-0 bg-blue-500/20 blur-[60px] -z-10 rounded-full transform translate-z-[-50px]" />
+            <div className="absolute inset-0 bg-white/5 blur-[60px] -z-10 rounded-full transform translate-z-[-50px]" />
           </div>
         </div>
       </div>
@@ -187,10 +185,9 @@ function GuidedEntry() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          
           {/* Main Card: Education / Start Here */}
           <div className="md:col-span-2 group relative rounded-3xl overflow-hidden border border-white/5 bg-[#0f0f12] h-[400px] md:h-[500px]">
-             <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+             <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
              
              {/* Decorative Path/Map Visual */}
              <div className="absolute inset-0 opacity-20 pointer-events-none">
@@ -198,8 +195,8 @@ function GuidedEntry() {
                    <path d="M50 250 C 150 250, 150 50, 350 50" stroke="url(#gradient-path)" strokeWidth="2" fill="none" strokeDasharray="10 10" />
                    <defs>
                       <linearGradient id="gradient-path" x1="0%" y1="0%" x2="100%" y2="0%">
-                         <stop offset="0%" stopColor="#3b82f6" stopOpacity="0" />
-                         <stop offset="100%" stopColor="#3b82f6" stopOpacity="1" />
+                         <stop offset="0%" stopColor="#ffffff" stopOpacity="0" />
+                         <stop offset="100%" stopColor="#ffffff" stopOpacity="1" />
                       </linearGradient>
                    </defs>
                 </svg>
@@ -207,7 +204,7 @@ function GuidedEntry() {
              
              <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-between z-10">
                <div>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider mb-6">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-400/10 border border-slate-400/20 text-slate-300 text-xs font-bold uppercase tracking-wider mb-6">
                     Langkah 1
                   </div>
                   <h3 className="text-3xl md:text-5xl font-bold text-white mb-4">Pahami Dasarnya</h3>
@@ -218,8 +215,8 @@ function GuidedEntry() {
                
                <div className="flex items-center gap-4">
                  <Link 
-                   to="/shop?category=ebook" 
-                   className="px-6 py-3 bg-white text-black font-bold rounded-xl hover:bg-zinc-200 transition-all flex items-center gap-2"
+                   to="/shop" 
+                   className="px-6 py-3 bg-gradient-to-r from-slate-100 to-slate-300 text-black font-bold rounded-xl hover:from-white hover:to-slate-200 transition-all flex items-center gap-2 shadow-lg"
                  >
                    Mulai Belajar
                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -230,17 +227,16 @@ function GuidedEntry() {
 
           {/* Right Column: Tools & Support */}
           <div className="flex flex-col gap-6 h-[500px]">
-            
             {/* Top: Tools (Indicators & Robots) */}
             <div className="flex-1 group relative rounded-3xl overflow-hidden border border-white/5 bg-[#0f0f12]">
-               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent" />
+               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
                <div className="absolute inset-0 p-8 flex flex-col justify-center z-10">
-                  <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-4 text-blue-400 border border-blue-500/20">
+                  <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center mb-4 text-slate-300 border border-white/10">
                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                   </div>
                   <h3 className="text-xl font-bold text-white mb-2">Alat Bantu Trading</h3>
                   <p className="text-zinc-500 text-sm mb-4">Indikator & Robot untuk membantu analisa Anda (opsional).</p>
-                  <Link to="/shop" className="text-blue-400 font-medium hover:text-blue-300 flex items-center gap-1 text-sm after:absolute after:inset-0">
+                  <Link to="/shop" className="text-slate-300 font-medium hover:text-white flex items-center gap-1 text-sm after:absolute after:inset-0">
                     Lihat Tools <span className="text-lg">→</span>
                   </Link>
                </div>
@@ -248,7 +244,7 @@ function GuidedEntry() {
 
             {/* Bottom: Support */}
             <div className="flex-1 group relative rounded-3xl overflow-hidden border border-white/5 bg-[#0f0f12]">
-               <div className="absolute inset-0 bg-gradient-to-br from-zinc-500/5 to-transparent" />
+               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
                <div className="absolute inset-0 p-8 flex flex-col justify-center z-10">
                   <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center mb-4 text-white border border-white/10">
                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
@@ -260,7 +256,6 @@ function GuidedEntry() {
                   </Link>
                </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -284,11 +279,11 @@ function CuratedSteps() {
   return (
     <section className="py-32 bg-[#050505] border-t border-white/5 relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-full bg-blue-500/5 blur-[100px] -z-10 rounded-full pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-full bg-white/5 blur-[100px] -z-10 rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16 max-w-2xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/20 bg-blue-500/5 text-blue-400 text-xs tracking-widest uppercase font-medium mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-400/20 bg-slate-400/5 text-slate-300 text-xs tracking-widest uppercase font-medium mb-4">
              Rekomendasi Pilihan
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Mulai Perjalanan Anda</h2>
@@ -321,30 +316,32 @@ function FooterCTA() {
       />
       
       {/* 2. The Horizon Glow (Sunrise Effect) */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[150%] h-[500px] bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-blue-600/20 via-slate-900/5 to-transparent blur-[80px] pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[150%] h-[500px] bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-slate-500/10 via-slate-900/5 to-transparent blur-[80px] pointer-events-none" />
       
       {/* 3. The Horizon Line */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent opacity-50" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-50" />
       
       {/* 4. Top Spotlight */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[300px] bg-gradient-to-b from-blue-500/10 to-transparent blur-[100px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[300px] bg-gradient-to-b from-white/5 to-transparent blur-[100px] pointer-events-none" />
+      {/* 5. Blue accent orb */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-blue-600/4 rounded-full blur-[140px] pointer-events-none" />
 
       {/* --- Content --- */}
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
         
         {/* Floating Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-500/10 bg-blue-500/5 backdrop-blur-md text-blue-400 text-xs tracking-[0.2em] uppercase font-medium mb-12 animate-[float-slow_4s_ease-in-out_infinite]">
-          <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/5 bg-white/5 backdrop-blur-md text-slate-300 text-xs tracking-[0.2em] uppercase font-medium mb-12 animate-[float-slow_4s_ease-in-out_infinite]">
+          <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse shadow-[0_0_8px_rgba(59,130,246,0.5)]" />
           Gabung Elite
         </div>
 
         {/* Massive Headline */}
         <h2 className="text-5xl sm:text-7xl md:text-8xl font-bold tracking-tighter mb-8 leading-[0.9]">
-          <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-white/90 to-white/40">
+          <span className="text-transparent bg-clip-text bg-gradient-to-b from-slate-100 via-white to-slate-400">
             Mulai Perjalanan
           </span>
           <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-b from-white/60 via-white/20 to-transparent">
+          <span className="text-transparent bg-clip-text bg-gradient-to-b from-slate-400/60 via-slate-500/20 to-transparent">
             Anda Sekarang
           </span>
         </h2>
@@ -359,17 +356,17 @@ function FooterCTA() {
         <div className="flex flex-col items-center">
           <Link 
             to="/shop" 
-            className="group relative inline-flex items-center gap-3 px-10 py-5 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full overflow-hidden transition-all duration-500 hover:bg-white/10 hover:border-white/20 hover:scale-105 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.2)]"
+            className="group relative inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-br from-slate-100 to-slate-300 rounded-full overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-[0_0_40px_-10px_rgba(255,255,255,0.2)]"
           >
             {/* Shine Animation */}
-            <div className="absolute inset-0 -translate-x-full group-hover:animate-[shine_1.5s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-white/10 to-transparent z-10" />
+            <div className="absolute inset-0 -translate-x-full group-hover:animate-[shine_1.5s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-white/40 to-transparent z-10" />
             
             {/* Button Content */}
-            <span className="relative z-20 text-white font-semibold tracking-wide text-lg">
+            <span className="relative z-20 text-black font-bold tracking-wide text-lg">
               Akses Area Member
             </span>
             <svg
-                className="relative z-20 w-5 h-5 text-blue-400 transition-transform duration-300 group-hover:translate-x-1" 
+                className="relative z-20 w-5 h-5 text-black transition-transform duration-300 group-hover:translate-x-1" 
                 fill="none" 
                 viewBox="0 0 24 24" 
                 stroke="currentColor"

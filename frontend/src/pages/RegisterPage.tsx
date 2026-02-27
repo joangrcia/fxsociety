@@ -43,8 +43,10 @@ export function RegisterPage() {
   return (
     <main className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#0a0a0f] px-4 py-12">
       {/* Background Ambience */}
-      <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-slate-400/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
-      <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-slate-500/10 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/6 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-400/5 rounded-full blur-[100px]" />
+      </div>
 
       <div className="relative z-10 w-full max-w-md">
         {/* Header Section */}
@@ -55,7 +57,7 @@ export function RegisterPage() {
           >
             fx<span className="text-slate-400">society</span>
           </Link>
-          <h1 className="text-2xl font-bold text-white mt-6 mb-2">
+          <h1 className="text-2xl font-bold tracking-wide bg-gradient-to-r from-slate-100 via-white to-slate-400 bg-clip-text text-transparent mt-6 mb-2">
             Selamat Datang
           </h1>
           <p className="text-zinc-400 text-sm">
@@ -63,12 +65,8 @@ export function RegisterPage() {
           </p>
         </div>
 
-        {/* Glass Card */}
-        <div className="relative group">
-          {/* Glow effect behind card */}
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-slate-400/20 to-slate-500/20 rounded-2xl blur opacity-50 group-hover:opacity-75 transition duration-500"></div>
-          
-          <div className="relative bg-[#14141a]/60 backdrop-blur-xl rounded-2xl p-8 border border-white/10 shadow-2xl">
+        {/* Card */}
+        <div className="bg-[#14141a] border border-white/5 rounded-2xl p-8 shadow-2xl hover:border-white/10 transition-all">
             {error && (
               <div className="bg-red-500/10 border border-red-500/20 text-red-400 text-sm p-3 rounded-lg mb-6 flex items-start gap-2">
                 <svg className="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -92,8 +90,8 @@ export function RegisterPage() {
                     onChange={(e) => handleChange('full_name', e.target.value)}
                     placeholder="Masukkan nama lengkap"
                     required
-                    className="w-full bg-white/5 text-white rounded-xl border border-white/10 px-4 py-3 text-sm 
-                    focus:outline-none focus:ring-2 focus:ring-slate-400/50 focus:border-slate-400/50
+                    className="w-full bg-white/5 text-white rounded-xl border border-white/10 px-4 py-3 text-sm
+                    focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500/30
                     placeholder:text-zinc-600 transition-all duration-300 group-hover/input:border-white/20"
                   />
                 </div>
@@ -112,8 +110,8 @@ export function RegisterPage() {
                     onChange={(e) => handleChange('email', e.target.value)}
                     placeholder="nama@email.com"
                     required
-                    className="w-full bg-white/5 text-white rounded-xl border border-white/10 px-4 py-3 text-sm 
-                    focus:outline-none focus:ring-2 focus:ring-slate-400/50 focus:border-slate-400/50
+                    className="w-full bg-white/5 text-white rounded-xl border border-white/10 px-4 py-3 text-sm
+                    focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500/30
                     placeholder:text-zinc-600 transition-all duration-300 group-hover/input:border-white/20"
                   />
                 </div>
@@ -132,8 +130,8 @@ export function RegisterPage() {
                     onChange={(e) => handleChange('password', e.target.value)}
                     placeholder="Buat password aman"
                     required
-                    className="w-full bg-white/5 text-white rounded-xl border border-white/10 px-4 py-3 pr-12 text-sm 
-                    focus:outline-none focus:ring-2 focus:ring-slate-400/50 focus:border-slate-400/50
+                    className="w-full bg-white/5 text-white rounded-xl border border-white/10 px-4 py-3 pr-12 text-sm
+                    focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500/30
                     placeholder:text-zinc-600 transition-all duration-300 group-hover/input:border-white/20"
                   />
                   <button
@@ -157,13 +155,19 @@ export function RegisterPage() {
 
               {/* Submit Button */}
               <div className="pt-2">
-                <Button
+                <button
                   type="submit"
-                  className="w-full bg-slate-400 hover:bg-slate-300 text-white font-medium py-3 rounded-xl shadow-[0_0_20px_rgba(203,213,225,0.3)] hover:shadow-[0_0_30px_rgba(203,213,225,0.5)] transition-all duration-300"
-                  isLoading={isLoading}
+                  disabled={isLoading}
+                  className="w-full bg-gradient-to-br from-slate-100 via-white to-slate-300 text-black font-bold h-12 rounded-xl hover:shadow-[0_0_24px_rgba(59,130,246,0.18)] transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
+                  {isLoading && (
+                    <svg className="animate-spin h-5 w-5 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                    </svg>
+                  )}
                   Buat Akun
-                </Button>
+                </button>
               </div>
             </form>
 
@@ -179,7 +183,6 @@ export function RegisterPage() {
                 </Link>
               </p>
             </div>
-          </div>
         </div>
         
         {/* Simple Footer Links */}

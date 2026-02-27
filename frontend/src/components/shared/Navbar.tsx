@@ -17,7 +17,6 @@ export function Navbar() {
   const { isAuthenticated } = useAuth();
   const location = useLocation();
 
-  // Handle navbar scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -27,7 +26,6 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location]);
@@ -36,7 +34,7 @@ export function Navbar() {
     fixed top-0 left-0 right-0 z-50
     transition-all duration-300
     ${isScrolled 
-      ? 'bg-[#0a0a0f]/95 backdrop-blur-md shadow-lg' 
+      ? 'bg-[#0a0a0f]/95 backdrop-blur-md shadow-lg border-b border-blue-500/10 shadow-[0_1px_0_rgba(59,130,246,0.08)]' 
       : 'bg-transparent'
     }
   `;
@@ -50,7 +48,7 @@ export function Navbar() {
             to="/" 
             className="text-xl md:text-2xl font-bold text-white hover:text-slate-200 transition-colors"
           >
-            fx<span className="text-blue-500">society</span>
+            fx<span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-100 to-slate-400">society</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -65,7 +63,7 @@ export function Navbar() {
                     px-4 py-2 rounded-lg text-sm font-medium
                     transition-all duration-200
                     ${isActive
-                      ? 'text-blue-400 bg-blue-500/10'
+                      ? 'text-white bg-white/10 shadow-[0_0_15px_rgba(59,130,246,0.08)] border border-blue-500/20'
                       : 'text-zinc-400 hover:text-white hover:bg-white/5'
                     }
                   `}
@@ -75,18 +73,18 @@ export function Navbar() {
               );
             })}
             
-            {/* Member Area Link (Visible if logged in) */}
             {isAuthenticated && (
               <Link
                 to="/member"
-                className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-blue-600 hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/20 ml-2"
+                className="px-4 py-2 rounded-lg text-sm font-bold text-white bg-white/5 border border-white/10 hover:bg-white/10 transition-all ml-2 flex items-center gap-2"
               >
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse shadow-[0_0_8px_rgba(59,130,246,0.5)]"></span>
                 Area Member
               </Link>
             )}
           </div>
 
-          {/* Desktop Login Button (Hidden if logged in) */}
+          {/* Desktop Login Button */}
           <div className="hidden md:block">
             {!isAuthenticated && (
               <Button variant="secondary" size="sm" href="/login">
@@ -115,7 +113,7 @@ export function Navbar() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden pb-4 border-t border-white/5 mt-2 pt-4">
+          <div className="md:hidden bg-[#0d0d14]/98 backdrop-blur-xl border-t border-white/8 mt-1 pb-6 pt-3 rounded-b-2xl shadow-2xl">
             <div className="flex flex-col gap-1">
               {navItems.map((item) => {
                 const isActive = location.pathname === item.href;
@@ -124,11 +122,11 @@ export function Navbar() {
                     key={item.href}
                     to={item.href}
                     className={`
-                      px-4 py-3 rounded-lg text-base font-medium
+                      px-4 py-3.5 rounded-xl text-base font-semibold
                       transition-all duration-200
                       ${isActive 
-                        ? 'text-blue-400 bg-blue-500/10'
-                        : 'text-zinc-400 hover:text-white hover:bg-white/5'
+                        ? 'text-white bg-white/12 border border-blue-500/20'
+                        : 'text-zinc-200 hover:text-white hover:bg-white/8'
                       }
                     `}
                   >
@@ -140,13 +138,14 @@ export function Navbar() {
               {isAuthenticated && (
                 <Link
                   to="/member"
-                  className="px-4 py-3 rounded-lg text-base font-bold text-blue-400 bg-blue-500/10 transition-all duration-200"
+                  className="px-4 py-3 rounded-lg text-base font-bold text-white bg-white/5 border border-white/10 transition-all duration-200 flex items-center gap-2"
                 >
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
                   Area Member
                 </Link>
               )}
 
-              <div className="mt-4 px-4">
+              <div className="mt-3 px-2">
                 {!isAuthenticated && (
                   <Button variant="secondary" size="md" href="/login" className="w-full">
                     Masuk

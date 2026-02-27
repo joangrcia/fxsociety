@@ -57,24 +57,23 @@ export function LoginPage() {
   };
 
   return (
-    <main className="min-h-screen relative flex items-center justify-center px-4 bg-[#0c0c0e]">
-      {/* Quiet Morning Background */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-[#09090b] via-[#121215] to-[#18181b] opacity-100" />
-      
-      {/* Subtle Warmth (simulating morning light) */}
-      <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-slate-400/5 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-zinc-800/20 rounded-full blur-[150px] pointer-events-none" />
+    <main className="min-h-screen relative flex items-center justify-center px-4 bg-[#0a0a0f]">
+      {/* Background Ambient Orbs */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/6 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-400/5 rounded-full blur-[100px]" />
+      </div>
 
       <div className="w-full max-w-[420px] relative z-10 animate-fade-in-up">
         {/* Header Section */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <Link 
             to="/" 
             className="inline-block text-2xl font-bold text-white mb-8 tracking-tight opacity-90 hover:opacity-100 transition-opacity"
           >
             fx<span className="text-slate-400 font-normal">society</span>
           </Link>
-          <h1 className="text-3xl md:text-4xl font-light text-white mb-4 tracking-wide">
+          <h1 className="text-3xl md:text-4xl font-light tracking-wide bg-gradient-to-r from-slate-100 via-white to-slate-400 bg-clip-text text-transparent mb-3">
             Selamat Datang Kembali
           </h1>
           <p className="text-zinc-400 text-sm font-light tracking-wide leading-relaxed">
@@ -83,7 +82,7 @@ export function LoginPage() {
         </div>
 
         {/* Floating Container */}
-        <div className="backdrop-blur-sm bg-white/[0.02] border border-white/[0.05] rounded-2xl p-8 md:p-10 shadow-2xl shadow-black/20">
+        <div className="bg-[#14141a] border border-white/5 rounded-2xl p-8 shadow-2xl hover:border-white/10 transition-all">
           
           {/* Error Message */}
           {error && (
@@ -95,7 +94,7 @@ export function LoginPage() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-8">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2 group">
               <label className="block text-xs font-medium text-zinc-500 uppercase tracking-widest pl-1 group-focus-within:text-zinc-300 transition-colors">
                 Email
@@ -104,7 +103,7 @@ export function LoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-transparent border-b border-zinc-800 focus:border-slate-400/50 text-white py-3 px-1 outline-none transition-all duration-300 placeholder:text-zinc-800 font-light text-base focus:bg-white/[0.02] rounded-t-lg"
+                className="w-full bg-white/5 text-white rounded-xl border border-white/10 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500/30 placeholder:text-zinc-600 transition-all"
                 placeholder="nama@email.com"
                 required
               />
@@ -121,7 +120,7 @@ export function LoginPage() {
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full bg-transparent border-b border-zinc-800 focus:border-slate-400/50 text-white py-3 px-1 outline-none transition-all duration-300 placeholder:text-zinc-800 font-light text-base focus:bg-white/[0.02] rounded-t-lg pr-10"
+                  className="w-full bg-white/5 text-white rounded-xl border border-white/10 px-4 py-3 pr-12 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500/30 placeholder:text-zinc-600 transition-all"
                   placeholder="••••••••"
                   required
                 />
@@ -144,11 +143,11 @@ export function LoginPage() {
               </div>
             </div>
 
-            <div className="pt-4">
+            <div className="pt-2">
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-zinc-100 hover:bg-white text-black font-medium tracking-wide h-14 rounded-xl transition-all duration-300 shadow-lg shadow-zinc-900/50 hover:shadow-zinc-900/30 hover:-translate-y-0.5 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full bg-gradient-to-br from-slate-100 via-white to-slate-300 text-black font-bold h-12 rounded-xl hover:shadow-[0_0_24px_rgba(59,130,246,0.18)] transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {isLoading && (
                   <svg
@@ -179,7 +178,7 @@ export function LoginPage() {
         </div>
 
         {/* Footer Actions */}
-        <div className="mt-12 text-center space-y-6">
+        <div className="mt-8 text-center space-y-4">
           <p className="text-sm text-zinc-500 font-light">
             Belum punya akun?{' '}
             <Link to="/register" className="text-zinc-300 hover:text-white transition-colors border-b border-zinc-700 hover:border-white pb-0.5">

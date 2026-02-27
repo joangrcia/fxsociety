@@ -2,7 +2,7 @@
 
 /* ============================================
    fxsociety Design System
-  Dark theme with silver metallic accent
+   Dark theme with silver metallic accent + blue accents
    ============================================ */
 
 /* CSS Variables for Design System */
@@ -20,6 +20,9 @@
 
   /* Border colors */
   --color-border-accent: rgba(59, 130, 246, 0.35);
+  --color-blue-accent: #3b82f6;
+  --color-blue-glow: rgba(59, 130, 246, 0.15);
+  --color-blue-border: rgba(59, 130, 246, 0.25);
 
   /* Shadows */
   --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);

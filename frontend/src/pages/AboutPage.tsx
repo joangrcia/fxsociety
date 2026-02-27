@@ -5,12 +5,12 @@ import { Button } from '../components/shared';
 
 function SectionLabel({ children }: { children: ReactNode }) {
   return (
-    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 backdrop-blur-md mb-6">
+    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6">
       <span className="relative flex h-2 w-2">
         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
         <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
       </span>
-      <span className="text-xs font-medium text-blue-400 tracking-wide uppercase">{children}</span>
+      <span className="text-xs font-medium text-slate-300 tracking-wide uppercase">{children}</span>
     </div>
   );
 }
@@ -18,13 +18,13 @@ function SectionLabel({ children }: { children: ReactNode }) {
 function ValueCard({ icon, title, description, delay = 0 }: { icon: ReactNode; title: string; description: string; delay?: number }) {
   return (
     <div 
-      className="group relative p-8 rounded-3xl bg-zinc-900/40 border border-white/5 hover:border-blue-500/20 hover:bg-zinc-900/60 transition-all duration-500 hover:-translate-y-1 overflow-hidden"
+      className="group relative p-8 rounded-3xl bg-zinc-900/40 border border-white/5 hover:border-white/20 hover:bg-zinc-900/60 transition-all duration-500 hover:-translate-y-1 overflow-hidden"
       style={{ animationDelay: `${delay}ms` }}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-blue-500/0 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-br from-white/0 via-white/0 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       
       <div className="relative z-10">
-        <div className="w-14 h-14 rounded-2xl bg-zinc-800/50 border border-white/5 flex items-center justify-center text-blue-400 mb-6 group-hover:scale-110 group-hover:bg-blue-500/10 group-hover:border-blue-500/20 transition-all duration-300">
+        <div className="w-14 h-14 rounded-2xl bg-zinc-800/50 border border-white/5 flex items-center justify-center text-slate-300 mb-6 group-hover:scale-110 group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-300">
           {icon}
         </div>
         <h3 className="text-xl font-bold text-white mb-3 group-hover:text-slate-50 transition-colors">{title}</h3>
@@ -37,7 +37,7 @@ function ValueCard({ icon, title, description, delay = 0 }: { icon: ReactNode; t
 function QuoteBlock({ children, author, role }: { children: ReactNode; author: string; role: string }) {
   return (
     <div className="relative p-8 md:p-12 rounded-3xl bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border border-white/5 overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500/50 via-blue-500/10 to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-slate-200 via-slate-500/10 to-transparent" />
       <svg className="absolute top-8 left-8 w-12 h-12 text-white/5 -z-0 transform -translate-x-2 -translate-y-2" fill="currentColor" viewBox="0 0 24 24">
         <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V11C14.017 11.5523 13.5693 12 13.017 12H12.017V5H22.017V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 8.44772 5.0166 9V11C5.0166 11.5523 4.56889 12 4.0166 12H3.0166V5H13.0166V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z" />
       </svg>
@@ -46,7 +46,7 @@ function QuoteBlock({ children, author, role }: { children: ReactNode; author: s
           "{children}"
         </div>
         <div className="mt-6 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-sm border border-blue-500/20">
+          <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-slate-300 font-bold text-sm border border-white/10">
             F
           </div>
           <div>
@@ -59,16 +59,15 @@ function QuoteBlock({ children, author, role }: { children: ReactNode; author: s
   );
 }
 
-// --- Main Page ---
-
 export function AboutPage() {
   return (
-    <main className="bg-[#0a0a0f] min-h-screen relative overflow-x-hidden selection:bg-blue-500/30 selection:text-white">
+    <main className="bg-[#0a0a0f] min-h-screen relative overflow-x-hidden selection:bg-slate-400/30 selection:text-white">
       
       {/* Background Ambience */}
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-[1000px] h-[600px] bg-blue-600/5 rounded-full blur-[120px] mix-blend-screen opacity-40 animate-float" />
-        <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-blue-600/5 rounded-full blur-[120px] mix-blend-screen opacity-20" />
+        <div className="absolute top-0 left-1/4 w-[1000px] h-[600px] bg-white/5 rounded-full blur-[120px] mix-blend-screen opacity-40 animate-float" />
+        <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-blue-500/6 rounded-full blur-[120px] mix-blend-screen opacity-30" />
+        <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-blue-400/4 rounded-full blur-[100px] mix-blend-screen opacity-25" />
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] brightness-100 contrast-150" />
       </div>
 
@@ -81,7 +80,7 @@ export function AboutPage() {
           
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-8 leading-[1.1] animate-slide-up [animation-delay:200ms]">
             Trading yang lebih <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-400 to-blue-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-100 via-white to-slate-400">
               Manusiawi
             </span>
             <span className="text-zinc-600">.</span>
@@ -188,20 +187,20 @@ export function AboutPage() {
               {
                 title: 'Copy Jujur',
                 desc: 'Kami menulis dengan bahasa realistis. Jika ada risiko, kami tulis risiko. Tidak ada yang disembunyikan di fine print.',
-                color: 'bg-blue-500'
+                color: 'bg-slate-400'
               },
               {
                 title: 'Panduan Rapi',
                 desc: 'Setiap produk dilengkapi cara pakai. Kami tidak membiarkan Anda menebak-nebak setelah membeli.',
-                color: 'bg-emerald-500'
+                color: 'bg-slate-200'
               },
               {
                 title: 'Support Responsif',
                 desc: 'Ada masalah teknis? Hubungi kami. Kami membalas pesan Anda, bukan bot otomatis.',
-                color: 'bg-purple-500'
+                color: 'bg-slate-100'
               }
             ].map((item, i) => (
-              <div key={i} className="group p-6 rounded-2xl bg-zinc-900/50 border border-white/5 hover:border-blue-500/20 transition-all">
+              <div key={i} className="group p-6 rounded-2xl bg-zinc-900/50 border border-white/5 hover:border-white/20 transition-all">
                 <div className={`w-2 h-2 rounded-full ${item.color} mb-4 shadow-[0_0_10px_currentColor]`} />
                 <h3 className="text-lg font-semibold text-white mb-2">{item.title}</h3>
                 <p className="text-zinc-400 text-sm leading-relaxed">{item.desc}</p>
@@ -210,15 +209,15 @@ export function AboutPage() {
           </div>
 
           {/* Warning Box */}
-          <div className="mt-12 p-6 rounded-xl bg-blue-900/10 border border-blue-500/20 flex gap-4 max-w-3xl mx-auto">
-            <div className="shrink-0 text-blue-500 mt-1">
+          <div className="mt-12 p-6 rounded-xl bg-white/5 border border-white/10 flex gap-4 max-w-3xl mx-auto">
+            <div className="shrink-0 text-slate-400 mt-1">
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
               </svg>
             </div>
             <div>
-              <p className="text-sm text-blue-100 font-medium mb-1">Pengingat Risiko</p>
-              <p className="text-sm text-blue-100/70 leading-relaxed">
+              <p className="text-sm text-slate-100 font-medium mb-1">Pengingat Risiko</p>
+              <p className="text-sm text-slate-400 leading-relaxed">
                 Trading mengandung risiko dan tidak ada produk yang bisa menjamin profit.
                 Produk fxsociety adalah alat bantu dan materi belajar—bukan janji hasil.
               </p>
@@ -233,7 +232,8 @@ export function AboutPage() {
           <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-b from-zinc-800 to-zinc-900 border border-white/10 p-10 md:p-20 text-center shadow-2xl">
              
              {/* Decorative glows */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-500/20 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-500/8 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
+            <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-400/5 rounded-full blur-[100px] pointer-events-none" />
              
              <div className="relative z-10">
                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Siap belajar dengan tenang?</h2>
@@ -242,7 +242,7 @@ export function AboutPage() {
                </p>
                
                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                 <Button href="/shop" size="lg" className="h-12 px-8 text-base shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] transition-shadow">
+                 <Button href="/shop" size="lg" className="h-12 px-8 text-base shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] transition-shadow">
                    Lihat Produk
                  </Button>
                  <Button href="/support" variant="secondary" size="lg" className="h-12 px-8 text-base bg-white/5 border-white/10 hover:bg-white/10">
